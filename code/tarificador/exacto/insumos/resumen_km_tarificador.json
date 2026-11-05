@@ -1,0 +1,26 @@
+{
+  "generado": "2026-11-02T15:59:06",
+  "excel": "TARIFICADOR STANDAR VIGENTE AL  15.10.2026 PARA SUBASTA DEL DIA 16.10.xlsx",
+  "sha256": "1c81c7928565a8009a95d975ddca6a74e9e720948a2b6300e0bcd3d477801d42",
+  "ciudades": 311,
+  "ciudades_que_no_pueden_ser_origen": [
+    "Curacavi"
+  ],
+  "pares_distancia": 90400,
+  "lugares": 159,
+  "lugares_por_estado": {
+    "ok": 143,
+    "supuesto": 9,
+    "no es un lugar": 4,
+    "sin ciudad en el tarificador": 3
+  },
+  "tramos": 672,
+  "tramos_por_estado": {
+    "ok": 613,
+    "local (0 km)": 40,
+    "sin ciudad en el tarificador": 12,
+    "excede la planilla": 6,
+    "#N/A en el Excel": 1
+  },
+  "control_santiago_arica": 2059.04491164
+}

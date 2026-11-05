@@ -1,0 +1,36 @@
+﻿tipo,clave,nombre,bolsa,rol,nota
+centro,1000551,560 - Conductores,flota,conductores,"Sueldos, comisión de viaje y tiempos de espera de conductores propios"
+centro,1000554,590 - Camiones,flota,tracto,Mantención y gastos de tractos propios
+centro,1000553,580 - Ramplas,rampla,rampla,Mantención y gastos de ramplas (las usan también los fleteros)
+centro,1000547,520 - Taller de Refrigeracion,rampla,,Equipos de frío de las ramplas
+centro,1000549,540 - Taller Mecanico,mixto_talleres,,Atiende tractos y ramplas
+centro,1000550,550 - Taller Electrico,mixto_talleres,,
+centro,1000546,510 - Fleteros,directo_fleteros,,"GPS, siniestros y servicios de fleteros"
+centro,1000552,570 - Operaciones,estructura,,Coordina todos los viajes (también de fleteros)
+centro,1000542,470 - Administracion,estructura,,
+centro,1000530,210 - Gerencia General,estructura,,
+centro,1000529,200 - GERENCIA GENERAL,estructura,,
+centro,1000543,480 - Finanzas,estructura,,
+centro,1000528,110 - Directorio,estructura,,
+centro,1000527,100 - DIRECTORIO,estructura,,
+centro,1000537,420 - Contabilidad,estructura,,
+centro,1000544,490 - Informatica,estructura,,
+centro,1000541,460 - Seguridad,estructura,,
+centro,1000538,430 - Recursos Humanos,estructura,,
+centro,1000540,450 - Adquisicones,estructura,,
+centro,1000536,410 - Prevencion,estructura,,
+centro,1000539,440 - Bodega,estructura,,
+centro,1000076,0000000 - Sin Centro de Costo,,,Sin centro real: se decide por cuenta
+centro,1000077,(sin centro),,,Sin centro real: se decide por cuenta
+cuenta,310050301,Seguros de carga y Equipos,mixto_seguros,,Póliza de carga y equipos: se reparte con pct_seguro_equipos (SUPUESTO)
+cuenta_sin_centro,31002*,"Remuneraciones sin centro (aportes, finiquitos, leyes)",mixto_aportes,,Se reparte según el Gasto Empleados del centro Conductores
+cuenta_sin_centro,310060101,Gastos Hoja de Ruta,flota,,Conductores propios
+cuenta_sin_centro,310060102,Gastos H.R. Viáticos,flota,,Conductores propios
+cuenta_sin_centro,310050307,Infracciones de Transito,flota,,SUPUESTO: camiones propios (no se registran en la UN de fleteros)
+cuenta_sin_centro,310080106,Intereses por Leasing,mixto_equipos,,Leasing de tractos y ramplas
+cuenta_sin_centro,310010112,Variacion en precio de la factura,mixto_equipos,,Ajuste de inventario de repuestos
+cuenta_sin_centro,310010113,Variacion en costo promedio,mixto_equipos,,Ajuste de inventario de repuestos
+cuenta_sin_centro,310010114,Costo Venta Productos Bodega,mixto_equipos,,
+cuenta_sin_centro,320010101,Ajuste de Inventarios,mixto_equipos,,
+cuenta_sin_centro,310050305,Permiso de Circulacion,mixto_equipos,,Tractos y ramplas
+cuenta_sin_centro,310050303,Revision Tecnica,mixto_equipos,,Tractos y ramplas

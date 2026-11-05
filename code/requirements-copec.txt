@@ -1,0 +1,4 @@
+# Solo para el equipo que consulta el correo. Outlook usa la sesión del usuario.
+pdfplumber>=0.11
+pywin32>=306; sys_platform == 'win32'
+msal>=1.30

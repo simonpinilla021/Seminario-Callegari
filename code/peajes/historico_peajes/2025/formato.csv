@@ -1,0 +1,39 @@
+﻿documento,tarifas_2025,tarifas_2026,camion_2025,camion_2026,horarios_2025,horarios_2026,plazas_solo_2025,plazas_solo_2026,veredicto
+ACCESO IQUIQUE,12,12,2,2,unica,unica,,,mismo formato
+ACCESO NORORIENTE,16,16,4,4,fuera de punta | punta,fuera de punta | punta,,,mismo formato
+ACCESO VIAL AEROPUERTO DE SANTIAGO,8,8,2,2,unica,unica,,,mismo formato
+AUTOPISTA CENTRAL,192,201,64,67,fuera de punta | punta | saturacion,fuera de punta | punta | saturacion,PA4 COLON LA CAPILLA,PA4 CALERA DE TANGO LA CAPILLA,revisar: cambian los encabezados de plaza
+AUTOPISTA CONCEPCIÓN – CABRERO,12,12,2,2,unica,unica,,,mismo formato
+AUTOPISTA DE LA REGIÓN DE ANTOFAGASTA,24,24,3,3,unica,unica,,,mismo formato
+AUTOPISTA VESPUCIO SUR,126,129,42,43,fuera de punta | punta | saturacion,fuera de punta | punta | saturacion,,,mismo formato
+AVO I – TRAMO EL SALTO – PRÍNCIPE DE GALES,263,265,84,84,fuera de punta | punta,fuera de punta | punta,1 61 P108 ESPOZ C GOYENECHEA P107 KENNEDY VESPUCIO | 1 65 P108 ESPOZ C GOYENECHEA P104 PRESIDENTE RIESCO | 2 98 P108 ESPOZ C GOYENECHEA P102 MARTIN DE ZAMORA | 3 30 P212 ESCRIVA DE BALAGUER P201 C EMPRESARIAL EL SALTO | 3 71 P204 C GOYENECHEA P201 C EMPRESARIAL EL SALTO | 4 02 P212 ESCRIVA DE BALAGU,1 61 P108 COSTANERA NORTE NORORIENTE P107 KENNEDY VESPUCIO | 1 65 P108 COSTANERA NORTE NORORIENTE P104 PRESIDENTE RIESCO | 2 98 P108 COSTANERA NORTE NORORIENTE P102 MARTIN DE ZAMORA | 3 30 P212 COSTANERA SUR P201 C EMPRESARIAL EL SALTO | 3 71 P204 SALIDA AV VITACURA P201 C EMPRESARIAL EL SALTO | 4 0,revisar: cambian los encabezados de plaza
+CAMINO NOGALES – PUCHUNCAVÍ,21,35,3,5,fuera de punta | punta | unica,fuera de punta | punta | unica,NORMAL | PUNTA,BYPASS PUCHUNCAVI NORMAL | BYPASS PUCHUNCAVI PUNTA | TRONCAL NOGALES NORMAL | TRONCAL NOGALES PUNTA,revisar: cambian los encabezados de plaza
+CHILLÁN – COLLIPULLI,14,14,2,2,unica,unica,,,mismo formato
+COLLIPULLI – TEMUCO,14,14,2,2,unica,unica,,,mismo formato
+COSTANERA NORTE,264,264,88,88,fuera de punta | punta | saturacion,fuera de punta | punta | saturacion,P1 GRAN VIA PUENTE LA DEHESA | P5 CARRASCAL VIVACETA | PUENTE LA DEHESA GRAN VIA P1,CARRASCAL VIVACETA P5 | P0 P SAN FRANCISCO PUENTE PADRE ARTEAGA | P1 GRAN VIA PUENTE SAN FRANCISCO | PUENTE SAN FRANCISCO GRAN VIA P1,revisar: cambian los encabezados de plaza
+LA SERENA – VALLENAR,14,14,2,2,unica,unica,,,mismo formato
+LOS LIBERTADORES,12,16,3,4,unica,unica,,TARIFAS USUARIOS SIN TAG EN VIAS DE COBRO ELECTRONICO FREE FLOW TRONCAL LAS CANTERAS,revisar: cambian los encabezados de plaza
+LOS VILOS – LA SERENA,12,12,2,2,unica,unica,,,mismo formato
+PTO MONTT – PARGUA,24,24,4,4,unica,unica,,,mismo formato
+RED VIAL LITORAL CENTRAL,35,35,5,5,fuera de punta | punta | unica,fuera de punta | punta | unica,,,mismo formato
+RUTA 160,17,17,3,3,unica,unica,,,mismo formato
+RUTA 43,6,6,1,1,unica,unica,,,mismo formato
+RUTA 60 CH,40,40,10,10,fuera de punta | punta,fuera de punta | punta,,,mismo formato
+RUTA 66 CAMINO DE LA FRUTA,24,24,4,4,unica,unica,,,mismo formato
+RUTA 68,12,12,3,3,fuera de punta | punta | unica,fuera de punta | punta | unica,ACCESOS Y TRONCAL SUR,LATERAL Y TRONCAL SUR,revisar: cambian los encabezados de plaza
+RUTA 78,112,112,16,16,fuera de punta | punta,fuera de punta | punta,POMAIRE,POMAIRE MELIPILLA,revisar: cambian los encabezados de plaza
+RUTA DEL ITATA,21,21,3,3,unica,unica,,,mismo formato
+RUTA INTERPORTUARIA,40,40,10,10,fuera de punta | punta,fuera de punta | punta,,,mismo formato
+RUTA NAHUELBUTA,7,18,1,3,unica,unica,,LATERAL SANTA FE | TRONCAL COIHUE,revisar: cambian los encabezados de plaza
+RUTAS DEL LOA,8,8,1,1,unica,unica,,,mismo formato
+RÍO BUENO – PTO MONTT,12,12,3,3,unica,unica,,,mismo formato
+SANTIAGO – LOS VILOS,44,48,11,12,fuera de punta | punta,fuera de punta | punta,PLAZA DE PEAJE LAMPA | PLAZA DE PEAJE LAS VEGAS | PLAZA DE PEAJE PICHIDANGUI,LAMPA | LAS VEGAS | PICHIDANGUI | TUNEL EL MELON,revisar: cambian los encabezados de plaza
+SANTIAGO – TALCA,28,35,4,5,unica,unica,LATERALES ACCESO SUR,TRONCAL GABRIELA | TRONCAL TOCORNAL,revisar: cambian los encabezados de plaza
+TALCA – CHILLÁN,14,14,2,2,unica,unica,,,mismo formato
+TEMUCO – RÍO BUENO,8,8,2,2,unica,unica,,,mismo formato
+TRAMO URBANO SANTIAGO – LAMPA,32,0,8,0,fuera de punta | punta,,ENLACE BUENAVENTURA | ENLACE LO PINTO | PASO SUPERIOR LA MONTANA | PASO SUPERIOR LO MARCOLETA,,revisar: sin lámina 2026 para comparar
+TÚNEL EL MELÓN,4,0,1,0,unica,,TARIFA UNICA EN PEAJE MANUAL Y ELECTRONICO,,revisar: sin lámina 2026 para comparar
+TÚNEL SAN CRISTOBAL,90,84,30,28,fuera de punta | punta | saturacion,fuera de punta | punta | saturacion,EL SALTO KENNEDY LABORAL 09 30 A 11 30 TBP | EL SALTO KENNEDY LABORAL 15 30 A 16 00 TBP | EL SALTO KENNEDY LABORAL 16 30 A 17 30 TBP,EL SALTO KENNEDY LABORAL 10 00 A 11 00 TBP | EL SALTO KENNEDY LABORAL 15 30 A 17 30 TBP,revisar: cambian los encabezados de plaza
+VALLENAR – CALDERA,12,12,2,2,unica,unica,,,mismo formato
+VARIANTE MELIPILLA,7,7,1,1,fuera de punta,fuera de punta,,,mismo formato
+VESPUCIO NORTE,120,126,40,42,fuera de punta | punta | saturacion,fuera de punta | punta | saturacion,,,mismo formato

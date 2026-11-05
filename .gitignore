@@ -1,0 +1,25 @@
+# Datos privados de la empresa
+src/*
+!src/LEEME.md
+code/precios/cartas_out/
+code/precios/cartas_copec/
+code/conectores/copec/docs_combustible/
+code/conectores/copec/salida_combustible/
+code/conectores/copec/registro_*.csv
+*.parquet
+*.xlsx
+
+# Configuración local y credenciales
+code/config.ini
+.local/
+**/.env
+
+# Entorno, ejecuciones y caché
+.venv/
+.ingesta/
+code/validacion/
+**/__pycache__/
+code/peajes/tramos_peajes/cache/
+code/peajes/peajes_datos/pdf/
+*.log
+*.db

@@ -1,0 +1,2 @@
+clave,valor,vigente_desde,vigente_hasta,fuente,nota
+pct_recuperacion_ie,0.31,1900-01-01,9999-12-31,Entrevista al Gerente de Administración y planilla del tarificador (hoja petroleo),Porcentaje del impuesto específico que recupera Callegari (Ley 19.764). Por confirmar con el contador; si cambió en el tiempo agregar una fila por período
