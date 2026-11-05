@@ -1,0 +1,25 @@
+﻿parametro,metodo,ambito,valor,unidad,vigente_desde,vigente_hasta,parametro_padre,origen,fuente_detalle,nota
+ajuste_manual_costo_fijo,tarificador,todos,14200000,CLP/año,2026-08-01,9999-12-31,costo_fijo_diario,manual,"Gerente de Administración, reunión 20-10-2026","1 % adicional de cotización sobre remuneraciones desde agosto 2026; se suma a la masa del año anterior"
+divisor_flota,tarificador,todos,92,equipos,1900-01-01,9999-12-31,costo_fijo_diario,tarificador,"Planilla del tarificador (70 propios + 6 de Atilio + 16 terceros)","Gerente 21-10-2026: incluye terceros a propósito; debería actualizarse cada mes con los equipos operativos (hoy ~23 terceros). PENDIENTE: serie mensual"
+meses_anio,tarificador,todos,12,meses,1900-01-01,9999-12-31,costo_fijo_diario,tarificador,Hoja costos del tarificador,
+dias_mes,tarificador,todos,25,días,1900-01-01,9999-12-31,costo_fijo_diario · reposicion_diaria,tarificador,"Gerente: 25 son los días que se trabaja al mes",
+km_por_dia,tarificador,todos,720,km/día,1900-01-01,9999-12-31,dias_viaje,tarificador,"Tarificador al 15.10.2026, hoja Parametros B36 = B35 × B34 (60 km/h × 12 h)","Actualizado 24-10-2026 desde el Excel del tarificador (antes 720,5: supuesto de la cotización de ejemplo, 21-10-2026)"
+valor_camion_usd,tarificador,todos,124159,USD,1900-01-01,9999-12-31,reposicion_diaria,externo,Hoja Parametros del tarificador,"PENDIENTE: de dónde sale el precio (el gerente mencionó 121 MM)"
+tipo_cambio_usd,tarificador,todos,951.03,CLP/USD,1900-01-01,9999-12-31,reposicion_diaria,externo,Hoja Parametros del tarificador,"PENDIENTE: fecha del dólar; automatizable con el dólar observado"
+valor_termo,tarificador,todos,28000000,CLP,1900-01-01,9999-12-31,reposicion_diaria,tarificador,Hoja Parametros del tarificador,Valor del termo: se revisa aparte
+valor_termo,tarificador,tractoreo,0,CLP,1900-01-01,9999-12-31,reposicion_diaria,tarificador,Hoja Parametros (solo para tractoreo),El tractoreo no lleva termo
+remanente,tarificador,todos,10000000,CLP,1900-01-01,9999-12-31,reposicion_diaria,tarificador,Hoja Parametros del tarificador (recuadro reposición),"Valor de reventa del camión usado; se descuenta del saldo a financiar. Restituido 21-10-2026 (antes 0 por decisión del 20-10)"
+meses_reposicion,tarificador,todos,84,meses,1900-01-01,9999-12-31,reposicion_diaria,tarificador,"Gerente: libreta de ahorro para comprar otro camión",
+n_neumaticos,tarificador,todos,18,unidades,1900-01-01,9999-12-31,costo_neumatico_km,tarificador,Hoja Parametros (tracto + rampla),
+n_neumaticos,tarificador,tractoreo,10,unidades,1900-01-01,9999-12-31,costo_neumatico_km,tarificador,Hoja Parametros (solo tracto),
+precio_neumatico,tarificador,todos,169000,CLP,1900-01-01,9999-12-31,costo_neumatico_km,tarificador,Hoja Parametros,Mediana 2022 del neumático de dirección; referencia 2026 ≈ 138.650
+vida_util_km,tarificador,todos,100000,km,1900-01-01,9999-12-31,costo_neumatico_km,tarificador,"Rendimiento dado por el fabricante (gerente, seminario 31-08)",
+capacidad_equipos,propuesto,flota,76,equipos,1900-01-01,,cuota_diaria,tarificador,Planilla: 70 propios + 6 de Atilio,Capacidad práctica de la bolsa flota propia
+capacidad_equipos,propuesto,rampla,92,equipos,1900-01-01,,cuota_diaria,manual,Criterio 22-10-2026,SUPUESTO: no se usan más ramplas a la vez que tractos disponibles (92); ramplas propias con costo ≈ 101
+capacidad_equipos,propuesto,estructura,92,equipos,1900-01-01,,cuota_diaria,tarificador,Divisor del tarificador,"La estructura sirve a todos los equipos, propios y de terceros"
+pct_seguro_equipos,propuesto,todos,0.5,fracción,1900-01-01,,cuota_diaria,manual,Sin dato,SUPUESTO: mitad de la póliza es de equipos (tracto/rampla) y mitad de carga (estructura). PREGUNTAR
+pct_talleres_tracto_defecto,propuesto,todos,0.64,fracción,1900-01-01,,cuota_diaria,manual,Proporción 2025 Camiones/Ramplas,Solo si el año no tiene centros con rol tracto/rampla
+pct_aportes_conductores_defecto,propuesto,todos,0.45,fracción,1900-01-01,,cuota_diaria,manual,Proporción 2025 Gasto Empleados,Solo si el año no tiene Gasto Empleados con centro
+valor_rampla_usd,propuesto,todos,26100,USD,1900-01-01,,reposicion_rampla_diaria,tarificador,"Hoja Parametros, escenario 120 meses (rampa ≈ 26.100 USD)",SUPUESTO: pedir el precio real de una rampla
+remanente_rampla,propuesto,todos,0,CLP,1900-01-01,,reposicion_rampla_diaria,manual,Sin dato,SUPUESTO
+n_neumaticos_rampla,propuesto,todos,8,unidades,1900-01-01,,costo_neumatico_km,tarificador,18 por camión − 10 del tracto,Neumáticos de la rampla para terceros que usan rampla de Callegari

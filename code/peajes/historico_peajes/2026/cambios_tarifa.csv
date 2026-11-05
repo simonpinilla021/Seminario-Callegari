@@ -1,0 +1,6 @@
+﻿documento,plaza_texto,categoria,categoria_texto,horario,version_anterior,tarifa_anterior,version_nueva,tarifa_nueva,desde,variacion_pct
+LOS LIBERTADORES,CHACABUCO,camion_mas_2_ejes,Camiones y buses con más de dos ejes,unica,2026-01,10200.0,2026-02,10600.0,2026-02-01,3.9
+LOS LIBERTADORES,SAN LUIS CHICUREO,camion_mas_2_ejes,Camiones y buses con más de dos ejes,unica,2026-01,3600.0,2026-02,3800.0,2026-02-01,5.6
+LOS LIBERTADORES,LAS CANTERAS SAN JOSÉ,camion_mas_2_ejes,Camiones y buses con más de dos ejes,unica,2026-01,4400.0,2026-02,4500.0,2026-02-01,2.3
+SANTIAGO – TALCA,TRONCAL RÍO MAIPO,camion_mas_2_ejes,Camiones de más de dos ejes,unica,2026-01,4400.0,2026-04,1986.0,2026-04-01,-54.9
+VALLENAR – CALDERA,TOTORAL TRONCAL,camion_mas_2_ejes,Camiones de más de dos ejes,unica,2026-01,11500.0,2026-03,11550.0,2026-03-01,0.4

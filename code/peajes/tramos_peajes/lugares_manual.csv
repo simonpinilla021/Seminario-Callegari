@@ -1,0 +1,5 @@
+﻿clave,texto,lat,lon,ignorar,nota
+COQUIMBO BASE,COQUIMBO (BASE),-29.970080280598435, -71.2645063335839,,"coordenadas de la base de Coquimbo (Google Maps: clic derecho sobre el lugar y copiar las coordenadas; lat es el primer número, lon el segundo)"
+COQUIMBO BASE TCALLEGARI,COQUIMBO (BASE TCALLEGARI),-29.970080280598435, -71.2645063335839,,la misma base de Coquimbo
+LA SERENA BASE,LA SERENA (BASE),-29.970080280598435, -71.2645063335839,,¿existe una base en La Serena o es la misma de Coquimbo?
+SANTIAGO,SANTIAGO,,,,"si en vacío se deja el centro de Santiago; si la mayoría de los viajes a Santiago van a una misma zona (p. ej. Quilicura, Pudahuel, Lo Espejo), poner aquí ese punto"

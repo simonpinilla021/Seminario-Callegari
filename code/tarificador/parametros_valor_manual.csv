@@ -1,0 +1,25 @@
+﻿parametro,ambito,valor,vigente_desde,vigente_hasta,nota
+rendimiento_kml,todos,2.65,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+recargo_precio,todos,100,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+pct_base,todos,0.68,1900-01-01,9999-12-31,Respaldo manual (tarificador 68/32): solo rige si no hay cargas del año anterior para calcularlo
+km_hora,todos,60,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+horas_dia,todos,12,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+dias_mes,todos,25,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+termo_lh,frio,4,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+termo_lh,congelado,6,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+termo_lh,multi,6,1900-01-01,9999-12-31,"Gerente 22-10-2026: el multitemperatura activa lo mismo que el congelado (6 L/h)"
+termo_factor_real,todos,0.6875,1900-01-01,9999-12-31,"2,75 L/h medidos ÷ 4 L/h del tarificador (provisorio)"
+valor_camion,todos,121000000,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+remanente,todos,10000000,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+valor_termo,todos,28000000,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+valor_termo,tractoreo,0,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+meses_reposicion,todos,84,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+n_neumaticos,todos,18,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+n_neumaticos,tractoreo,10,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+precio_neumatico,todos,169000,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+vida_util_km,todos,100000,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+margen,todos,0.3,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+factor_retorno,todos,0.8,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+redondeo,todos,500,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+valor_intermedio,todos,50000,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro
+cobra_intermedios,todos,0,1900-01-01,9999-12-31,Valor del tarificador al 15.10.2026; rige para toda la historia hasta que se ingrese otro

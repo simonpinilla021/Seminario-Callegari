@@ -1,0 +1,15 @@
+﻿categoria,es_combustible,es_mantencion,nota
+COMBUSTIBLE,S,N,"Petróleo de base y de ruta: es combustible, no mantención (Simón: categoría 1000008)"
+REPUESTOS,N,S,
+NEUMATICOS,N,S,96 % sin OT desde 2021: entra solo al costo total (I6b)
+FILTROS,N,S,
+LUBRICANTES,N,S,
+INSUMOS,N,S,
+FERRETERIA,N,S,
+SERVICIOS,N,S,Servicios externos cargados por bodega
+ESTÁNDAR,N,S,
+ELEMENTOS DE PROTECCION,N,N,Gasto no técnico (EPP): fuera del costo de mantención
+HERRAMIENTAS,N,N,Gasto no técnico: fuera del costo de mantención
+ARTICULOS DE OFICINA,N,N,Gasto no técnico: fuera del costo de mantención
+VEHICULOS,N,N,No es consumo de mantención
+SIN CATEGORIA,N,S,Producto que no está en prodmaster_v

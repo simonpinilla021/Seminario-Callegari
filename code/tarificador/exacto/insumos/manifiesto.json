@@ -1,0 +1,17 @@
+{
+  "excel": "tarificador\\TARIFICADOR STANDAR VIGENTE AL  15.10.2026 PARA SUBASTA DEL DIA 16.10.xlsx",
+  "excel_sha256": "1c81c7928565a8009a95d975ddca6a74e9e720948a2b6300e0bcd3d477801d42",
+  "entrega": "C:\\Users\\crist\\Documents\\Proyecto Seminario\\Notas\\01 Claude - Contexto de diseño\\Entrega km tarificador 2026-11-02",
+  "archivos": {
+    "distancia_tarificador.csv.gz": "438cf5b8861b9ba87da144e5968c86392fbdf530085d45c20debd2f3812934ee",
+    "entrada_petroleo_version.json": "bc3f818ea5ae9934d762e789464b30d01c6db90c701ae65d4fdff5a2b5872e0f",
+    "equivalencia_lugar_tarificador.csv": "a211d28ea61d30f497013ba2215f685d1eec7f2c45fb0dc21fba1ae55e276815",
+    "equivalencia_lugar_tarificador_manual.csv": "d22fb33e2e31ac5481dbb8fed5bbbddaf483663fbf9118386255cfb013950145",
+    "km_tramo_tarificador.csv": "5b92daf8d1703d879e4684c6b1c44182a6aaa6efccc8a0ec6b4c29b633942920",
+    "parametros_excel.json": "9de4552405890eaaa57e0bf2aaa75a7ad9abc682d95c5987c55d9b7fd04818ee",
+    "peajes_excel.csv": "480f2ec963b072b5c3c0512fad98dbe801f374de554785cf41e5517e009a10e0",
+    "resumen_km_tarificador.json": "c04b76dce09de1eba003dc881822ad7f7304f8d94ae1afde7a19cf23fb083316",
+    "tarificador_ciudad.csv": "dbaa9f4fb4369891550078cd449dc4128e8c2332ddb73d477f9b3e0e4e82e30a"
+  },
+  "km_regenerados": false
+}

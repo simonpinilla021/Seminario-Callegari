@@ -1,0 +1,3861 @@
+﻿origen,destino,peaje
+Arica,Arica,0
+Arica,Iquique,0
+Arica,alto hospicio,0
+Arica,Tocopilla,0
+Arica,Calama,0
+Arica,mejillones,23150
+Arica,Antofagasta,23150
+Arica,el salvador,23150
+Arica,diego de almagro,23150
+Arica,chañaral,23150
+Arica,Caldera,23150
+Arica,Copiapo,34850
+Arica,Los Loros,34850
+Arica,Huasco,46400
+Arica,Vallenar,46400
+Arica,freirina,46400
+Arica,alto del carmen,46400
+Arica,el trapiche,77150
+Arica,La Serena,77150
+Arica,coquimbo,77150
+Arica,Ovalle,77150
+Arica,Illapel,73500
+Arica,salamanca,73500
+Arica,Los Vilos,73500
+Arica,cabildo,73500
+Arica,la calera,73500
+Arica,puchuncavi,73500
+Arica,Nogales,82900
+Arica,quillota,73500
+Arica,quilpue,148570
+Arica,Santiago,131770
+Arica,buin,131770
+Arica,paine,131770
+Arica,casablanca,148570
+Arica,Valparaiso,148570
+Arica,algarrobo,144570
+Arica,talagante,131770
+Arica,San Antonio,144570
+Arica,San Felipe,101700
+Arica,los andes,101700
+Arica,codegua,142870
+Arica,Rancagua,142870
+Arica,machali,142870
+Arica,Nancagua,144670
+Arica,rengo,144670
+Arica,san fernando,144670
+Arica,santa cruz,144670
+Arica,Curico,153970
+Arica,Talca,163470
+Arica,linares,163470
+Arica,Chillan,172970
+Arica,concepcion,190170
+Arica,Talcahuano,190170
+Arica,Los Angeles,182770
+Arica,Temuco,203670
+Arica,pucon,214620
+Arica,Valdivia,225570
+Arica,Osorno,232470
+Arica,frutillar,250370
+Arica,Puerto Montt,250370
+Arica,ANCUD,305570
+Arica,CASTRO,305570
+Iquique,Arica,0
+Iquique,Iquique,0
+Iquique,alto hospicio,0
+Iquique,Tocopilla,0
+Iquique,Calama,0
+Iquique,mejillones,23150
+Iquique,Antofagasta,23150
+Iquique,el salvador,23150
+Iquique,diego de almagro,23150
+Iquique,chañaral,23150
+Iquique,Caldera,23150
+Iquique,Copiapo,34850
+Iquique,Los Loros,34850
+Iquique,Huasco,46400
+Iquique,Vallenar,46400
+Iquique,freirina,46400
+Iquique,alto del carmen,46400
+Iquique,el trapiche,77150
+Iquique,La Serena,77150
+Iquique,coquimbo,77150
+Iquique,Ovalle,77150
+Iquique,Illapel,73500
+Iquique,salamanca,73500
+Iquique,Los Vilos,73500
+Iquique,cabildo,73500
+Iquique,la calera,73500
+Iquique,puchuncavi,73500
+Iquique,Nogales,82900
+Iquique,quillota,73500
+Iquique,quilpue,148570
+Iquique,Santiago,131770
+Iquique,buin,131770
+Iquique,paine,131770
+Iquique,casablanca,148570
+Iquique,Valparaiso,148570
+Iquique,algarrobo,144570
+Iquique,talagante,131770
+Iquique,San Antonio,144570
+Iquique,San Felipe,101700
+Iquique,los andes,101700
+Iquique,codegua,142870
+Iquique,Rancagua,142870
+Iquique,machali,142870
+Iquique,Nancagua,144670
+Iquique,rengo,144670
+Iquique,san fernando,144670
+Iquique,santa cruz,144670
+Iquique,Curico,153970
+Iquique,Talca,163470
+Iquique,linares,163470
+Iquique,Chillan,172970
+Iquique,concepcion,190170
+Iquique,Talcahuano,190170
+Iquique,Los Angeles,182770
+Iquique,Temuco,203670
+Iquique,pucon,214620
+Iquique,Valdivia,225570
+Iquique,Osorno,232470
+Iquique,frutillar,250370
+Iquique,Puerto Montt,250370
+Iquique,ANCUD,305570
+Iquique,CASTRO,305570
+alto hospicio,Arica,0
+alto hospicio,Iquique,0
+alto hospicio,alto hospicio,0
+alto hospicio,Tocopilla,0
+alto hospicio,Calama,0
+alto hospicio,mejillones,23150
+alto hospicio,Antofagasta,23150
+alto hospicio,el salvador,23150
+alto hospicio,diego de almagro,23150
+alto hospicio,chañaral,23150
+alto hospicio,Caldera,23150
+alto hospicio,Copiapo,34850
+alto hospicio,Los Loros,34850
+alto hospicio,Huasco,46400
+alto hospicio,Vallenar,46400
+alto hospicio,freirina,46400
+alto hospicio,alto del carmen,46400
+alto hospicio,el trapiche,77150
+alto hospicio,La Serena,77150
+alto hospicio,coquimbo,77150
+alto hospicio,Ovalle,77150
+alto hospicio,Illapel,73500
+alto hospicio,salamanca,73500
+alto hospicio,Los Vilos,73500
+alto hospicio,cabildo,73500
+alto hospicio,la calera,73500
+alto hospicio,puchuncavi,73500
+alto hospicio,Nogales,82900
+alto hospicio,quillota,73500
+alto hospicio,quilpue,148570
+alto hospicio,Santiago,131770
+alto hospicio,buin,131770
+alto hospicio,paine,131770
+alto hospicio,casablanca,148570
+alto hospicio,Valparaiso,148570
+alto hospicio,algarrobo,144570
+alto hospicio,talagante,131770
+alto hospicio,San Antonio,144570
+alto hospicio,San Felipe,101700
+alto hospicio,los andes,101700
+alto hospicio,codegua,142870
+alto hospicio,Rancagua,142870
+alto hospicio,machali,142870
+alto hospicio,Nancagua,144670
+alto hospicio,rengo,144670
+alto hospicio,san fernando,144670
+alto hospicio,santa cruz,144670
+alto hospicio,Curico,153970
+alto hospicio,Talca,163470
+alto hospicio,linares,163470
+alto hospicio,Chillan,172970
+alto hospicio,concepcion,190170
+alto hospicio,Talcahuano,190170
+alto hospicio,Los Angeles,182770
+alto hospicio,Temuco,203670
+alto hospicio,pucon,214620
+alto hospicio,Valdivia,225570
+alto hospicio,Osorno,232470
+alto hospicio,frutillar,250370
+alto hospicio,Puerto Montt,250370
+alto hospicio,ANCUD,305570
+alto hospicio,CASTRO,305570
+Tocopilla,Arica,0
+Tocopilla,Iquique,0
+Tocopilla,alto hospicio,0
+Tocopilla,Tocopilla,0
+Tocopilla,Calama,0
+Tocopilla,mejillones,12650
+Tocopilla,Antofagasta,12650
+Tocopilla,el salvador,12650
+Tocopilla,diego de almagro,12650
+Tocopilla,chañaral,12650
+Tocopilla,Caldera,12650
+Tocopilla,Copiapo,24350
+Tocopilla,Los Loros,24350
+Tocopilla,Huasco,35900
+Tocopilla,Vallenar,35900
+Tocopilla,freirina,35900
+Tocopilla,alto del carmen,35900
+Tocopilla,el trapiche,77150
+Tocopilla,La Serena,77150
+Tocopilla,coquimbo,77150
+Tocopilla,Ovalle,77150
+Tocopilla,Illapel,63000
+Tocopilla,salamanca,63000
+Tocopilla,Los Vilos,63000
+Tocopilla,cabildo,63000
+Tocopilla,la calera,63000
+Tocopilla,puchuncavi,63000
+Tocopilla,Nogales,72400
+Tocopilla,quillota,63000
+Tocopilla,quilpue,138070
+Tocopilla,Santiago,121270
+Tocopilla,buin,121270
+Tocopilla,paine,121270
+Tocopilla,casablanca,138070
+Tocopilla,Valparaiso,138070
+Tocopilla,algarrobo,134070
+Tocopilla,talagante,121270
+Tocopilla,San Antonio,134070
+Tocopilla,San Felipe,91200
+Tocopilla,los andes,91200
+Tocopilla,codegua,132370
+Tocopilla,Rancagua,132370
+Tocopilla,machali,132370
+Tocopilla,Nancagua,134170
+Tocopilla,rengo,134170
+Tocopilla,san fernando,134170
+Tocopilla,santa cruz,134170
+Tocopilla,Curico,143470
+Tocopilla,Talca,152970
+Tocopilla,linares,152970
+Tocopilla,Chillan,162470
+Tocopilla,concepcion,179670
+Tocopilla,Talcahuano,179670
+Tocopilla,Los Angeles,172270
+Tocopilla,Temuco,193170
+Tocopilla,pucon,204120
+Tocopilla,Valdivia,215070
+Tocopilla,Osorno,221970
+Tocopilla,frutillar,239870
+Tocopilla,Puerto Montt,239870
+Tocopilla,ANCUD,295070
+Tocopilla,CASTRO,295070
+Calama,Arica,0
+Calama,Iquique,0
+Calama,alto hospicio,0
+Calama,Tocopilla,0
+Calama,Calama,0
+Calama,mejillones,23150
+Calama,Antofagasta,23150
+Calama,el salvador,23150
+Calama,diego de almagro,23150
+Calama,chañaral,23150
+Calama,Caldera,23150
+Calama,Copiapo,34850
+Calama,Los Loros,34850
+Calama,Huasco,46400
+Calama,Vallenar,46400
+Calama,freirina,46400
+Calama,alto del carmen,46400
+Calama,el trapiche,77150
+Calama,La Serena,77150
+Calama,coquimbo,77150
+Calama,Ovalle,77150
+Calama,Illapel,73500
+Calama,salamanca,73500
+Calama,Los Vilos,73500
+Calama,cabildo,73500
+Calama,la calera,73500
+Calama,puchuncavi,73500
+Calama,Nogales,82900
+Calama,quillota,73500
+Calama,quilpue,148570
+Calama,Santiago,131770
+Calama,buin,131770
+Calama,paine,131770
+Calama,casablanca,148570
+Calama,Valparaiso,148570
+Calama,algarrobo,144570
+Calama,talagante,131770
+Calama,San Antonio,144570
+Calama,San Felipe,101700
+Calama,los andes,101700
+Calama,codegua,142870
+Calama,Rancagua,142870
+Calama,machali,142870
+Calama,Nancagua,144670
+Calama,rengo,144670
+Calama,san fernando,144670
+Calama,santa cruz,144670
+Calama,Curico,153970
+Calama,Talca,163470
+Calama,linares,163470
+Calama,Chillan,172970
+Calama,concepcion,190170
+Calama,Talcahuano,190170
+Calama,Los Angeles,182770
+Calama,Temuco,203670
+Calama,pucon,214620
+Calama,Valdivia,225570
+Calama,Osorno,232470
+Calama,frutillar,250370
+Calama,Puerto Montt,250370
+Calama,ANCUD,305570
+Calama,CASTRO,305570
+mejillones,Arica,23150
+mejillones,Iquique,23150
+mejillones,alto hospicio,23150
+mejillones,Tocopilla,12650
+mejillones,Calama,23150
+mejillones,mejillones,0
+mejillones,Antofagasta,0
+mejillones,el salvador,0
+mejillones,diego de almagro,0
+mejillones,chañaral,0
+mejillones,Caldera,0
+mejillones,Copiapo,11700
+mejillones,Los Loros,11700
+mejillones,Huasco,23250
+mejillones,Vallenar,23250
+mejillones,freirina,23250
+mejillones,alto del carmen,23250
+mejillones,el trapiche,54000
+mejillones,La Serena,54000
+mejillones,coquimbo,54000
+mejillones,Ovalle,54000
+mejillones,Illapel,50350
+mejillones,salamanca,50350
+mejillones,Los Vilos,50350
+mejillones,cabildo,50350
+mejillones,la calera,50350
+mejillones,puchuncavi,50350
+mejillones,Nogales,59750
+mejillones,quillota,50350
+mejillones,quilpue,125420
+mejillones,Santiago,108620
+mejillones,buin,108620
+mejillones,paine,108620
+mejillones,casablanca,125420
+mejillones,Valparaiso,125420
+mejillones,algarrobo,121420
+mejillones,talagante,108620
+mejillones,San Antonio,121420
+mejillones,San Felipe,78550
+mejillones,los andes,78550
+mejillones,codegua,119720
+mejillones,Rancagua,119720
+mejillones,machali,119720
+mejillones,Nancagua,121520
+mejillones,rengo,121520
+mejillones,san fernando,121520
+mejillones,santa cruz,121520
+mejillones,Curico,130820
+mejillones,Talca,140320
+mejillones,linares,140320
+mejillones,Chillan,149820
+mejillones,concepcion,167020
+mejillones,Talcahuano,167020
+mejillones,Los Angeles,159620
+mejillones,Temuco,180520
+mejillones,pucon,191470
+mejillones,Valdivia,202420
+mejillones,Osorno,209320
+mejillones,frutillar,227220
+mejillones,Puerto Montt,227220
+mejillones,ANCUD,282420
+mejillones,CASTRO,282420
+Antofagasta,Arica,23150
+Antofagasta,Iquique,23150
+Antofagasta,alto hospicio,23150
+Antofagasta,Tocopilla,12650
+Antofagasta,Calama,23150
+Antofagasta,mejillones,0
+Antofagasta,Antofagasta,0
+Antofagasta,el salvador,0
+Antofagasta,diego de almagro,0
+Antofagasta,chañaral,0
+Antofagasta,Caldera,0
+Antofagasta,Copiapo,11700
+Antofagasta,Los Loros,11700
+Antofagasta,Huasco,23250
+Antofagasta,Vallenar,23250
+Antofagasta,freirina,23250
+Antofagasta,alto del carmen,23250
+Antofagasta,el trapiche,54000
+Antofagasta,La Serena,54000
+Antofagasta,coquimbo,54000
+Antofagasta,Ovalle,54000
+Antofagasta,Illapel,50350
+Antofagasta,salamanca,50350
+Antofagasta,Los Vilos,50350
+Antofagasta,cabildo,50350
+Antofagasta,la calera,50350
+Antofagasta,puchuncavi,50350
+Antofagasta,Nogales,59750
+Antofagasta,quillota,50350
+Antofagasta,quilpue,125420
+Antofagasta,Santiago,108620
+Antofagasta,buin,108620
+Antofagasta,paine,108620
+Antofagasta,casablanca,125420
+Antofagasta,Valparaiso,125420
+Antofagasta,algarrobo,121420
+Antofagasta,talagante,108620
+Antofagasta,San Antonio,121420
+Antofagasta,San Felipe,78550
+Antofagasta,los andes,78550
+Antofagasta,codegua,119720
+Antofagasta,Rancagua,119720
+Antofagasta,machali,119720
+Antofagasta,Nancagua,121520
+Antofagasta,rengo,121520
+Antofagasta,san fernando,121520
+Antofagasta,santa cruz,121520
+Antofagasta,Curico,130820
+Antofagasta,Talca,140320
+Antofagasta,linares,140320
+Antofagasta,Chillan,149820
+Antofagasta,concepcion,167020
+Antofagasta,Talcahuano,167020
+Antofagasta,Los Angeles,159620
+Antofagasta,Temuco,180520
+Antofagasta,pucon,191470
+Antofagasta,Valdivia,202420
+Antofagasta,Osorno,209320
+Antofagasta,frutillar,227220
+Antofagasta,Puerto Montt,227220
+Antofagasta,ANCUD,282420
+Antofagasta,CASTRO,282420
+el salvador,Arica,23150
+el salvador,Iquique,23150
+el salvador,alto hospicio,23150
+el salvador,Tocopilla,12650
+el salvador,Calama,23150
+el salvador,mejillones,0
+el salvador,Antofagasta,0
+el salvador,el salvador,0
+el salvador,diego de almagro,0
+el salvador,chañaral,0
+el salvador,Caldera,0
+el salvador,Copiapo,11700
+el salvador,Los Loros,11700
+el salvador,Huasco,23250
+el salvador,Vallenar,23250
+el salvador,freirina,23250
+el salvador,alto del carmen,23250
+el salvador,el trapiche,54000
+el salvador,La Serena,54000
+el salvador,coquimbo,54000
+el salvador,Ovalle,54000
+el salvador,Illapel,50350
+el salvador,salamanca,50350
+el salvador,Los Vilos,50350
+el salvador,cabildo,50350
+el salvador,la calera,50350
+el salvador,puchuncavi,50350
+el salvador,Nogales,59750
+el salvador,quillota,50350
+el salvador,quilpue,125420
+el salvador,Santiago,108620
+el salvador,buin,108620
+el salvador,paine,108620
+el salvador,casablanca,125420
+el salvador,Valparaiso,125420
+el salvador,algarrobo,121420
+el salvador,talagante,108620
+el salvador,San Antonio,121420
+el salvador,San Felipe,78550
+el salvador,los andes,78550
+el salvador,codegua,119720
+el salvador,Rancagua,119720
+el salvador,machali,119720
+el salvador,Nancagua,121520
+el salvador,rengo,121520
+el salvador,san fernando,121520
+el salvador,santa cruz,121520
+el salvador,Curico,130820
+el salvador,Talca,140320
+el salvador,linares,140320
+el salvador,Chillan,149820
+el salvador,concepcion,167020
+el salvador,Talcahuano,167020
+el salvador,Los Angeles,159620
+el salvador,Temuco,180520
+el salvador,pucon,191470
+el salvador,Valdivia,202420
+el salvador,Osorno,209320
+el salvador,frutillar,227220
+el salvador,Puerto Montt,227220
+el salvador,ANCUD,282420
+el salvador,CASTRO,282420
+diego de almagro,Arica,23150
+diego de almagro,Iquique,23150
+diego de almagro,alto hospicio,23150
+diego de almagro,Tocopilla,12650
+diego de almagro,Calama,23150
+diego de almagro,mejillones,0
+diego de almagro,Antofagasta,0
+diego de almagro,el salvador,0
+diego de almagro,diego de almagro,0
+diego de almagro,chañaral,0
+diego de almagro,Caldera,0
+diego de almagro,Copiapo,11700
+diego de almagro,Los Loros,11700
+diego de almagro,Huasco,23250
+diego de almagro,Vallenar,23250
+diego de almagro,freirina,23250
+diego de almagro,alto del carmen,23250
+diego de almagro,el trapiche,54000
+diego de almagro,La Serena,54000
+diego de almagro,coquimbo,54000
+diego de almagro,Ovalle,54000
+diego de almagro,Illapel,50350
+diego de almagro,salamanca,50350
+diego de almagro,Los Vilos,50350
+diego de almagro,cabildo,50350
+diego de almagro,la calera,50350
+diego de almagro,puchuncavi,50350
+diego de almagro,Nogales,59750
+diego de almagro,quillota,50350
+diego de almagro,quilpue,125420
+diego de almagro,Santiago,108620
+diego de almagro,buin,108620
+diego de almagro,paine,108620
+diego de almagro,casablanca,125420
+diego de almagro,Valparaiso,125420
+diego de almagro,algarrobo,121420
+diego de almagro,talagante,108620
+diego de almagro,San Antonio,121420
+diego de almagro,San Felipe,78550
+diego de almagro,los andes,78550
+diego de almagro,codegua,119720
+diego de almagro,Rancagua,119720
+diego de almagro,machali,119720
+diego de almagro,Nancagua,121520
+diego de almagro,rengo,121520
+diego de almagro,san fernando,121520
+diego de almagro,santa cruz,121520
+diego de almagro,Curico,130820
+diego de almagro,Talca,140320
+diego de almagro,linares,140320
+diego de almagro,Chillan,149820
+diego de almagro,concepcion,167020
+diego de almagro,Talcahuano,167020
+diego de almagro,Los Angeles,159620
+diego de almagro,Temuco,180520
+diego de almagro,pucon,191470
+diego de almagro,Valdivia,202420
+diego de almagro,Osorno,209320
+diego de almagro,frutillar,227220
+diego de almagro,Puerto Montt,227220
+diego de almagro,ANCUD,282420
+diego de almagro,CASTRO,282420
+chañaral,Arica,23150
+chañaral,Iquique,23150
+chañaral,alto hospicio,23150
+chañaral,Tocopilla,12650
+chañaral,Calama,23150
+chañaral,mejillones,0
+chañaral,Antofagasta,0
+chañaral,el salvador,0
+chañaral,diego de almagro,0
+chañaral,chañaral,0
+chañaral,Caldera,0
+chañaral,Copiapo,11700
+chañaral,Los Loros,11700
+chañaral,Huasco,23250
+chañaral,Vallenar,23250
+chañaral,freirina,23250
+chañaral,alto del carmen,23250
+chañaral,el trapiche,54000
+chañaral,La Serena,54000
+chañaral,coquimbo,54000
+chañaral,Ovalle,54000
+chañaral,Illapel,50350
+chañaral,salamanca,50350
+chañaral,Los Vilos,50350
+chañaral,cabildo,50350
+chañaral,la calera,50350
+chañaral,puchuncavi,50350
+chañaral,Nogales,59750
+chañaral,quillota,50350
+chañaral,quilpue,125420
+chañaral,Santiago,108620
+chañaral,buin,108620
+chañaral,paine,108620
+chañaral,casablanca,125420
+chañaral,Valparaiso,125420
+chañaral,algarrobo,121420
+chañaral,talagante,108620
+chañaral,San Antonio,121420
+chañaral,San Felipe,78550
+chañaral,los andes,78550
+chañaral,codegua,119720
+chañaral,Rancagua,119720
+chañaral,machali,119720
+chañaral,Nancagua,121520
+chañaral,rengo,121520
+chañaral,san fernando,121520
+chañaral,santa cruz,121520
+chañaral,Curico,130820
+chañaral,Talca,140320
+chañaral,linares,140320
+chañaral,Chillan,149820
+chañaral,concepcion,167020
+chañaral,Talcahuano,167020
+chañaral,Los Angeles,159620
+chañaral,Temuco,180520
+chañaral,pucon,191470
+chañaral,Valdivia,202420
+chañaral,Osorno,209320
+chañaral,frutillar,227220
+chañaral,Puerto Montt,227220
+chañaral,ANCUD,282420
+chañaral,CASTRO,282420
+Caldera,Arica,23150
+Caldera,Iquique,23150
+Caldera,alto hospicio,23150
+Caldera,Tocopilla,12650
+Caldera,Calama,23150
+Caldera,mejillones,0
+Caldera,Antofagasta,0
+Caldera,el salvador,0
+Caldera,diego de almagro,0
+Caldera,chañaral,0
+Caldera,Caldera,0
+Caldera,Copiapo,11700
+Caldera,Los Loros,11700
+Caldera,Huasco,23250
+Caldera,Vallenar,23250
+Caldera,freirina,23250
+Caldera,alto del carmen,23250
+Caldera,el trapiche,54000
+Caldera,La Serena,54000
+Caldera,coquimbo,54000
+Caldera,Ovalle,54000
+Caldera,Illapel,50350
+Caldera,salamanca,50350
+Caldera,Los Vilos,50350
+Caldera,cabildo,50350
+Caldera,la calera,50350
+Caldera,puchuncavi,50350
+Caldera,Nogales,59750
+Caldera,quillota,50350
+Caldera,quilpue,125420
+Caldera,Santiago,108620
+Caldera,buin,108620
+Caldera,paine,108620
+Caldera,casablanca,125420
+Caldera,Valparaiso,125420
+Caldera,algarrobo,121420
+Caldera,talagante,108620
+Caldera,San Antonio,121420
+Caldera,San Felipe,78550
+Caldera,los andes,78550
+Caldera,codegua,119720
+Caldera,Rancagua,119720
+Caldera,machali,119720
+Caldera,Nancagua,121520
+Caldera,rengo,121520
+Caldera,san fernando,121520
+Caldera,santa cruz,121520
+Caldera,Curico,130820
+Caldera,Talca,140320
+Caldera,linares,140320
+Caldera,Chillan,149820
+Caldera,concepcion,167020
+Caldera,Talcahuano,167020
+Caldera,Los Angeles,159620
+Caldera,Temuco,180520
+Caldera,pucon,191470
+Caldera,Valdivia,202420
+Caldera,Osorno,209320
+Caldera,frutillar,227220
+Caldera,Puerto Montt,227220
+Caldera,ANCUD,282420
+Caldera,CASTRO,282420
+Copiapo,Arica,34850
+Copiapo,Iquique,34850
+Copiapo,alto hospicio,34850
+Copiapo,Tocopilla,24350
+Copiapo,Calama,34850
+Copiapo,mejillones,11700
+Copiapo,Antofagasta,11700
+Copiapo,el salvador,11700
+Copiapo,diego de almagro,11700
+Copiapo,chañaral,11700
+Copiapo,Caldera,11700
+Copiapo,Copiapo,0
+Copiapo,Los Loros,0
+Copiapo,Huasco,11550
+Copiapo,Vallenar,11550
+Copiapo,freirina,11550
+Copiapo,alto del carmen,11550
+Copiapo,el trapiche,42300
+Copiapo,La Serena,42300
+Copiapo,coquimbo,42300
+Copiapo,Ovalle,42300
+Copiapo,Illapel,38650
+Copiapo,salamanca,38650
+Copiapo,Los Vilos,38650
+Copiapo,cabildo,38650
+Copiapo,la calera,38650
+Copiapo,puchuncavi,38650
+Copiapo,Nogales,48050
+Copiapo,quillota,38650
+Copiapo,quilpue,113720
+Copiapo,Santiago,96920
+Copiapo,buin,96920
+Copiapo,paine,96920
+Copiapo,casablanca,113720
+Copiapo,Valparaiso,113720
+Copiapo,algarrobo,109720
+Copiapo,talagante,96920
+Copiapo,San Antonio,109720
+Copiapo,San Felipe,66850
+Copiapo,los andes,66850
+Copiapo,codegua,108020
+Copiapo,Rancagua,108020
+Copiapo,machali,108020
+Copiapo,Nancagua,109820
+Copiapo,rengo,109820
+Copiapo,san fernando,109820
+Copiapo,santa cruz,109820
+Copiapo,Curico,119120
+Copiapo,Talca,128620
+Copiapo,linares,128620
+Copiapo,Chillan,138120
+Copiapo,concepcion,155320
+Copiapo,Talcahuano,155320
+Copiapo,Los Angeles,147920
+Copiapo,Temuco,168820
+Copiapo,pucon,179770
+Copiapo,Valdivia,190720
+Copiapo,Osorno,197620
+Copiapo,frutillar,215520
+Copiapo,Puerto Montt,215520
+Copiapo,ANCUD,270720
+Copiapo,CASTRO,270720
+Los Loros,Arica,34850
+Los Loros,Iquique,34850
+Los Loros,alto hospicio,34850
+Los Loros,Tocopilla,24350
+Los Loros,Calama,34850
+Los Loros,mejillones,11700
+Los Loros,Antofagasta,11700
+Los Loros,el salvador,11700
+Los Loros,diego de almagro,11700
+Los Loros,chañaral,11700
+Los Loros,Caldera,11700
+Los Loros,Copiapo,0
+Los Loros,Los Loros,0
+Los Loros,Huasco,11550
+Los Loros,Vallenar,11550
+Los Loros,freirina,11550
+Los Loros,alto del carmen,11550
+Los Loros,el trapiche,45350
+Los Loros,La Serena,45350
+Los Loros,coquimbo,45350
+Los Loros,Ovalle,45350
+Los Loros,Illapel,38650
+Los Loros,salamanca,38650
+Los Loros,Los Vilos,38650
+Los Loros,cabildo,38650
+Los Loros,la calera,38650
+Los Loros,puchuncavi,38650
+Los Loros,Nogales,48050
+Los Loros,quillota,38650
+Los Loros,quilpue,113720
+Los Loros,Santiago,96920
+Los Loros,buin,96920
+Los Loros,paine,96920
+Los Loros,casablanca,113720
+Los Loros,Valparaiso,113720
+Los Loros,algarrobo,109720
+Los Loros,talagante,96920
+Los Loros,San Antonio,109720
+Los Loros,San Felipe,66850
+Los Loros,los andes,66850
+Los Loros,codegua,108020
+Los Loros,Rancagua,108020
+Los Loros,machali,108020
+Los Loros,Nancagua,109820
+Los Loros,rengo,109820
+Los Loros,san fernando,109820
+Los Loros,santa cruz,109820
+Los Loros,Curico,119120
+Los Loros,Talca,128620
+Los Loros,linares,128620
+Los Loros,Chillan,138120
+Los Loros,concepcion,155320
+Los Loros,Talcahuano,155320
+Los Loros,Los Angeles,147920
+Los Loros,Temuco,168820
+Los Loros,pucon,179770
+Los Loros,Valdivia,190720
+Los Loros,Osorno,197620
+Los Loros,frutillar,215520
+Los Loros,Puerto Montt,215520
+Los Loros,ANCUD,270720
+Los Loros,CASTRO,270720
+Huasco,Arica,46400
+Huasco,Iquique,46400
+Huasco,alto hospicio,46400
+Huasco,Tocopilla,35900
+Huasco,Calama,46400
+Huasco,mejillones,23250
+Huasco,Antofagasta,23250
+Huasco,el salvador,23250
+Huasco,diego de almagro,23250
+Huasco,chañaral,23250
+Huasco,Caldera,23250
+Huasco,Copiapo,11550
+Huasco,Los Loros,11550
+Huasco,Huasco,0
+Huasco,Vallenar,0
+Huasco,freirina,0
+Huasco,alto del carmen,0
+Huasco,el trapiche,45350
+Huasco,La Serena,45350
+Huasco,coquimbo,27100
+Huasco,Ovalle,27100
+Huasco,Illapel,27100
+Huasco,salamanca,27100
+Huasco,Los Vilos,27100
+Huasco,cabildo,27100
+Huasco,la calera,27100
+Huasco,puchuncavi,27100
+Huasco,Nogales,36500
+Huasco,quillota,27100
+Huasco,quilpue,102170
+Huasco,Santiago,85370
+Huasco,buin,85370
+Huasco,paine,85370
+Huasco,casablanca,102170
+Huasco,Valparaiso,102170
+Huasco,algarrobo,98170
+Huasco,talagante,85370
+Huasco,San Antonio,98170
+Huasco,San Felipe,55300
+Huasco,los andes,55300
+Huasco,codegua,96470
+Huasco,Rancagua,96470
+Huasco,machali,96470
+Huasco,Nancagua,98270
+Huasco,rengo,98270
+Huasco,san fernando,98270
+Huasco,santa cruz,98270
+Huasco,Curico,107570
+Huasco,Talca,117070
+Huasco,linares,117070
+Huasco,Chillan,126570
+Huasco,concepcion,143770
+Huasco,Talcahuano,143770
+Huasco,Los Angeles,136370
+Huasco,Temuco,157270
+Huasco,pucon,168220
+Huasco,Valdivia,179170
+Huasco,Osorno,186070
+Huasco,frutillar,203970
+Huasco,Puerto Montt,203970
+Huasco,ANCUD,259170
+Huasco,CASTRO,259170
+Vallenar,Arica,46400
+Vallenar,Iquique,46400
+Vallenar,alto hospicio,46400
+Vallenar,Tocopilla,35900
+Vallenar,Calama,36050
+Vallenar,mejillones,23250
+Vallenar,Antofagasta,23250
+Vallenar,el salvador,23250
+Vallenar,diego de almagro,23250
+Vallenar,chañaral,23250
+Vallenar,Caldera,23250
+Vallenar,Copiapo,11550
+Vallenar,Los Loros,11550
+Vallenar,Huasco,0
+Vallenar,Vallenar,0
+Vallenar,freirina,0
+Vallenar,alto del carmen,0
+Vallenar,el trapiche,45350
+Vallenar,La Serena,45350
+Vallenar,coquimbo,45350
+Vallenar,Ovalle,45350
+Vallenar,Illapel,27100
+Vallenar,salamanca,27100
+Vallenar,Los Vilos,27100
+Vallenar,cabildo,27100
+Vallenar,la calera,27100
+Vallenar,puchuncavi,27100
+Vallenar,Nogales,36500
+Vallenar,quillota,27100
+Vallenar,quilpue,102170
+Vallenar,Santiago,85370
+Vallenar,buin,85370
+Vallenar,paine,85370
+Vallenar,casablanca,102170
+Vallenar,Valparaiso,102170
+Vallenar,algarrobo,98170
+Vallenar,talagante,85370
+Vallenar,San Antonio,98170
+Vallenar,San Felipe,55300
+Vallenar,los andes,55300
+Vallenar,codegua,96470
+Vallenar,Rancagua,96470
+Vallenar,machali,96470
+Vallenar,Nancagua,98270
+Vallenar,rengo,98270
+Vallenar,san fernando,98270
+Vallenar,santa cruz,98270
+Vallenar,Curico,107570
+Vallenar,Talca,117070
+Vallenar,linares,117070
+Vallenar,Chillan,126570
+Vallenar,concepcion,143770
+Vallenar,Talcahuano,143770
+Vallenar,Los Angeles,136370
+Vallenar,Temuco,157270
+Vallenar,pucon,168220
+Vallenar,Valdivia,179170
+Vallenar,Osorno,186070
+Vallenar,frutillar,203970
+Vallenar,Puerto Montt,203970
+Vallenar,ANCUD,259170
+Vallenar,CASTRO,259170
+freirina,Arica,46400
+freirina,Iquique,46400
+freirina,alto hospicio,46400
+freirina,Tocopilla,35900
+freirina,Calama,36050
+freirina,mejillones,23250
+freirina,Antofagasta,23250
+freirina,el salvador,23250
+freirina,diego de almagro,23250
+freirina,chañaral,23250
+freirina,Caldera,23250
+freirina,Copiapo,11550
+freirina,Los Loros,11550
+freirina,Huasco,0
+freirina,Vallenar,0
+freirina,freirina,0
+freirina,alto del carmen,0
+freirina,el trapiche,45350
+freirina,La Serena,45350
+freirina,coquimbo,45350
+freirina,Ovalle,45350
+freirina,Illapel,27100
+freirina,salamanca,27100
+freirina,Los Vilos,27100
+freirina,cabildo,27100
+freirina,la calera,27100
+freirina,puchuncavi,27100
+freirina,Nogales,36500
+freirina,quillota,27100
+freirina,quilpue,102170
+freirina,Santiago,85370
+freirina,buin,85370
+freirina,paine,85370
+freirina,casablanca,102170
+freirina,Valparaiso,102170
+freirina,algarrobo,98170
+freirina,talagante,85370
+freirina,San Antonio,98170
+freirina,San Felipe,55300
+freirina,los andes,55300
+freirina,codegua,96470
+freirina,Rancagua,96470
+freirina,machali,96470
+freirina,Nancagua,98270
+freirina,rengo,98270
+freirina,san fernando,98270
+freirina,santa cruz,98270
+freirina,Curico,107570
+freirina,Talca,117070
+freirina,linares,117070
+freirina,Chillan,126570
+freirina,concepcion,143770
+freirina,Talcahuano,143770
+freirina,Los Angeles,136370
+freirina,Temuco,157270
+freirina,pucon,168220
+freirina,Valdivia,179170
+freirina,Osorno,186070
+freirina,frutillar,203970
+freirina,Puerto Montt,203970
+freirina,ANCUD,259170
+freirina,CASTRO,259170
+alto del carmen,Arica,46400
+alto del carmen,Iquique,46400
+alto del carmen,alto hospicio,46400
+alto del carmen,Tocopilla,35900
+alto del carmen,Calama,36050
+alto del carmen,mejillones,23250
+alto del carmen,Antofagasta,23250
+alto del carmen,el salvador,23250
+alto del carmen,diego de almagro,23250
+alto del carmen,chañaral,23250
+alto del carmen,Caldera,23250
+alto del carmen,Copiapo,11550
+alto del carmen,Los Loros,11550
+alto del carmen,Huasco,10500
+alto del carmen,Vallenar,0
+alto del carmen,freirina,0
+alto del carmen,alto del carmen,0
+alto del carmen,el trapiche,45350
+alto del carmen,La Serena,45350
+alto del carmen,coquimbo,45350
+alto del carmen,Ovalle,45350
+alto del carmen,Illapel,27100
+alto del carmen,salamanca,27100
+alto del carmen,Los Vilos,27100
+alto del carmen,cabildo,27100
+alto del carmen,la calera,27100
+alto del carmen,puchuncavi,27100
+alto del carmen,Nogales,36500
+alto del carmen,quillota,27100
+alto del carmen,quilpue,102170
+alto del carmen,Santiago,85370
+alto del carmen,buin,85370
+alto del carmen,paine,85370
+alto del carmen,casablanca,102170
+alto del carmen,Valparaiso,102170
+alto del carmen,algarrobo,98170
+alto del carmen,talagante,85370
+alto del carmen,San Antonio,98170
+alto del carmen,San Felipe,55300
+alto del carmen,los andes,55300
+alto del carmen,codegua,96470
+alto del carmen,Rancagua,96470
+alto del carmen,machali,96470
+alto del carmen,Nancagua,98270
+alto del carmen,rengo,98270
+alto del carmen,san fernando,98270
+alto del carmen,santa cruz,98270
+alto del carmen,Curico,107570
+alto del carmen,Talca,117070
+alto del carmen,linares,117070
+alto del carmen,Chillan,126570
+alto del carmen,concepcion,143770
+alto del carmen,Talcahuano,143770
+alto del carmen,Los Angeles,136370
+alto del carmen,Temuco,157270
+alto del carmen,pucon,168220
+alto del carmen,Valdivia,179170
+alto del carmen,Osorno,186070
+alto del carmen,frutillar,203970
+alto del carmen,Puerto Montt,203970
+alto del carmen,ANCUD,259170
+alto del carmen,CASTRO,259170
+el trapiche,Arica,77150
+el trapiche,Iquique,77150
+el trapiche,alto hospicio,77150
+el trapiche,Tocopilla,66650
+el trapiche,Calama,77150
+el trapiche,mejillones,54000
+el trapiche,Antofagasta,54000
+el trapiche,el salvador,84750
+el trapiche,diego de almagro,84750
+el trapiche,chañaral,54000
+el trapiche,Caldera,54000
+el trapiche,Copiapo,30750
+el trapiche,Los Loros,30750
+el trapiche,Huasco,10500
+el trapiche,Vallenar,42200
+el trapiche,freirina,42200
+el trapiche,alto del carmen,42200
+el trapiche,el trapiche,8550
+el trapiche,La Serena,8550
+el trapiche,coquimbo,8550
+el trapiche,Ovalle,8550
+el trapiche,Illapel,27100
+el trapiche,salamanca,27100
+el trapiche,Los Vilos,27100
+el trapiche,cabildo,27100
+el trapiche,la calera,27100
+el trapiche,puchuncavi,27100
+el trapiche,Nogales,36500
+el trapiche,quillota,27100
+el trapiche,quilpue,102170
+el trapiche,Santiago,85370
+el trapiche,buin,85370
+el trapiche,paine,85370
+el trapiche,casablanca,102170
+el trapiche,Valparaiso,102170
+el trapiche,algarrobo,98170
+el trapiche,talagante,85370
+el trapiche,San Antonio,98170
+el trapiche,San Felipe,55300
+el trapiche,los andes,55300
+el trapiche,codegua,96470
+el trapiche,Rancagua,96470
+el trapiche,machali,96470
+el trapiche,Nancagua,98270
+el trapiche,rengo,98270
+el trapiche,san fernando,98270
+el trapiche,santa cruz,98270
+el trapiche,Curico,107570
+el trapiche,Talca,117070
+el trapiche,linares,117070
+el trapiche,Chillan,126570
+el trapiche,concepcion,143770
+el trapiche,Talcahuano,143770
+el trapiche,Los Angeles,136370
+el trapiche,Temuco,157270
+el trapiche,pucon,168220
+el trapiche,Valdivia,179170
+el trapiche,Osorno,186070
+el trapiche,frutillar,203970
+el trapiche,Puerto Montt,203970
+el trapiche,ANCUD,259170
+el trapiche,CASTRO,259170
+La Serena,Arica,77150
+La Serena,Iquique,77150
+La Serena,alto hospicio,77150
+La Serena,Tocopilla,66650
+La Serena,Calama,77150
+La Serena,mejillones,54000
+La Serena,Antofagasta,54000
+La Serena,el salvador,84750
+La Serena,diego de almagro,84750
+La Serena,chañaral,54000
+La Serena,Caldera,54000
+La Serena,Copiapo,30750
+La Serena,Los Loros,30750
+La Serena,Huasco,10500
+La Serena,Vallenar,42200
+La Serena,freirina,42200
+La Serena,alto del carmen,42200
+La Serena,el trapiche,0
+La Serena,La Serena,0
+La Serena,coquimbo,0
+La Serena,Ovalle,11850
+La Serena,Illapel,27100
+La Serena,salamanca,27100
+La Serena,Los Vilos,27100
+La Serena,cabildo,27100
+La Serena,la calera,27100
+La Serena,puchuncavi,27100
+La Serena,Nogales,36500
+La Serena,quillota,27100
+La Serena,quilpue,102170
+La Serena,Santiago,85370
+La Serena,buin,85370
+La Serena,paine,85370
+La Serena,casablanca,102170
+La Serena,Valparaiso,102170
+La Serena,algarrobo,98170
+La Serena,talagante,85370
+La Serena,San Antonio,98170
+La Serena,San Felipe,55300
+La Serena,los andes,55300
+La Serena,codegua,96470
+La Serena,Rancagua,96470
+La Serena,machali,96470
+La Serena,Nancagua,98270
+La Serena,rengo,98270
+La Serena,san fernando,98270
+La Serena,santa cruz,98270
+La Serena,Curico,107570
+La Serena,Talca,117070
+La Serena,linares,117070
+La Serena,Chillan,126570
+La Serena,concepcion,143770
+La Serena,Talcahuano,143770
+La Serena,Los Angeles,136370
+La Serena,Temuco,157270
+La Serena,pucon,168220
+La Serena,Valdivia,179170
+La Serena,Osorno,186070
+La Serena,frutillar,203970
+La Serena,Puerto Montt,203970
+La Serena,ANCUD,259170
+La Serena,CASTRO,259170
+coquimbo,Arica,77150
+coquimbo,Iquique,77150
+coquimbo,alto hospicio,77150
+coquimbo,Tocopilla,66650
+coquimbo,Calama,77150
+coquimbo,mejillones,54000
+coquimbo,Antofagasta,54000
+coquimbo,el salvador,54000
+coquimbo,diego de almagro,54000
+coquimbo,chañaral,54000
+coquimbo,Caldera,54000
+coquimbo,Copiapo,30750
+coquimbo,Los Loros,30750
+coquimbo,Huasco,10500
+coquimbo,Vallenar,42200
+coquimbo,freirina,42200
+coquimbo,alto del carmen,42200
+coquimbo,el trapiche,0
+coquimbo,La Serena,0
+coquimbo,coquimbo,0
+coquimbo,Ovalle,11850
+coquimbo,Illapel,27100
+coquimbo,salamanca,27100
+coquimbo,Los Vilos,27100
+coquimbo,cabildo,27100
+coquimbo,la calera,27100
+coquimbo,puchuncavi,27100
+coquimbo,Nogales,36500
+coquimbo,quillota,27100
+coquimbo,quilpue,102170
+coquimbo,Santiago,85370
+coquimbo,buin,85370
+coquimbo,paine,85370
+coquimbo,casablanca,102170
+coquimbo,Valparaiso,102170
+coquimbo,algarrobo,98170
+coquimbo,talagante,85370
+coquimbo,San Antonio,98170
+coquimbo,San Felipe,55300
+coquimbo,los andes,55300
+coquimbo,codegua,96470
+coquimbo,Rancagua,96470
+coquimbo,machali,96470
+coquimbo,Nancagua,98270
+coquimbo,rengo,98270
+coquimbo,san fernando,98270
+coquimbo,santa cruz,98270
+coquimbo,Curico,107570
+coquimbo,Talca,117070
+coquimbo,linares,117070
+coquimbo,Chillan,126570
+coquimbo,concepcion,143770
+coquimbo,Talcahuano,143770
+coquimbo,Los Angeles,136370
+coquimbo,Temuco,157270
+coquimbo,pucon,168220
+coquimbo,Valdivia,179170
+coquimbo,Osorno,186070
+coquimbo,frutillar,203970
+coquimbo,Puerto Montt,203970
+coquimbo,ANCUD,259170
+coquimbo,CASTRO,259170
+Ovalle,Arica,46400
+Ovalle,Iquique,46400
+Ovalle,alto hospicio,46400
+Ovalle,Tocopilla,35900
+Ovalle,Calama,46400
+Ovalle,mejillones,23250
+Ovalle,Antofagasta,23250
+Ovalle,el salvador,23250
+Ovalle,diego de almagro,23250
+Ovalle,chañaral,23250
+Ovalle,Caldera,23250
+Ovalle,Copiapo,11550
+Ovalle,Los Loros,11550
+Ovalle,Huasco,10500
+Ovalle,Vallenar,11850
+Ovalle,freirina,11850
+Ovalle,alto del carmen,11850
+Ovalle,el trapiche,11850
+Ovalle,La Serena,11850
+Ovalle,coquimbo,11850
+Ovalle,Ovalle,0
+Ovalle,Illapel,27100
+Ovalle,salamanca,27100
+Ovalle,Los Vilos,27100
+Ovalle,cabildo,27100
+Ovalle,la calera,27100
+Ovalle,puchuncavi,27100
+Ovalle,Nogales,36500
+Ovalle,quillota,27100
+Ovalle,quilpue,88620
+Ovalle,Santiago,85370
+Ovalle,buin,85370
+Ovalle,paine,85370
+Ovalle,casablanca,88620
+Ovalle,Valparaiso,88620
+Ovalle,algarrobo,84620
+Ovalle,talagante,85370
+Ovalle,San Antonio,84620
+Ovalle,San Felipe,41750
+Ovalle,los andes,41750
+Ovalle,codegua,82920
+Ovalle,Rancagua,82920
+Ovalle,machali,82920
+Ovalle,Nancagua,84720
+Ovalle,rengo,84720
+Ovalle,san fernando,84720
+Ovalle,santa cruz,84720
+Ovalle,Curico,94020
+Ovalle,Talca,103520
+Ovalle,linares,103520
+Ovalle,Chillan,113020
+Ovalle,concepcion,130220
+Ovalle,Talcahuano,130220
+Ovalle,Los Angeles,122820
+Ovalle,Temuco,143720
+Ovalle,pucon,154670
+Ovalle,Valdivia,165620
+Ovalle,Osorno,172520
+Ovalle,frutillar,190420
+Ovalle,Puerto Montt,190420
+Ovalle,ANCUD,245620
+Ovalle,CASTRO,245620
+Illapel,Arica,73500
+Illapel,Iquique,73500
+Illapel,alto hospicio,73500
+Illapel,Tocopilla,63000
+Illapel,Calama,73500
+Illapel,mejillones,50350
+Illapel,Antofagasta,50350
+Illapel,el salvador,50350
+Illapel,diego de almagro,50350
+Illapel,chañaral,50350
+Illapel,Caldera,50350
+Illapel,Copiapo,38650
+Illapel,Los Loros,38650
+Illapel,Huasco,27100
+Illapel,Vallenar,27100
+Illapel,freirina,27100
+Illapel,alto del carmen,27100
+Illapel,el trapiche,27100
+Illapel,La Serena,27100
+Illapel,coquimbo,27100
+Illapel,Ovalle,13550
+Illapel,Illapel,0
+Illapel,salamanca,0
+Illapel,Los Vilos,0
+Illapel,cabildo,0
+Illapel,la calera,0
+Illapel,puchuncavi,0
+Illapel,Nogales,9400
+Illapel,quillota,0
+Illapel,quilpue,75070
+Illapel,Santiago,55370
+Illapel,buin,55370
+Illapel,paine,55370
+Illapel,casablanca,75070
+Illapel,Valparaiso,75070
+Illapel,algarrobo,71070
+Illapel,talagante,55370
+Illapel,San Antonio,71070
+Illapel,San Felipe,28200
+Illapel,los andes,28200
+Illapel,codegua,69370
+Illapel,Rancagua,69370
+Illapel,machali,69370
+Illapel,Nancagua,71170
+Illapel,rengo,71170
+Illapel,san fernando,71170
+Illapel,santa cruz,71170
+Illapel,Curico,80470
+Illapel,Talca,89970
+Illapel,linares,89970
+Illapel,Chillan,99470
+Illapel,concepcion,116670
+Illapel,Talcahuano,116670
+Illapel,Los Angeles,109270
+Illapel,Temuco,130170
+Illapel,pucon,141120
+Illapel,Valdivia,152070
+Illapel,Osorno,158970
+Illapel,frutillar,176870
+Illapel,Puerto Montt,176870
+Illapel,ANCUD,232070
+Illapel,CASTRO,232070
+salamanca,Arica,73500
+salamanca,Iquique,73500
+salamanca,alto hospicio,73500
+salamanca,Tocopilla,63000
+salamanca,Calama,73500
+salamanca,mejillones,50350
+salamanca,Antofagasta,50350
+salamanca,el salvador,50350
+salamanca,diego de almagro,50350
+salamanca,chañaral,50350
+salamanca,Caldera,50350
+salamanca,Copiapo,38650
+salamanca,Los Loros,38650
+salamanca,Huasco,27100
+salamanca,Vallenar,27100
+salamanca,freirina,27100
+salamanca,alto del carmen,27100
+salamanca,el trapiche,27100
+salamanca,La Serena,27100
+salamanca,coquimbo,27100
+salamanca,Ovalle,13550
+salamanca,Illapel,0
+salamanca,salamanca,0
+salamanca,Los Vilos,0
+salamanca,cabildo,0
+salamanca,la calera,0
+salamanca,puchuncavi,0
+salamanca,Nogales,9400
+salamanca,quillota,0
+salamanca,quilpue,75070
+salamanca,Santiago,55370
+salamanca,buin,55370
+salamanca,paine,55370
+salamanca,casablanca,75070
+salamanca,Valparaiso,75070
+salamanca,algarrobo,71070
+salamanca,talagante,55370
+salamanca,San Antonio,71070
+salamanca,San Felipe,28200
+salamanca,los andes,28200
+salamanca,codegua,69370
+salamanca,Rancagua,69370
+salamanca,machali,69370
+salamanca,Nancagua,71170
+salamanca,rengo,71170
+salamanca,san fernando,71170
+salamanca,santa cruz,71170
+salamanca,Curico,80470
+salamanca,Talca,89970
+salamanca,linares,89970
+salamanca,Chillan,99470
+salamanca,concepcion,116670
+salamanca,Talcahuano,116670
+salamanca,Los Angeles,109270
+salamanca,Temuco,130170
+salamanca,pucon,141120
+salamanca,Valdivia,152070
+salamanca,Osorno,158970
+salamanca,frutillar,176870
+salamanca,Puerto Montt,176870
+salamanca,ANCUD,232070
+salamanca,CASTRO,232070
+Los Vilos,Arica,73500
+Los Vilos,Iquique,73500
+Los Vilos,alto hospicio,73500
+Los Vilos,Tocopilla,63000
+Los Vilos,Calama,73500
+Los Vilos,mejillones,50350
+Los Vilos,Antofagasta,50350
+Los Vilos,el salvador,50350
+Los Vilos,diego de almagro,50350
+Los Vilos,chañaral,50350
+Los Vilos,Caldera,50350
+Los Vilos,Copiapo,38650
+Los Vilos,Los Loros,38650
+Los Vilos,Huasco,27100
+Los Vilos,Vallenar,27100
+Los Vilos,freirina,27100
+Los Vilos,alto del carmen,27100
+Los Vilos,el trapiche,27100
+Los Vilos,La Serena,27100
+Los Vilos,coquimbo,27100
+Los Vilos,Ovalle,13550
+Los Vilos,Illapel,0
+Los Vilos,salamanca,0
+Los Vilos,Los Vilos,0
+Los Vilos,cabildo,0
+Los Vilos,la calera,0
+Los Vilos,puchuncavi,0
+Los Vilos,Nogales,9400
+Los Vilos,quillota,0
+Los Vilos,quilpue,75070
+Los Vilos,Santiago,58270
+Los Vilos,buin,58270
+Los Vilos,paine,58270
+Los Vilos,casablanca,75070
+Los Vilos,Valparaiso,75070
+Los Vilos,algarrobo,71070
+Los Vilos,talagante,58270
+Los Vilos,San Antonio,71070
+Los Vilos,San Felipe,28200
+Los Vilos,los andes,28200
+Los Vilos,codegua,69370
+Los Vilos,Rancagua,69370
+Los Vilos,machali,69370
+Los Vilos,Nancagua,71170
+Los Vilos,rengo,71170
+Los Vilos,san fernando,71170
+Los Vilos,santa cruz,71170
+Los Vilos,Curico,80470
+Los Vilos,Talca,89970
+Los Vilos,linares,89970
+Los Vilos,Chillan,99470
+Los Vilos,concepcion,116670
+Los Vilos,Talcahuano,116670
+Los Vilos,Los Angeles,109270
+Los Vilos,Temuco,130170
+Los Vilos,pucon,141120
+Los Vilos,Valdivia,152070
+Los Vilos,Osorno,158970
+Los Vilos,frutillar,176870
+Los Vilos,Puerto Montt,176870
+Los Vilos,ANCUD,232070
+Los Vilos,CASTRO,232070
+CABILDO,Arica,73500
+CABILDO,Iquique,73500
+CABILDO,alto hospicio,73500
+CABILDO,Tocopilla,63000
+CABILDO,Calama,73500
+CABILDO,mejillones,50350
+CABILDO,Antofagasta,50350
+CABILDO,el salvador,50350
+CABILDO,diego de almagro,50350
+CABILDO,chañaral,50350
+CABILDO,Caldera,50350
+CABILDO,Copiapo,38650
+CABILDO,Los Loros,38650
+CABILDO,Huasco,27100
+CABILDO,Vallenar,27100
+CABILDO,freirina,27100
+CABILDO,alto del carmen,27100
+CABILDO,el trapiche,27100
+CABILDO,La Serena,27100
+CABILDO,coquimbo,27100
+CABILDO,Ovalle,13550
+CABILDO,Illapel,0
+CABILDO,salamanca,0
+CABILDO,Los Vilos,0
+CABILDO,cabildo,0
+CABILDO,la calera,0
+CABILDO,puchuncavi,0
+CABILDO,Nogales,9400
+CABILDO,quillota,0
+CABILDO,quilpue,75070
+CABILDO,Santiago,58270
+CABILDO,buin,58270
+CABILDO,paine,58270
+CABILDO,casablanca,75070
+CABILDO,Valparaiso,75070
+CABILDO,algarrobo,71070
+CABILDO,talagante,58270
+CABILDO,San Antonio,71070
+CABILDO,San Felipe,28200
+CABILDO,los andes,28200
+CABILDO,codegua,69370
+CABILDO,Rancagua,69370
+CABILDO,machali,69370
+CABILDO,Nancagua,71170
+CABILDO,rengo,71170
+CABILDO,san fernando,71170
+CABILDO,santa cruz,71170
+CABILDO,Curico,80470
+CABILDO,Talca,89970
+CABILDO,linares,89970
+CABILDO,Chillan,99470
+CABILDO,concepcion,116670
+CABILDO,Talcahuano,116670
+CABILDO,Los Angeles,109270
+CABILDO,Temuco,130170
+CABILDO,pucon,141120
+CABILDO,Valdivia,152070
+CABILDO,Osorno,158970
+CABILDO,frutillar,176870
+CABILDO,Puerto Montt,176870
+CABILDO,ANCUD,232070
+CABILDO,CASTRO,232070
+la calera,Arica,73500
+la calera,Iquique,73500
+la calera,alto hospicio,73500
+la calera,Tocopilla,63000
+la calera,Calama,73500
+la calera,mejillones,50350
+la calera,Antofagasta,50350
+la calera,el salvador,50350
+la calera,diego de almagro,50350
+la calera,chañaral,50350
+la calera,Caldera,50350
+la calera,Copiapo,38650
+la calera,Los Loros,38650
+la calera,Huasco,27100
+la calera,Vallenar,27100
+la calera,freirina,27100
+la calera,alto del carmen,27100
+la calera,el trapiche,45900
+la calera,La Serena,45900
+la calera,coquimbo,27100
+la calera,Ovalle,13550
+la calera,Illapel,0
+la calera,salamanca,0
+la calera,Los Vilos,0
+la calera,cabildo,0
+la calera,la calera,0
+la calera,puchuncavi,0
+la calera,Nogales,9400
+la calera,quillota,0
+la calera,quilpue,75070
+la calera,Santiago,58270
+la calera,buin,58270
+la calera,paine,58270
+la calera,casablanca,75070
+la calera,Valparaiso,75070
+la calera,algarrobo,71070
+la calera,talagante,58270
+la calera,San Antonio,71070
+la calera,San Felipe,28200
+la calera,los andes,28200
+la calera,codegua,69370
+la calera,Rancagua,69370
+la calera,machali,69370
+la calera,Nancagua,71170
+la calera,rengo,71170
+la calera,san fernando,71170
+la calera,santa cruz,71170
+la calera,Curico,80470
+la calera,Talca,89970
+la calera,linares,89970
+la calera,Chillan,99470
+la calera,concepcion,116670
+la calera,Talcahuano,116670
+la calera,Los Angeles,109270
+la calera,Temuco,130170
+la calera,pucon,141120
+la calera,Valdivia,152070
+la calera,Osorno,158970
+la calera,frutillar,176870
+la calera,Puerto Montt,176870
+la calera,ANCUD,232070
+la calera,CASTRO,232070
+puchuncavi,Arica,73500
+puchuncavi,Iquique,73500
+puchuncavi,alto hospicio,73500
+puchuncavi,Tocopilla,63000
+puchuncavi,Calama,73500
+puchuncavi,mejillones,50350
+puchuncavi,Antofagasta,50350
+puchuncavi,el salvador,50350
+puchuncavi,diego de almagro,50350
+puchuncavi,chañaral,50350
+puchuncavi,Caldera,50350
+puchuncavi,Copiapo,38650
+puchuncavi,Los Loros,38650
+puchuncavi,Huasco,27100
+puchuncavi,Vallenar,27100
+puchuncavi,freirina,27100
+puchuncavi,alto del carmen,27100
+puchuncavi,el trapiche,45900
+puchuncavi,La Serena,45900
+puchuncavi,coquimbo,27100
+puchuncavi,Ovalle,13550
+puchuncavi,Illapel,0
+puchuncavi,salamanca,0
+puchuncavi,Los Vilos,0
+puchuncavi,cabildo,0
+puchuncavi,la calera,0
+puchuncavi,puchuncavi,0
+puchuncavi,Nogales,9400
+puchuncavi,quillota,0
+puchuncavi,quilpue,75070
+puchuncavi,Santiago,58270
+puchuncavi,buin,58270
+puchuncavi,paine,58270
+puchuncavi,casablanca,75070
+puchuncavi,Valparaiso,75070
+puchuncavi,algarrobo,71070
+puchuncavi,talagante,58270
+puchuncavi,San Antonio,71070
+puchuncavi,San Felipe,28200
+puchuncavi,los andes,28200
+puchuncavi,codegua,69370
+puchuncavi,Rancagua,69370
+puchuncavi,machali,69370
+puchuncavi,Nancagua,71170
+puchuncavi,rengo,71170
+puchuncavi,san fernando,71170
+puchuncavi,santa cruz,71170
+puchuncavi,Curico,80470
+puchuncavi,Talca,89970
+puchuncavi,linares,89970
+puchuncavi,Chillan,99470
+puchuncavi,concepcion,116670
+puchuncavi,Talcahuano,116670
+puchuncavi,Los Angeles,109270
+puchuncavi,Temuco,130170
+puchuncavi,pucon,141120
+puchuncavi,Valdivia,152070
+puchuncavi,Osorno,158970
+puchuncavi,frutillar,176870
+puchuncavi,Puerto Montt,176870
+puchuncavi,ANCUD,232070
+puchuncavi,CASTRO,232070
+Nogales,Arica,82900
+Nogales,Iquique,82900
+Nogales,alto hospicio,82900
+Nogales,Tocopilla,72400
+Nogales,Calama,82900
+Nogales,mejillones,59750
+Nogales,Antofagasta,59750
+Nogales,el salvador,59750
+Nogales,diego de almagro,59750
+Nogales,chañaral,59750
+Nogales,Caldera,59750
+Nogales,Copiapo,48050
+Nogales,Los Loros,48050
+Nogales,Huasco,36500
+Nogales,Vallenar,36500
+Nogales,freirina,36500
+Nogales,alto del carmen,36500
+Nogales,el trapiche,55300
+Nogales,La Serena,55300
+Nogales,coquimbo,36500
+Nogales,Ovalle,22950
+Nogales,Illapel,9400
+Nogales,salamanca,9400
+Nogales,Los Vilos,9400
+Nogales,cabildo,9400
+Nogales,la calera,9400
+Nogales,puchuncavi,9400
+Nogales,Nogales,18800
+Nogales,quillota,9400
+Nogales,quilpue,84470
+Nogales,Santiago,67670
+Nogales,buin,67670
+Nogales,paine,67670
+Nogales,casablanca,84470
+Nogales,Valparaiso,84470
+Nogales,algarrobo,80470
+Nogales,talagante,67670
+Nogales,San Antonio,80470
+Nogales,San Felipe,37600
+Nogales,los andes,37600
+Nogales,codegua,78770
+Nogales,Rancagua,78770
+Nogales,machali,78770
+Nogales,Nancagua,80570
+Nogales,rengo,80570
+Nogales,san fernando,80570
+Nogales,santa cruz,80570
+Nogales,Curico,89870
+Nogales,Talca,99370
+Nogales,linares,99370
+Nogales,Chillan,108870
+Nogales,concepcion,126070
+Nogales,Talcahuano,126070
+Nogales,Los Angeles,118670
+Nogales,Temuco,139570
+Nogales,pucon,150520
+Nogales,Valdivia,161470
+Nogales,Osorno,168370
+Nogales,frutillar,186270
+Nogales,Puerto Montt,186270
+Nogales,ANCUD,241470
+Nogales,CASTRO,241470
+quillota,Arica,73500
+quillota,Iquique,73500
+quillota,alto hospicio,73500
+quillota,Tocopilla,63000
+quillota,Calama,73500
+quillota,mejillones,50350
+quillota,Antofagasta,50350
+quillota,el salvador,50350
+quillota,diego de almagro,50350
+quillota,chañaral,50350
+quillota,Caldera,50350
+quillota,Copiapo,38650
+quillota,Los Loros,38650
+quillota,Huasco,27100
+quillota,Vallenar,27100
+quillota,freirina,27100
+quillota,alto del carmen,27100
+quillota,el trapiche,45900
+quillota,La Serena,45900
+quillota,coquimbo,27100
+quillota,Ovalle,13550
+quillota,Illapel,0
+quillota,salamanca,0
+quillota,Los Vilos,0
+quillota,cabildo,0
+quillota,la calera,0
+quillota,puchuncavi,0
+quillota,Nogales,9400
+quillota,quillota,0
+quillota,quilpue,75070
+quillota,Santiago,58270
+quillota,buin,58270
+quillota,paine,58270
+quillota,casablanca,75070
+quillota,Valparaiso,75070
+quillota,algarrobo,71070
+quillota,talagante,58270
+quillota,San Antonio,71070
+quillota,San Felipe,28200
+quillota,los andes,28200
+quillota,codegua,69370
+quillota,Rancagua,69370
+quillota,machali,69370
+quillota,Nancagua,71170
+quillota,rengo,71170
+quillota,san fernando,71170
+quillota,santa cruz,71170
+quillota,Curico,80470
+quillota,Talca,89970
+quillota,linares,89970
+quillota,Chillan,99470
+quillota,concepcion,116670
+quillota,Talcahuano,116670
+quillota,Los Angeles,109270
+quillota,Temuco,130170
+quillota,pucon,141120
+quillota,Valdivia,152070
+quillota,Osorno,158970
+quillota,frutillar,176870
+quillota,Puerto Montt,176870
+quillota,ANCUD,232070
+quillota,CASTRO,232070
+quilpue,Arica,148570
+quilpue,Iquique,148570
+quilpue,alto hospicio,148570
+quilpue,Tocopilla,138070
+quilpue,Calama,148570
+quilpue,mejillones,125420
+quilpue,Antofagasta,125420
+quilpue,el salvador,125420
+quilpue,diego de almagro,125420
+quilpue,chañaral,125420
+quilpue,Caldera,125420
+quilpue,Copiapo,113720
+quilpue,Los Loros,113720
+quilpue,Huasco,102170
+quilpue,Vallenar,102170
+quilpue,freirina,102170
+quilpue,alto del carmen,102170
+quilpue,el trapiche,102170
+quilpue,La Serena,102170
+quilpue,coquimbo,102170
+quilpue,Ovalle,88620
+quilpue,Illapel,75070
+quilpue,salamanca,75070
+quilpue,Los Vilos,75070
+quilpue,cabildo,75070
+quilpue,la calera,75070
+quilpue,puchuncavi,75070
+quilpue,Nogales,84470
+quilpue,quillota,75070
+quilpue,quilpue,0
+quilpue,Santiago,43970
+quilpue,buin,43970
+quilpue,paine,43970
+quilpue,casablanca,0
+quilpue,Valparaiso,0
+quilpue,algarrobo,56770
+quilpue,talagante,43970
+quilpue,San Antonio,56770
+quilpue,San Felipe,46870
+quilpue,los andes,46870
+quilpue,codegua,55070
+quilpue,Rancagua,55070
+quilpue,machali,55070
+quilpue,Nancagua,56870
+quilpue,rengo,56870
+quilpue,san fernando,56870
+quilpue,santa cruz,56870
+quilpue,Curico,66170
+quilpue,Talca,75670
+quilpue,linares,75670
+quilpue,Chillan,85170
+quilpue,concepcion,102370
+quilpue,Talcahuano,102370
+quilpue,Los Angeles,94970
+quilpue,Temuco,115870
+quilpue,pucon,129020
+quilpue,Valdivia,142170
+quilpue,Osorno,144670
+quilpue,frutillar,162570
+quilpue,Puerto Montt,162570
+quilpue,ANCUD,217770
+quilpue,CASTRO,217770
+Santiago,Arica,136010
+Santiago,Iquique,136010
+Santiago,alto hospicio,136010
+Santiago,Tocopilla,136010
+Santiago,Calama,136010
+Santiago,mejillones,147270
+Santiago,Antofagasta,147270
+Santiago,el salvador,147270
+Santiago,diego de almagro,147270
+Santiago,chañaral,108620
+Santiago,Caldera,108620
+Santiago,Copiapo,124970
+Santiago,Los Loros,91660
+Santiago,Huasco,91660
+Santiago,Vallenar,119270
+Santiago,freirina,119270
+Santiago,alto del carmen,119270
+Santiago,el trapiche,85370
+Santiago,La Serena,85370
+Santiago,coquimbo,85370
+Santiago,Ovalle,83670
+Santiago,Illapel,58270
+Santiago,salamanca,58270
+Santiago,Los Vilos,58270
+Santiago,cabildo,58270
+Santiago,la calera,58270
+Santiago,puchuncavi,58270
+Santiago,Nogales,67670
+Santiago,quillota,58270
+Santiago,quilpue,43970
+Santiago,Santiago,0
+Santiago,buin,0
+Santiago,paine,0
+Santiago,casablanca,43970
+Santiago,Valparaiso,43970
+Santiago,algarrobo,39970
+Santiago,talagante,0
+Santiago,San Antonio,39970
+Santiago,San Felipe,30070
+Santiago,los andes,39770
+Santiago,codegua,38270
+Santiago,Rancagua,38270
+Santiago,machali,38270
+Santiago,Nancagua,40070
+Santiago,rengo,40070
+Santiago,san fernando,40070
+Santiago,santa cruz,40070
+Santiago,Curico,49370
+Santiago,Talca,58870
+Santiago,linares,58870
+Santiago,Chillan,68370
+Santiago,concepcion,85570
+Santiago,Talcahuano,85570
+Santiago,Los Angeles,78170
+Santiago,Temuco,99070
+Santiago,pucon,110020
+Santiago,Valdivia,120970
+Santiago,Osorno,127870
+Santiago,frutillar,145770
+Santiago,Puerto Montt,145770
+Santiago,ANCUD,200970
+Santiago,CASTRO,200970
+buin,Arica,136010
+buin,Iquique,136010
+buin,alto hospicio,136010
+buin,Tocopilla,136010
+buin,Calama,136010
+buin,mejillones,147270
+buin,Antofagasta,147270
+buin,el salvador,108620
+buin,diego de almagro,108620
+buin,chañaral,108620
+buin,Caldera,108620
+buin,Copiapo,124970
+buin,Los Loros,91660
+buin,Huasco,91660
+buin,Vallenar,119270
+buin,freirina,119270
+buin,alto del carmen,119270
+buin,el trapiche,85370
+buin,La Serena,85370
+buin,coquimbo,85370
+buin,Ovalle,83670
+buin,Illapel,58270
+buin,salamanca,58270
+buin,Los Vilos,58270
+buin,cabildo,58270
+buin,la calera,58270
+buin,puchuncavi,58270
+buin,Nogales,67670
+buin,quillota,58270
+buin,quilpue,43970
+buin,Santiago,0
+buin,buin,0
+buin,paine,0
+buin,casablanca,43970
+buin,Valparaiso,43970
+buin,algarrobo,39970
+buin,talagante,0
+buin,San Antonio,39970
+buin,San Felipe,30070
+buin,los andes,39770
+buin,codegua,38270
+buin,Rancagua,38270
+buin,machali,38270
+buin,Nancagua,40070
+buin,rengo,40070
+buin,san fernando,40070
+buin,santa cruz,40070
+buin,Curico,49370
+buin,Talca,58870
+buin,linares,58870
+buin,Chillan,68370
+buin,concepcion,85570
+buin,Talcahuano,85570
+buin,Los Angeles,78170
+buin,Temuco,99070
+buin,pucon,110020
+buin,Valdivia,120970
+buin,Osorno,127870
+buin,frutillar,145770
+buin,Puerto Montt,145770
+buin,ANCUD,200970
+buin,CASTRO,200970
+paine,Arica,136010
+paine,Iquique,136010
+paine,alto hospicio,136010
+paine,Tocopilla,136010
+paine,Calama,136010
+paine,mejillones,147270
+paine,Antofagasta,147270
+paine,el salvador,108620
+paine,diego de almagro,108620
+paine,chañaral,108620
+paine,Caldera,108620
+paine,Copiapo,124970
+paine,Los Loros,91660
+paine,Huasco,91660
+paine,Vallenar,119270
+paine,freirina,119270
+paine,alto del carmen,119270
+paine,el trapiche,85370
+paine,La Serena,85370
+paine,coquimbo,85370
+paine,Ovalle,83670
+paine,Illapel,58270
+paine,salamanca,58270
+paine,Los Vilos,58270
+paine,cabildo,58270
+paine,la calera,58270
+paine,puchuncavi,58270
+paine,Nogales,67670
+paine,quillota,58270
+paine,quilpue,43970
+paine,Santiago,0
+paine,buin,0
+paine,paine,0
+paine,casablanca,43970
+paine,Valparaiso,43970
+paine,algarrobo,39970
+paine,talagante,0
+paine,San Antonio,39970
+paine,San Felipe,30070
+paine,los andes,39770
+paine,codegua,38270
+paine,Rancagua,38270
+paine,machali,38270
+paine,Nancagua,40070
+paine,rengo,40070
+paine,san fernando,40070
+paine,santa cruz,40070
+paine,Curico,49370
+paine,Talca,58870
+paine,linares,58870
+paine,Chillan,68370
+paine,concepcion,85570
+paine,Talcahuano,85570
+paine,Los Angeles,78170
+paine,Temuco,99070
+paine,pucon,110020
+paine,Valdivia,120970
+paine,Osorno,127870
+paine,frutillar,145770
+paine,Puerto Montt,145770
+paine,ANCUD,200970
+paine,CASTRO,200970
+casablanca,Arica,148570
+casablanca,Iquique,148570
+casablanca,alto hospicio,148570
+casablanca,Tocopilla,138070
+casablanca,Calama,148570
+casablanca,mejillones,125420
+casablanca,Antofagasta,125420
+casablanca,el salvador,125420
+casablanca,diego de almagro,125420
+casablanca,chañaral,125420
+casablanca,Caldera,125420
+casablanca,Copiapo,113720
+casablanca,Los Loros,113720
+casablanca,Huasco,102170
+casablanca,Vallenar,102170
+casablanca,freirina,102170
+casablanca,alto del carmen,102170
+casablanca,el trapiche,102170
+casablanca,La Serena,102170
+casablanca,coquimbo,102170
+casablanca,Ovalle,88620
+casablanca,Illapel,75070
+casablanca,salamanca,75070
+casablanca,Los Vilos,75070
+casablanca,cabildo,75070
+casablanca,la calera,75070
+casablanca,puchuncavi,75070
+casablanca,Nogales,84470
+casablanca,quillota,75070
+casablanca,quilpue,0
+casablanca,Santiago,43970
+casablanca,buin,43970
+casablanca,paine,43970
+casablanca,casablanca,0
+casablanca,Valparaiso,0
+casablanca,algarrobo,56770
+casablanca,talagante,43970
+casablanca,San Antonio,56770
+casablanca,San Felipe,46870
+casablanca,los andes,55070
+casablanca,codegua,55070
+casablanca,Rancagua,55070
+casablanca,machali,55070
+casablanca,Nancagua,56870
+casablanca,rengo,56870
+casablanca,san fernando,56870
+casablanca,santa cruz,56870
+casablanca,Curico,66170
+casablanca,Talca,75670
+casablanca,linares,75670
+casablanca,Chillan,85170
+casablanca,concepcion,102370
+casablanca,Talcahuano,102370
+casablanca,Los Angeles,94970
+casablanca,Temuco,115870
+casablanca,pucon,129020
+casablanca,Valdivia,142170
+casablanca,Osorno,144670
+casablanca,frutillar,162570
+casablanca,Puerto Montt,162570
+casablanca,ANCUD,217770
+casablanca,CASTRO,217770
+Valparaiso,Arica,148570
+Valparaiso,Iquique,148570
+Valparaiso,alto hospicio,148570
+Valparaiso,Tocopilla,138070
+Valparaiso,Calama,148570
+Valparaiso,mejillones,125420
+Valparaiso,Antofagasta,125420
+Valparaiso,el salvador,125420
+Valparaiso,diego de almagro,125420
+Valparaiso,chañaral,125420
+Valparaiso,Caldera,125420
+Valparaiso,Copiapo,113720
+Valparaiso,Los Loros,113720
+Valparaiso,Huasco,102170
+Valparaiso,Vallenar,102170
+Valparaiso,freirina,102170
+Valparaiso,alto del carmen,102170
+Valparaiso,el trapiche,102170
+Valparaiso,La Serena,102170
+Valparaiso,coquimbo,102170
+Valparaiso,Ovalle,88620
+Valparaiso,Illapel,75070
+Valparaiso,salamanca,75070
+Valparaiso,Los Vilos,75070
+Valparaiso,cabildo,75070
+Valparaiso,la calera,75070
+Valparaiso,puchuncavi,75070
+Valparaiso,Nogales,84470
+Valparaiso,quillota,75070
+Valparaiso,quilpue,0
+Valparaiso,Santiago,43970
+Valparaiso,buin,43970
+Valparaiso,paine,43970
+Valparaiso,casablanca,0
+Valparaiso,Valparaiso,0
+Valparaiso,algarrobo,56770
+Valparaiso,talagante,43970
+Valparaiso,San Antonio,56770
+Valparaiso,San Felipe,46870
+Valparaiso,los andes,55070
+Valparaiso,codegua,55070
+Valparaiso,Rancagua,55070
+Valparaiso,machali,55070
+Valparaiso,Nancagua,56870
+Valparaiso,rengo,56870
+Valparaiso,san fernando,56870
+Valparaiso,santa cruz,56870
+Valparaiso,Curico,66170
+Valparaiso,Talca,75670
+Valparaiso,linares,75670
+Valparaiso,Chillan,85170
+Valparaiso,concepcion,102370
+Valparaiso,Talcahuano,102370
+Valparaiso,Los Angeles,94970
+Valparaiso,Temuco,115870
+Valparaiso,pucon,129020
+Valparaiso,Valdivia,142170
+Valparaiso,Osorno,144670
+Valparaiso,frutillar,162570
+Valparaiso,Puerto Montt,162570
+Valparaiso,ANCUD,217770
+Valparaiso,CASTRO,217770
+algarrobo,Arica,144570
+algarrobo,Iquique,144570
+algarrobo,alto hospicio,144570
+algarrobo,Tocopilla,134070
+algarrobo,Calama,144570
+algarrobo,mejillones,121420
+algarrobo,Antofagasta,121420
+algarrobo,el salvador,121420
+algarrobo,diego de almagro,121420
+algarrobo,chañaral,121420
+algarrobo,Caldera,121420
+algarrobo,Copiapo,109720
+algarrobo,Los Loros,109720
+algarrobo,Huasco,98170
+algarrobo,Vallenar,98170
+algarrobo,freirina,98170
+algarrobo,alto del carmen,98170
+algarrobo,el trapiche,98170
+algarrobo,La Serena,98170
+algarrobo,coquimbo,98170
+algarrobo,Ovalle,84620
+algarrobo,Illapel,71070
+algarrobo,salamanca,71070
+algarrobo,Los Vilos,71070
+algarrobo,cabildo,71070
+algarrobo,la calera,71070
+algarrobo,puchuncavi,71070
+algarrobo,Nogales,80470
+algarrobo,quillota,71070
+algarrobo,quilpue,56770
+algarrobo,Santiago,39970
+algarrobo,buin,39970
+algarrobo,paine,39970
+algarrobo,casablanca,56770
+algarrobo,Valparaiso,56770
+algarrobo,algarrobo,0
+algarrobo,talagante,39970
+algarrobo,San Antonio,0
+algarrobo,San Felipe,42870
+algarrobo,los andes,51070
+algarrobo,codegua,51070
+algarrobo,Rancagua,51070
+algarrobo,machali,51070
+algarrobo,Nancagua,52870
+algarrobo,rengo,52870
+algarrobo,san fernando,52870
+algarrobo,santa cruz,52870
+algarrobo,Curico,62170
+algarrobo,Talca,71670
+algarrobo,linares,71670
+algarrobo,Chillan,81170
+algarrobo,concepcion,98370
+algarrobo,Talcahuano,98370
+algarrobo,Los Angeles,90970
+algarrobo,Temuco,111870
+algarrobo,pucon,122820
+algarrobo,Valdivia,133770
+algarrobo,Osorno,140670
+algarrobo,frutillar,158570
+algarrobo,Puerto Montt,158570
+algarrobo,ANCUD,213770
+algarrobo,CASTRO,213770
+talagante,Arica,136010
+talagante,Iquique,136010
+talagante,alto hospicio,136010
+talagante,Tocopilla,136010
+talagante,Calama,136010
+talagante,mejillones,147270
+talagante,Antofagasta,147270
+talagante,el salvador,147270
+talagante,diego de almagro,147270
+talagante,chañaral,108620
+talagante,Caldera,108620
+talagante,Copiapo,124970
+talagante,Los Loros,91660
+talagante,Huasco,91660
+talagante,Vallenar,119270
+talagante,freirina,119270
+talagante,alto del carmen,119270
+talagante,el trapiche,85370
+talagante,La Serena,85370
+talagante,coquimbo,85370
+talagante,Ovalle,83670
+talagante,Illapel,58270
+talagante,salamanca,58270
+talagante,Los Vilos,58270
+talagante,cabildo,58270
+talagante,la calera,58270
+talagante,puchuncavi,58270
+talagante,Nogales,67670
+talagante,quillota,58270
+talagante,quilpue,43970
+talagante,Santiago,0
+talagante,buin,0
+talagante,paine,0
+talagante,casablanca,43970
+talagante,Valparaiso,43970
+talagante,algarrobo,39970
+talagante,talagante,0
+talagante,San Antonio,39970
+talagante,San Felipe,30070
+talagante,los andes,38270
+talagante,codegua,38270
+talagante,Rancagua,38270
+talagante,machali,38270
+talagante,Nancagua,40070
+talagante,rengo,40070
+talagante,san fernando,40070
+talagante,santa cruz,40070
+talagante,Curico,49370
+talagante,Talca,58870
+talagante,linares,58870
+talagante,Chillan,68370
+talagante,concepcion,85570
+talagante,Talcahuano,85570
+talagante,Los Angeles,78170
+talagante,Temuco,99070
+talagante,pucon,110020
+talagante,Valdivia,120970
+talagante,Osorno,127870
+talagante,frutillar,145770
+talagante,Puerto Montt,145770
+talagante,ANCUD,200970
+talagante,CASTRO,200970
+San Antonio,Arica,144570
+San Antonio,Iquique,144570
+San Antonio,alto hospicio,144570
+San Antonio,Tocopilla,134070
+San Antonio,Calama,144570
+San Antonio,mejillones,121420
+San Antonio,Antofagasta,121420
+San Antonio,el salvador,121420
+San Antonio,diego de almagro,121420
+San Antonio,chañaral,121420
+San Antonio,Caldera,121420
+San Antonio,Copiapo,109720
+San Antonio,Los Loros,109720
+San Antonio,Huasco,98170
+San Antonio,Vallenar,98170
+San Antonio,freirina,98170
+San Antonio,alto del carmen,98170
+San Antonio,el trapiche,98170
+San Antonio,La Serena,98170
+San Antonio,coquimbo,98170
+San Antonio,Ovalle,84620
+San Antonio,Illapel,71070
+San Antonio,salamanca,71070
+San Antonio,Los Vilos,71070
+San Antonio,cabildo,71070
+San Antonio,la calera,71070
+San Antonio,puchuncavi,71070
+San Antonio,Nogales,80470
+San Antonio,quillota,71070
+San Antonio,quilpue,56770
+San Antonio,Santiago,39970
+San Antonio,buin,39970
+San Antonio,paine,39970
+San Antonio,casablanca,56770
+San Antonio,Valparaiso,56770
+San Antonio,algarrobo,0
+San Antonio,talagante,39970
+San Antonio,San Antonio,0
+San Antonio,San Felipe,42870
+San Antonio,los andes,51070
+San Antonio,codegua,51070
+San Antonio,Rancagua,51070
+San Antonio,machali,51070
+San Antonio,Nancagua,52870
+San Antonio,rengo,52870
+San Antonio,san fernando,52870
+San Antonio,santa cruz,52870
+San Antonio,Curico,62170
+San Antonio,Talca,71670
+San Antonio,linares,71670
+San Antonio,Chillan,81170
+San Antonio,concepcion,98370
+San Antonio,Talcahuano,98370
+San Antonio,Los Angeles,90970
+San Antonio,Temuco,111870
+San Antonio,pucon,122820
+San Antonio,Valdivia,133770
+San Antonio,Osorno,140670
+San Antonio,frutillar,158570
+San Antonio,Puerto Montt,158570
+San Antonio,ANCUD,213770
+San Antonio,CASTRO,213770
+San Felipe,Arica,101700
+San Felipe,Iquique,101700
+San Felipe,alto hospicio,101700
+San Felipe,Tocopilla,91200
+San Felipe,Calama,101700
+San Felipe,mejillones,78550
+San Felipe,Antofagasta,78550
+San Felipe,el salvador,78550
+San Felipe,diego de almagro,78550
+San Felipe,chañaral,78550
+San Felipe,Caldera,78550
+San Felipe,Copiapo,66850
+San Felipe,Los Loros,94020
+San Felipe,Huasco,55300
+San Felipe,Vallenar,55300
+San Felipe,freirina,55300
+San Felipe,alto del carmen,55300
+San Felipe,el trapiche,55300
+San Felipe,La Serena,55300
+San Felipe,coquimbo,55300
+San Felipe,Ovalle,41750
+San Felipe,Illapel,28200
+San Felipe,salamanca,28200
+San Felipe,Los Vilos,28200
+San Felipe,cabildo,28200
+San Felipe,la calera,28200
+San Felipe,puchuncavi,28200
+San Felipe,Nogales,37600
+San Felipe,quillota,28200
+San Felipe,quilpue,46870
+San Felipe,Santiago,30070
+San Felipe,buin,30070
+San Felipe,paine,30070
+San Felipe,casablanca,46870
+San Felipe,Valparaiso,46870
+San Felipe,algarrobo,42870
+San Felipe,talagante,30070
+San Felipe,San Antonio,42870
+San Felipe,San Felipe,0
+San Felipe,los andes,41170
+San Felipe,codegua,41170
+San Felipe,Rancagua,41170
+San Felipe,machali,41170
+San Felipe,Nancagua,42970
+San Felipe,rengo,42970
+San Felipe,san fernando,42970
+San Felipe,santa cruz,42970
+San Felipe,Curico,52270
+San Felipe,Talca,61770
+San Felipe,linares,61770
+San Felipe,Chillan,71270
+San Felipe,concepcion,88470
+San Felipe,Talcahuano,88470
+San Felipe,Los Angeles,81070
+San Felipe,Temuco,101970
+San Felipe,pucon,112920
+San Felipe,Valdivia,123870
+San Felipe,Osorno,130770
+San Felipe,frutillar,148670
+San Felipe,Puerto Montt,148670
+San Felipe,ANCUD,203870
+San Felipe,CASTRO,203870
+Los Andes,Arica,101700
+Los Andes,Iquique,101700
+Los Andes,alto hospicio,101700
+Los Andes,Tocopilla,91200
+Los Andes,Calama,101700
+Los Andes,mejillones,78550
+Los Andes,Antofagasta,78550
+Los Andes,el salvador,78550
+Los Andes,diego de almagro,78550
+Los Andes,chañaral,78550
+Los Andes,Caldera,78550
+Los Andes,Copiapo,66850
+Los Andes,Los Loros,94020
+Los Andes,Huasco,55300
+Los Andes,Vallenar,55300
+Los Andes,freirina,55300
+Los Andes,alto del carmen,55300
+Los Andes,el trapiche,55300
+Los Andes,La Serena,55300
+Los Andes,coquimbo,55300
+Los Andes,Ovalle,41750
+Los Andes,Illapel,28200
+Los Andes,salamanca,28200
+Los Andes,Los Vilos,28200
+Los Andes,cabildo,28200
+Los Andes,la calera,28200
+Los Andes,puchuncavi,28200
+Los Andes,Nogales,37600
+Los Andes,quillota,28200
+Los Andes,quilpue,46870
+Los Andes,Santiago,12600
+Los Andes,buin,39770
+Los Andes,paine,39770
+Los Andes,casablanca,55070
+Los Andes,los andes,0
+codegua,Arica,142870
+codegua,Iquique,142870
+codegua,alto hospicio,142870
+codegua,Tocopilla,142870
+codegua,Calama,142870
+codegua,mejillones,119720
+codegua,Antofagasta,119720
+codegua,el salvador,119720
+codegua,diego de almagro,119720
+codegua,chañaral,119720
+codegua,Caldera,119720
+codegua,Copiapo,108020
+codegua,Los Loros,108020
+codegua,Huasco,96470
+codegua,Vallenar,96470
+codegua,freirina,96470
+codegua,alto del carmen,96470
+codegua,el trapiche,96470
+codegua,La Serena,96470
+codegua,coquimbo,96470
+codegua,Ovalle,82920
+codegua,Illapel,69370
+codegua,salamanca,69370
+codegua,Los Vilos,69370
+codegua,cabildo,69370
+codegua,la calera,69370
+codegua,puchuncavi,69370
+codegua,Nogales,78770
+codegua,quillota,69370
+codegua,quilpue,55070
+codegua,Santiago,38270
+codegua,buin,38270
+codegua,paine,38270
+codegua,casablanca,55070
+codegua,Valparaiso,55070
+codegua,algarrobo,51070
+codegua,talagante,38270
+codegua,San Antonio,51070
+codegua,San Felipe,41170
+codegua,los andes,0
+codegua,codegua,0
+codegua,Rancagua,0
+codegua,machali,0
+codegua,Nancagua,1800
+codegua,rengo,1800
+codegua,san fernando,1800
+codegua,santa cruz,1800
+codegua,Curico,11100
+codegua,Talca,20600
+codegua,linares,20600
+codegua,Chillan,30100
+codegua,concepcion,47300
+codegua,Talcahuano,47300
+codegua,Los Angeles,39900
+codegua,Temuco,60800
+codegua,pucon,71750
+codegua,Valdivia,82700
+codegua,Osorno,89600
+codegua,frutillar,107500
+codegua,Puerto Montt,107500
+codegua,ANCUD,162700
+codegua,CASTRO,162700
+Rancagua,Arica,142870
+Rancagua,Iquique,142870
+Rancagua,alto hospicio,142870
+Rancagua,Tocopilla,142870
+Rancagua,Calama,142870
+Rancagua,mejillones,119720
+Rancagua,Antofagasta,119720
+Rancagua,el salvador,119720
+Rancagua,diego de almagro,119720
+Rancagua,chañaral,119720
+Rancagua,Caldera,119720
+Rancagua,Copiapo,108020
+Rancagua,Los Loros,108020
+Rancagua,Huasco,96470
+Rancagua,Vallenar,96470
+Rancagua,freirina,96470
+Rancagua,alto del carmen,96470
+Rancagua,el trapiche,96470
+Rancagua,La Serena,96470
+Rancagua,coquimbo,96470
+Rancagua,Ovalle,82920
+Rancagua,Illapel,69370
+Rancagua,salamanca,69370
+Rancagua,Los Vilos,69370
+Rancagua,cabildo,69370
+Rancagua,la calera,69370
+Rancagua,puchuncavi,69370
+Rancagua,Nogales,78770
+Rancagua,quillota,69370
+Rancagua,quilpue,55070
+Rancagua,Santiago,38270
+Rancagua,buin,38270
+Rancagua,paine,38270
+Rancagua,casablanca,55070
+Rancagua,Valparaiso,55070
+Rancagua,algarrobo,51070
+Rancagua,talagante,38270
+Rancagua,San Antonio,51070
+Rancagua,San Felipe,41170
+Rancagua,los andes,0
+Rancagua,codegua,0
+Rancagua,Rancagua,0
+Rancagua,machali,0
+Rancagua,Nancagua,1800
+Rancagua,rengo,1800
+Rancagua,san fernando,1800
+Rancagua,santa cruz,1800
+Rancagua,Curico,11100
+Rancagua,Talca,20600
+Rancagua,linares,20600
+Rancagua,Chillan,30100
+Rancagua,concepcion,47300
+Rancagua,Talcahuano,47300
+Rancagua,Los Angeles,39900
+Rancagua,Temuco,60800
+Rancagua,pucon,71750
+Rancagua,Valdivia,82700
+Rancagua,Osorno,89600
+Rancagua,frutillar,107500
+Rancagua,Puerto Montt,107500
+Rancagua,ANCUD,162700
+Rancagua,CASTRO,162700
+machali,Arica,142870
+machali,Iquique,142870
+machali,alto hospicio,142870
+machali,Tocopilla,142870
+machali,Calama,142870
+machali,mejillones,119720
+machali,Antofagasta,119720
+machali,el salvador,119720
+machali,diego de almagro,119720
+machali,chañaral,119720
+machali,Caldera,119720
+machali,Copiapo,108020
+machali,Los Loros,108020
+machali,Huasco,96470
+machali,Vallenar,96470
+machali,freirina,96470
+machali,alto del carmen,96470
+machali,el trapiche,96470
+machali,La Serena,96470
+machali,coquimbo,96470
+machali,Ovalle,82920
+machali,Illapel,69370
+machali,salamanca,69370
+machali,Los Vilos,69370
+machali,cabildo,69370
+machali,la calera,69370
+machali,puchuncavi,69370
+machali,Nogales,78770
+machali,quillota,69370
+machali,quilpue,55070
+machali,Santiago,38270
+machali,buin,38270
+machali,paine,38270
+machali,casablanca,55070
+machali,Valparaiso,55070
+machali,algarrobo,51070
+machali,talagante,38270
+machali,San Antonio,51070
+machali,San Felipe,41170
+machali,los andes,0
+machali,codegua,0
+machali,Rancagua,0
+machali,machali,0
+machali,Nancagua,1800
+machali,rengo,1800
+machali,san fernando,1800
+machali,santa cruz,1800
+machali,Curico,11100
+machali,Talca,20600
+machali,linares,20600
+machali,Chillan,30100
+machali,concepcion,47300
+machali,Talcahuano,47300
+machali,Los Angeles,39900
+machali,Temuco,60800
+machali,pucon,71750
+machali,Valdivia,82700
+machali,Osorno,89600
+machali,frutillar,107500
+machali,Puerto Montt,107500
+machali,ANCUD,162700
+machali,CASTRO,162700
+Nancagua,Arica,142870
+Nancagua,Iquique,142870
+Nancagua,alto hospicio,142870
+Nancagua,Tocopilla,132370
+Nancagua,Calama,142870
+Nancagua,mejillones,119720
+Nancagua,Antofagasta,119720
+Nancagua,el salvador,119720
+Nancagua,diego de almagro,119720
+Nancagua,chañaral,119720
+Nancagua,Caldera,119720
+Nancagua,Copiapo,108020
+Nancagua,Los Loros,108020
+Nancagua,Huasco,96470
+Nancagua,Vallenar,96470
+Nancagua,freirina,96470
+Nancagua,alto del carmen,96470
+Nancagua,el trapiche,96470
+Nancagua,La Serena,96470
+Nancagua,coquimbo,96470
+Nancagua,Ovalle,82920
+Nancagua,Illapel,69370
+Nancagua,salamanca,69370
+Nancagua,Los Vilos,69370
+Nancagua,cabildo,69370
+Nancagua,la calera,69370
+Nancagua,puchuncavi,69370
+Nancagua,Nogales,78770
+Nancagua,quillota,69370
+Nancagua,quilpue,49570
+Nancagua,Santiago,38270
+Nancagua,buin,38270
+Nancagua,paine,38270
+Nancagua,casablanca,49570
+Nancagua,Valparaiso,49570
+Nancagua,algarrobo,51070
+Nancagua,talagante,38270
+Nancagua,San Antonio,51070
+Nancagua,San Felipe,41170
+Nancagua,los andes,0
+Nancagua,codegua,0
+Nancagua,Rancagua,0
+Nancagua,machali,0
+Nancagua,Nancagua,0
+Nancagua,rengo,0
+Nancagua,san fernando,0
+Nancagua,santa cruz,0
+Nancagua,Curico,11100
+Nancagua,Talca,20600
+Nancagua,linares,20600
+Nancagua,Chillan,30100
+Nancagua,concepcion,47300
+Nancagua,Talcahuano,47300
+Nancagua,Los Angeles,39900
+Nancagua,Temuco,60800
+Nancagua,pucon,71750
+Nancagua,Valdivia,82700
+Nancagua,Osorno,89600
+Nancagua,frutillar,107500
+Nancagua,Puerto Montt,107500
+Nancagua,ANCUD,162700
+Nancagua,CASTRO,162700
+rengo,Arica,142870
+rengo,Iquique,142870
+rengo,alto hospicio,142870
+rengo,Tocopilla,132370
+rengo,Calama,142870
+rengo,mejillones,119720
+rengo,Antofagasta,119720
+rengo,el salvador,119720
+rengo,diego de almagro,119720
+rengo,chañaral,119720
+rengo,Caldera,119720
+rengo,Copiapo,108020
+rengo,Los Loros,108020
+rengo,Huasco,96470
+rengo,Vallenar,96470
+rengo,freirina,96470
+rengo,alto del carmen,96470
+rengo,el trapiche,96470
+rengo,La Serena,96470
+rengo,coquimbo,96470
+rengo,Ovalle,82920
+rengo,Illapel,69370
+rengo,salamanca,69370
+rengo,Los Vilos,69370
+rengo,cabildo,69370
+rengo,la calera,69370
+rengo,puchuncavi,69370
+rengo,Nogales,78770
+rengo,quillota,69370
+rengo,quilpue,49570
+rengo,Santiago,38270
+rengo,buin,38270
+rengo,paine,38270
+rengo,casablanca,49570
+rengo,Valparaiso,49570
+rengo,algarrobo,51070
+rengo,talagante,38270
+rengo,San Antonio,51070
+rengo,San Felipe,41170
+rengo,los andes,0
+rengo,codegua,0
+rengo,Rancagua,0
+rengo,machali,0
+rengo,Nancagua,0
+rengo,rengo,0
+rengo,san fernando,0
+rengo,santa cruz,0
+rengo,Curico,11100
+rengo,Talca,20600
+rengo,linares,20600
+rengo,Chillan,30100
+rengo,concepcion,47300
+rengo,Talcahuano,47300
+rengo,Los Angeles,39900
+rengo,Temuco,60800
+rengo,pucon,71750
+rengo,Valdivia,82700
+rengo,Osorno,89600
+rengo,frutillar,107500
+rengo,Puerto Montt,107500
+rengo,ANCUD,162700
+rengo,CASTRO,162700
+san fernando,Arica,142870
+san fernando,Iquique,142870
+san fernando,alto hospicio,142870
+san fernando,Tocopilla,132370
+san fernando,Calama,142870
+san fernando,mejillones,119720
+san fernando,Antofagasta,119720
+san fernando,el salvador,119720
+san fernando,diego de almagro,119720
+san fernando,chañaral,119720
+san fernando,Caldera,119720
+san fernando,Copiapo,108020
+san fernando,Los Loros,108020
+san fernando,Huasco,96470
+san fernando,Vallenar,96470
+san fernando,freirina,96470
+san fernando,alto del carmen,96470
+san fernando,el trapiche,96470
+san fernando,La Serena,96470
+san fernando,coquimbo,96470
+san fernando,Ovalle,82920
+san fernando,Illapel,69370
+san fernando,salamanca,69370
+san fernando,Los Vilos,69370
+san fernando,cabildo,69370
+san fernando,la calera,69370
+san fernando,puchuncavi,69370
+san fernando,Nogales,78770
+san fernando,quillota,69370
+san fernando,quilpue,49570
+san fernando,Santiago,38270
+san fernando,buin,38270
+san fernando,paine,38270
+san fernando,casablanca,49570
+san fernando,Valparaiso,49570
+san fernando,algarrobo,51070
+san fernando,talagante,38270
+san fernando,San Antonio,51070
+san fernando,San Felipe,41170
+san fernando,los andes,0
+san fernando,codegua,0
+san fernando,Rancagua,0
+san fernando,machali,0
+san fernando,Nancagua,0
+san fernando,rengo,0
+san fernando,san fernando,0
+san fernando,santa cruz,0
+san fernando,Curico,11100
+san fernando,Talca,20600
+san fernando,linares,20600
+san fernando,Chillan,30100
+san fernando,concepcion,47300
+san fernando,Talcahuano,47300
+san fernando,Los Angeles,39900
+san fernando,Temuco,60800
+san fernando,pucon,71750
+san fernando,Valdivia,82700
+san fernando,Osorno,89600
+san fernando,frutillar,107500
+san fernando,Puerto Montt,107500
+san fernando,ANCUD,162700
+san fernando,CASTRO,162700
+santa cruz,Arica,142870
+santa cruz,Iquique,142870
+santa cruz,alto hospicio,142870
+santa cruz,Tocopilla,132370
+santa cruz,Calama,142870
+santa cruz,mejillones,119720
+santa cruz,Antofagasta,119720
+santa cruz,el salvador,119720
+santa cruz,diego de almagro,119720
+santa cruz,chañaral,119720
+santa cruz,Caldera,119720
+santa cruz,Copiapo,108020
+santa cruz,Los Loros,108020
+santa cruz,Huasco,96470
+santa cruz,Vallenar,96470
+santa cruz,freirina,96470
+santa cruz,alto del carmen,96470
+santa cruz,el trapiche,96470
+santa cruz,La Serena,96470
+santa cruz,coquimbo,96470
+santa cruz,Ovalle,82920
+santa cruz,Illapel,69370
+santa cruz,salamanca,69370
+santa cruz,Los Vilos,69370
+santa cruz,cabildo,69370
+santa cruz,la calera,69370
+santa cruz,puchuncavi,69370
+santa cruz,Nogales,78770
+santa cruz,quillota,69370
+santa cruz,quilpue,49570
+santa cruz,Santiago,38270
+santa cruz,buin,38270
+santa cruz,paine,38270
+santa cruz,casablanca,49570
+santa cruz,Valparaiso,49570
+santa cruz,algarrobo,51070
+santa cruz,talagante,38270
+santa cruz,San Antonio,51070
+santa cruz,San Felipe,41170
+santa cruz,los andes,0
+santa cruz,codegua,0
+santa cruz,Rancagua,0
+santa cruz,machali,0
+santa cruz,Nancagua,0
+santa cruz,rengo,0
+santa cruz,san fernando,0
+santa cruz,santa cruz,0
+santa cruz,Curico,11100
+santa cruz,Talca,20600
+santa cruz,linares,20600
+santa cruz,Chillan,30100
+santa cruz,concepcion,47300
+santa cruz,Talcahuano,47300
+santa cruz,Los Angeles,39900
+santa cruz,Temuco,60800
+santa cruz,pucon,71750
+santa cruz,Valdivia,82700
+santa cruz,Osorno,89600
+santa cruz,frutillar,107500
+santa cruz,Puerto Montt,107500
+santa cruz,ANCUD,162700
+santa cruz,CASTRO,162700
+Curico,Arica,153970
+Curico,Iquique,153970
+Curico,alto hospicio,153970
+Curico,Tocopilla,143470
+Curico,Calama,153970
+Curico,mejillones,130820
+Curico,Antofagasta,130820
+Curico,el salvador,130820
+Curico,diego de almagro,130820
+Curico,chañaral,130820
+Curico,Caldera,130820
+Curico,Copiapo,119120
+Curico,Los Loros,119120
+Curico,Huasco,107570
+Curico,Vallenar,107570
+Curico,freirina,107570
+Curico,alto del carmen,107570
+Curico,el trapiche,107570
+Curico,La Serena,107570
+Curico,coquimbo,107570
+Curico,Ovalle,94020
+Curico,Illapel,80470
+Curico,salamanca,80470
+Curico,Los Vilos,80470
+Curico,cabildo,80470
+Curico,la calera,80470
+Curico,puchuncavi,80470
+Curico,Nogales,89870
+Curico,quillota,80470
+Curico,quilpue,66170
+Curico,Santiago,49370
+Curico,buin,49370
+Curico,paine,49370
+Curico,casablanca,66170
+Curico,Valparaiso,66170
+Curico,algarrobo,62170
+Curico,talagante,49370
+Curico,San Antonio,62170
+Curico,San Felipe,52270
+Curico,los andes,11100
+Curico,codegua,11100
+Curico,Rancagua,11100
+Curico,machali,11100
+Curico,Nancagua,12900
+Curico,rengo,12900
+Curico,san fernando,12900
+Curico,santa cruz,12900
+Curico,Curico,0
+Curico,Talca,9500
+Curico,linares,9500
+Curico,Chillan,19000
+Curico,concepcion,36200
+Curico,Talcahuano,36200
+Curico,Los Angeles,28800
+Curico,Temuco,49700
+Curico,pucon,60650
+Curico,Valdivia,71600
+Curico,Osorno,78500
+Curico,frutillar,96400
+Curico,Puerto Montt,96400
+Curico,ANCUD,151600
+Curico,CASTRO,151600
+Talca,Arica,163470
+Talca,Iquique,163470
+Talca,alto hospicio,163470
+Talca,Tocopilla,152970
+Talca,Calama,163470
+Talca,mejillones,140320
+Talca,Antofagasta,140320
+Talca,el salvador,140320
+Talca,diego de almagro,140320
+Talca,chañaral,140320
+Talca,Caldera,140320
+Talca,Copiapo,128620
+Talca,Los Loros,128620
+Talca,Huasco,117070
+Talca,Vallenar,117070
+Talca,freirina,117070
+Talca,alto del carmen,117070
+Talca,el trapiche,117070
+Talca,La Serena,117070
+Talca,coquimbo,117070
+Talca,Ovalle,103520
+Talca,Illapel,89970
+Talca,salamanca,89970
+Talca,Los Vilos,89970
+Talca,cabildo,89970
+Talca,la calera,89970
+Talca,puchuncavi,89970
+Talca,Nogales,99370
+Talca,quillota,89970
+Talca,quilpue,75670
+Talca,Santiago,58870
+Talca,buin,58870
+Talca,paine,58870
+Talca,casablanca,75670
+Talca,Valparaiso,75670
+Talca,algarrobo,71670
+Talca,talagante,58870
+Talca,San Antonio,71670
+Talca,San Felipe,61770
+Talca,los andes,20600
+Talca,codegua,20600
+Talca,Rancagua,20600
+Talca,machali,20600
+Talca,Nancagua,22400
+Talca,rengo,22400
+Talca,san fernando,22400
+Talca,santa cruz,22400
+Talca,Curico,9500
+Talca,Talca,0
+Talca,linares,0
+Talca,Chillan,9500
+Talca,concepcion,26700
+Talca,Talcahuano,26700
+Talca,Los Angeles,19300
+Talca,Temuco,40200
+Talca,pucon,51150
+Talca,Valdivia,62100
+Talca,Osorno,69000
+Talca,frutillar,86900
+Talca,Puerto Montt,86900
+Talca,ANCUD,142100
+Talca,CASTRO,142100
+linares,Arica,163470
+linares,Iquique,163470
+linares,alto hospicio,163470
+linares,Tocopilla,152970
+linares,Calama,163470
+linares,mejillones,140320
+linares,Antofagasta,140320
+linares,el salvador,140320
+linares,diego de almagro,140320
+linares,chañaral,140320
+linares,Caldera,140320
+linares,Copiapo,128620
+linares,Los Loros,128620
+linares,Huasco,117070
+linares,Vallenar,117070
+linares,freirina,117070
+linares,alto del carmen,117070
+linares,el trapiche,117070
+linares,La Serena,117070
+linares,coquimbo,117070
+linares,Ovalle,103520
+linares,Illapel,89970
+linares,salamanca,89970
+linares,Los Vilos,89970
+linares,cabildo,89970
+linares,la calera,89970
+linares,puchuncavi,89970
+linares,Nogales,99370
+linares,quillota,89970
+linares,quilpue,75670
+linares,Santiago,58870
+linares,buin,58870
+linares,paine,58870
+linares,casablanca,75670
+linares,Valparaiso,75670
+linares,algarrobo,71670
+linares,talagante,58870
+linares,San Antonio,71670
+linares,San Felipe,61770
+linares,los andes,20600
+linares,codegua,20600
+linares,Rancagua,20600
+linares,machali,20600
+linares,Nancagua,22400
+linares,rengo,22400
+linares,san fernando,22400
+linares,santa cruz,22400
+linares,Curico,9500
+linares,Talca,0
+linares,linares,0
+linares,Chillan,9500
+linares,concepcion,26700
+linares,Talcahuano,26700
+linares,Los Angeles,19300
+linares,Temuco,40200
+linares,pucon,51150
+linares,Valdivia,62100
+linares,Osorno,69000
+linares,frutillar,86900
+linares,Puerto Montt,86900
+linares,ANCUD,142100
+linares,CASTRO,142100
+Chillan,Arica,172970
+Chillan,Iquique,172970
+Chillan,alto hospicio,172970
+Chillan,Tocopilla,162470
+Chillan,Calama,172970
+Chillan,mejillones,149820
+Chillan,Antofagasta,149820
+Chillan,el salvador,149820
+Chillan,diego de almagro,149820
+Chillan,chañaral,149820
+Chillan,Caldera,149820
+Chillan,Copiapo,138120
+Chillan,Los Loros,138120
+Chillan,Huasco,126570
+Chillan,Vallenar,126570
+Chillan,freirina,126570
+Chillan,alto del carmen,126570
+Chillan,el trapiche,126570
+Chillan,La Serena,126570
+Chillan,coquimbo,126570
+Chillan,Ovalle,113020
+Chillan,Illapel,99470
+Chillan,salamanca,99470
+Chillan,Los Vilos,99470
+Chillan,cabildo,99470
+Chillan,la calera,99470
+Chillan,puchuncavi,99470
+Chillan,Nogales,108870
+Chillan,quillota,99470
+Chillan,quilpue,85170
+Chillan,Santiago,68370
+Chillan,buin,68370
+Chillan,paine,68370
+Chillan,casablanca,85170
+Chillan,Valparaiso,85170
+Chillan,algarrobo,81170
+Chillan,talagante,68370
+Chillan,San Antonio,81170
+Chillan,San Felipe,71270
+Chillan,los andes,30100
+Chillan,codegua,30100
+Chillan,Rancagua,30100
+Chillan,machali,30100
+Chillan,Nancagua,31900
+Chillan,rengo,31900
+Chillan,san fernando,31900
+Chillan,santa cruz,31900
+Chillan,Curico,19000
+Chillan,Talca,9500
+Chillan,linares,9500
+Chillan,Chillan,0
+Chillan,concepcion,17200
+Chillan,Talcahuano,17200
+Chillan,Los Angeles,9800
+Chillan,Temuco,30700
+Chillan,pucon,41650
+Chillan,Valdivia,52600
+Chillan,Osorno,59500
+Chillan,frutillar,77400
+Chillan,Puerto Montt,77400
+Chillan,ANCUD,132600
+Chillan,CASTRO,132600
+concepcion,Arica,190170
+concepcion,Iquique,190170
+concepcion,alto hospicio,190170
+concepcion,Tocopilla,179670
+concepcion,Calama,190170
+concepcion,mejillones,167020
+concepcion,Antofagasta,167020
+concepcion,el salvador,167020
+concepcion,diego de almagro,167020
+concepcion,chañaral,167020
+concepcion,Caldera,167020
+concepcion,Copiapo,155320
+concepcion,Los Loros,155320
+concepcion,Huasco,143770
+concepcion,Vallenar,143770
+concepcion,freirina,143770
+concepcion,alto del carmen,143770
+concepcion,el trapiche,143770
+concepcion,La Serena,143770
+concepcion,coquimbo,143770
+concepcion,Ovalle,130220
+concepcion,Illapel,116670
+concepcion,salamanca,116670
+concepcion,Los Vilos,116670
+concepcion,cabildo,116670
+concepcion,la calera,116670
+concepcion,puchuncavi,116670
+concepcion,Nogales,126070
+concepcion,quillota,116670
+concepcion,quilpue,102370
+concepcion,Santiago,85570
+concepcion,buin,85570
+concepcion,paine,85570
+concepcion,casablanca,102370
+concepcion,Valparaiso,102370
+concepcion,algarrobo,98370
+concepcion,talagante,85570
+concepcion,San Antonio,98370
+concepcion,San Felipe,88470
+concepcion,los andes,47300
+concepcion,codegua,47300
+concepcion,Rancagua,47300
+concepcion,machali,47300
+concepcion,Nancagua,49100
+concepcion,rengo,49100
+concepcion,san fernando,49100
+concepcion,santa cruz,49100
+concepcion,Curico,36200
+concepcion,Talca,26700
+concepcion,linares,26700
+concepcion,Chillan,17200
+concepcion,concepcion,0
+concepcion,Talcahuano,0
+concepcion,Los Angeles,27000
+concepcion,Temuco,47900
+concepcion,pucon,58850
+concepcion,Valdivia,69800
+concepcion,Osorno,76700
+concepcion,frutillar,94600
+concepcion,Puerto Montt,94600
+concepcion,ANCUD,149800
+concepcion,CASTRO,149800
+Talcahuano,Arica,190170
+Talcahuano,Iquique,190170
+Talcahuano,alto hospicio,190170
+Talcahuano,Tocopilla,179670
+Talcahuano,Calama,190170
+Talcahuano,mejillones,167020
+Talcahuano,Antofagasta,167020
+Talcahuano,el salvador,167020
+Talcahuano,diego de almagro,167020
+Talcahuano,chañaral,167020
+Talcahuano,Caldera,167020
+Talcahuano,Copiapo,155320
+Talcahuano,Los Loros,155320
+Talcahuano,Huasco,143770
+Talcahuano,Vallenar,143770
+Talcahuano,freirina,143770
+Talcahuano,alto del carmen,143770
+Talcahuano,el trapiche,143770
+Talcahuano,La Serena,143770
+Talcahuano,coquimbo,143770
+Talcahuano,Ovalle,130220
+Talcahuano,Illapel,116670
+Talcahuano,salamanca,116670
+Talcahuano,Los Vilos,116670
+Talcahuano,cabildo,116670
+Talcahuano,la calera,116670
+Talcahuano,puchuncavi,116670
+Talcahuano,Nogales,126070
+Talcahuano,quillota,116670
+Talcahuano,quilpue,102370
+Talcahuano,Santiago,85570
+Talcahuano,buin,85570
+Talcahuano,paine,85570
+Talcahuano,casablanca,102370
+Talcahuano,Valparaiso,102370
+Talcahuano,algarrobo,98370
+Talcahuano,talagante,85570
+Talcahuano,San Antonio,98370
+Talcahuano,San Felipe,88470
+Talcahuano,los andes,47300
+Talcahuano,codegua,47300
+Talcahuano,Rancagua,47300
+Talcahuano,machali,47300
+Talcahuano,Nancagua,49100
+Talcahuano,rengo,49100
+Talcahuano,san fernando,49100
+Talcahuano,santa cruz,49100
+Talcahuano,Curico,36200
+Talcahuano,Talca,26700
+Talcahuano,linares,26700
+Talcahuano,Chillan,17200
+Talcahuano,concepcion,0
+Talcahuano,Talcahuano,0
+Talcahuano,Los Angeles,27000
+Talcahuano,Temuco,47900
+Talcahuano,pucon,58850
+Talcahuano,Valdivia,69800
+Talcahuano,Osorno,76700
+Talcahuano,frutillar,94600
+Talcahuano,Puerto Montt,94600
+Talcahuano,ANCUD,149800
+Talcahuano,CASTRO,149800
+Los Angeles,Arica,182770
+Los Angeles,Iquique,182770
+Los Angeles,alto hospicio,182770
+Los Angeles,Tocopilla,172270
+Los Angeles,Calama,182770
+Los Angeles,mejillones,159620
+Los Angeles,Antofagasta,159620
+Los Angeles,el salvador,159620
+Los Angeles,diego de almagro,159620
+Los Angeles,chañaral,159620
+Los Angeles,Caldera,159620
+Los Angeles,Copiapo,147920
+Los Angeles,Los Loros,147920
+Los Angeles,Huasco,136370
+Los Angeles,Vallenar,136370
+Los Angeles,freirina,136370
+Los Angeles,alto del carmen,136370
+Los Angeles,el trapiche,136370
+Los Angeles,La Serena,136370
+Los Angeles,coquimbo,136370
+Los Angeles,Ovalle,122820
+Los Angeles,Illapel,109270
+Los Angeles,salamanca,109270
+Los Angeles,Los Vilos,109270
+Los Angeles,cabildo,109270
+Los Angeles,la calera,109270
+Los Angeles,puchuncavi,109270
+Los Angeles,Nogales,118670
+Los Angeles,quillota,109270
+Los Angeles,quilpue,94970
+Los Angeles,Santiago,78170
+Los Angeles,buin,78170
+Los Angeles,paine,78170
+Los Angeles,casablanca,94970
+Los Angeles,Valparaiso,94970
+Los Angeles,algarrobo,90970
+Los Angeles,talagante,78170
+Los Angeles,San Antonio,90970
+Los Angeles,San Felipe,81070
+Los Angeles,los andes,39900
+Los Angeles,codegua,39900
+Los Angeles,Rancagua,39900
+Los Angeles,machali,39900
+Los Angeles,Nancagua,41700
+Los Angeles,rengo,41700
+Los Angeles,san fernando,41700
+Los Angeles,santa cruz,41700
+Los Angeles,Curico,28800
+Los Angeles,Talca,19300
+Los Angeles,linares,19300
+Los Angeles,Chillan,9800
+Los Angeles,concepcion,27000
+Los Angeles,Talcahuano,27000
+Los Angeles,Los Angeles,0
+Los Angeles,Temuco,20900
+Los Angeles,pucon,31850
+Los Angeles,Valdivia,42800
+Los Angeles,Osorno,49700
+Los Angeles,frutillar,67600
+Los Angeles,Puerto Montt,67600
+Los Angeles,ANCUD,122800
+Los Angeles,CASTRO,122800
+Temuco,Arica,203670
+Temuco,Iquique,203670
+Temuco,alto hospicio,203670
+Temuco,Tocopilla,193170
+Temuco,Calama,203670
+Temuco,mejillones,180520
+Temuco,Antofagasta,180520
+Temuco,el salvador,180520
+Temuco,diego de almagro,180520
+Temuco,chañaral,180520
+Temuco,Caldera,180520
+Temuco,Copiapo,168820
+Temuco,Los Loros,168820
+Temuco,Huasco,157270
+Temuco,Vallenar,157270
+Temuco,freirina,157270
+Temuco,alto del carmen,157270
+Temuco,el trapiche,157270
+Temuco,La Serena,157270
+Temuco,coquimbo,157270
+Temuco,Ovalle,143720
+Temuco,Illapel,130170
+Temuco,salamanca,130170
+Temuco,Los Vilos,130170
+Temuco,cabildo,130170
+Temuco,la calera,130170
+Temuco,puchuncavi,130170
+Temuco,Nogales,139570
+Temuco,quillota,130170
+Temuco,quilpue,115870
+Temuco,Santiago,99070
+Temuco,buin,99070
+Temuco,paine,99070
+Temuco,casablanca,115870
+Temuco,Valparaiso,115870
+Temuco,algarrobo,111870
+Temuco,talagante,99070
+Temuco,San Antonio,111870
+Temuco,San Felipe,101970
+Temuco,los andes,60800
+Temuco,codegua,60800
+Temuco,Rancagua,60800
+Temuco,machali,60800
+Temuco,Nancagua,62600
+Temuco,rengo,62600
+Temuco,san fernando,62600
+Temuco,santa cruz,62600
+Temuco,Curico,49700
+Temuco,Talca,40200
+Temuco,linares,40200
+Temuco,Chillan,30700
+Temuco,concepcion,47900
+Temuco,Talcahuano,47900
+Temuco,Los Angeles,20900
+Temuco,Temuco,0
+Temuco,pucon,10950
+Temuco,Valdivia,21900
+Temuco,Osorno,28800
+Temuco,frutillar,46700
+Temuco,Puerto Montt,46700
+Temuco,ANCUD,101900
+Temuco,CASTRO,101900
+pucon,Arica,214620
+pucon,Iquique,214620
+pucon,alto hospicio,214620
+pucon,Tocopilla,204120
+pucon,Calama,214620
+pucon,mejillones,191470
+pucon,Antofagasta,191470
+pucon,el salvador,191470
+pucon,diego de almagro,191470
+pucon,chañaral,191470
+pucon,Caldera,191470
+pucon,Copiapo,179770
+pucon,Los Loros,179770
+pucon,Huasco,168220
+pucon,Vallenar,168220
+pucon,freirina,168220
+pucon,alto del carmen,168220
+pucon,el trapiche,168220
+pucon,La Serena,168220
+pucon,coquimbo,168220
+pucon,Ovalle,154670
+pucon,Illapel,141120
+pucon,salamanca,141120
+pucon,Los Vilos,141120
+pucon,cabildo,141120
+pucon,la calera,141120
+pucon,puchuncavi,141120
+pucon,Nogales,150520
+pucon,quillota,141120
+pucon,quilpue,126820
+pucon,Santiago,110020
+pucon,buin,110020
+pucon,paine,110020
+pucon,casablanca,126820
+pucon,Valparaiso,126820
+pucon,algarrobo,122820
+pucon,talagante,110020
+pucon,San Antonio,122820
+pucon,San Felipe,112920
+pucon,los andes,71750
+pucon,codegua,71750
+pucon,Rancagua,71750
+pucon,machali,71750
+pucon,Nancagua,73550
+pucon,rengo,73550
+pucon,san fernando,73550
+pucon,santa cruz,73550
+pucon,Curico,60650
+pucon,Talca,51150
+pucon,linares,51150
+pucon,Chillan,41650
+pucon,concepcion,58850
+pucon,Talcahuano,58850
+pucon,Los Angeles,31850
+pucon,Temuco,10950
+pucon,pucon,10950
+pucon,Valdivia,10950
+pucon,Osorno,17850
+pucon,frutillar,35750
+pucon,Puerto Montt,35750
+pucon,ANCUD,90950
+pucon,CASTRO,90950
+Valdivia,Arica,225570
+Valdivia,Iquique,225570
+Valdivia,alto hospicio,225570
+Valdivia,Tocopilla,215070
+Valdivia,Calama,225570
+Valdivia,mejillones,202420
+Valdivia,Antofagasta,202420
+Valdivia,el salvador,202420
+Valdivia,diego de almagro,202420
+Valdivia,chañaral,202420
+Valdivia,Caldera,202420
+Valdivia,Copiapo,190720
+Valdivia,Los Loros,190720
+Valdivia,Huasco,179170
+Valdivia,Vallenar,179170
+Valdivia,freirina,179170
+Valdivia,alto del carmen,179170
+Valdivia,el trapiche,179170
+Valdivia,La Serena,179170
+Valdivia,coquimbo,179170
+Valdivia,Ovalle,165620
+Valdivia,Illapel,152070
+Valdivia,salamanca,152070
+Valdivia,Los Vilos,152070
+Valdivia,cabildo,152070
+Valdivia,la calera,152070
+Valdivia,puchuncavi,152070
+Valdivia,Nogales,161470
+Valdivia,quillota,152070
+Valdivia,quilpue,137770
+Valdivia,Santiago,120970
+Valdivia,buin,120970
+Valdivia,paine,120970
+Valdivia,casablanca,137770
+Valdivia,Valparaiso,137770
+Valdivia,algarrobo,133770
+Valdivia,talagante,120970
+Valdivia,San Antonio,133770
+Valdivia,San Felipe,123870
+Valdivia,los andes,82700
+Valdivia,codegua,82700
+Valdivia,Rancagua,82700
+Valdivia,machali,82700
+Valdivia,Nancagua,84500
+Valdivia,rengo,84500
+Valdivia,san fernando,84500
+Valdivia,santa cruz,84500
+Valdivia,Curico,71600
+Valdivia,Talca,62100
+Valdivia,linares,62100
+Valdivia,Chillan,52600
+Valdivia,concepcion,69800
+Valdivia,Talcahuano,69800
+Valdivia,Los Angeles,42800
+Valdivia,Temuco,21900
+Valdivia,pucon,10950
+Valdivia,Valdivia,0
+Valdivia,Osorno,6900
+Valdivia,frutillar,24800
+Valdivia,Puerto Montt,24800
+Valdivia,ANCUD,80000
+Valdivia,CASTRO,80000
+Osorno,Arica,232470
+Osorno,Iquique,232470
+Osorno,alto hospicio,232470
+Osorno,Tocopilla,221970
+Osorno,Calama,232470
+Osorno,mejillones,209320
+Osorno,Antofagasta,209320
+Osorno,el salvador,209320
+Osorno,diego de almagro,209320
+Osorno,chañaral,209320
+Osorno,Caldera,209320
+Osorno,Copiapo,197620
+Osorno,Los Loros,197620
+Osorno,Huasco,186070
+Osorno,Vallenar,186070
+Osorno,freirina,186070
+Osorno,alto del carmen,186070
+Osorno,el trapiche,186070
+Osorno,La Serena,186070
+Osorno,coquimbo,186070
+Osorno,Ovalle,172520
+Osorno,Illapel,158970
+Osorno,salamanca,158970
+Osorno,Los Vilos,158970
+Osorno,cabildo,158970
+Osorno,la calera,158970
+Osorno,puchuncavi,158970
+Osorno,Nogales,168370
+Osorno,quillota,158970
+Osorno,quilpue,144670
+Osorno,Santiago,127870
+Osorno,buin,127870
+Osorno,paine,127870
+Osorno,casablanca,144670
+Osorno,Valparaiso,144670
+Osorno,algarrobo,140670
+Osorno,talagante,127870
+Osorno,San Antonio,140670
+Osorno,San Felipe,130770
+Osorno,los andes,89600
+Osorno,codegua,89600
+Osorno,Rancagua,89600
+Osorno,machali,89600
+Osorno,Nancagua,91400
+Osorno,rengo,91400
+Osorno,san fernando,91400
+Osorno,santa cruz,91400
+Osorno,Curico,78500
+Osorno,Talca,69000
+Osorno,linares,69000
+Osorno,Chillan,59500
+Osorno,concepcion,76700
+Osorno,Talcahuano,76700
+Osorno,Los Angeles,49700
+Osorno,Temuco,28800
+Osorno,pucon,17850
+Osorno,Valdivia,6900
+Osorno,Osorno,0
+Osorno,frutillar,17900
+Osorno,Puerto Montt,17900
+Osorno,ANCUD,73100
+Osorno,CASTRO,73100
+frutillar,Arica,199950
+frutillar,Iquique,199950
+frutillar,alto hospicio,199950
+frutillar,Tocopilla,223100
+frutillar,Calama,212550
+frutillar,mejillones,212550
+frutillar,Antofagasta,212550
+frutillar,el salvador,212550
+frutillar,diego de almagro,212550
+frutillar,chañaral,212550
+frutillar,Caldera,212550
+frutillar,Copiapo,189400
+frutillar,Los Loros,189400
+frutillar,Huasco,177700
+frutillar,Vallenar,177700
+frutillar,freirina,177700
+frutillar,alto del carmen,177700
+frutillar,el trapiche,177700
+frutillar,La Serena,177700
+frutillar,coquimbo,177700
+frutillar,Ovalle,169150
+frutillar,Illapel,157600
+frutillar,salamanca,157600
+frutillar,Los Vilos,157600
+frutillar,cabildo,157600
+frutillar,la calera,157600
+frutillar,puchuncavi,157600
+frutillar,Nogales,167000
+frutillar,quillota,157600
+frutillar,quilpue,124000
+frutillar,Santiago,111700
+frutillar,buin,111700
+frutillar,paine,111700
+frutillar,casablanca,124000
+frutillar,Valparaiso,124000
+frutillar,algarrobo,120100
+frutillar,talagante,111700
+frutillar,San Antonio,120100
+frutillar,San Felipe,121100
+frutillar,los andes,103300
+frutillar,codegua,103300
+frutillar,Rancagua,103300
+frutillar,machali,103300
+frutillar,Nancagua,116100
+frutillar,rengo,116100
+frutillar,san fernando,116100
+frutillar,santa cruz,116100
+frutillar,Curico,92200
+frutillar,Talca,90400
+frutillar,linares,90400
+frutillar,Chillan,79300
+frutillar,concepcion,88800
+frutillar,Talcahuano,88800
+frutillar,Los Angeles,69800
+frutillar,Temuco,42800
+frutillar,pucon,32350
+frutillar,Valdivia,21900
+frutillar,Osorno,10800
+frutillar,frutillar,-1
+frutillar,Puerto Montt,-1
+frutillar,ANCUD,55199
+frutillar,CASTRO,55199
+Puerto Montt,Arica,239570
+Puerto Montt,Iquique,239570
+Puerto Montt,alto hospicio,239570
+Puerto Montt,Tocopilla,229070
+Puerto Montt,Calama,250270
+Puerto Montt,mejillones,199950
+Puerto Montt,Antofagasta,199950
+Puerto Montt,el salvador,199950
+Puerto Montt,diego de almagro,199950
+Puerto Montt,chañaral,199950
+Puerto Montt,Caldera,199950
+Puerto Montt,Copiapo,187300
+Puerto Montt,Los Loros,187300
+Puerto Montt,Huasco,178750
+Puerto Montt,Vallenar,178750
+Puerto Montt,freirina,178750
+Puerto Montt,alto del carmen,178750
+Puerto Montt,el trapiche,178750
+Puerto Montt,La Serena,178750
+Puerto Montt,coquimbo,178750
+Puerto Montt,Ovalle,167200
+Puerto Montt,Illapel,153650
+Puerto Montt,salamanca,153650
+Puerto Montt,Los Vilos,153650
+Puerto Montt,cabildo,153650
+Puerto Montt,la calera,153650
+Puerto Montt,puchuncavi,153650
+Puerto Montt,Nogales,163050
+Puerto Montt,quillota,153650
+Puerto Montt,quilpue,123200
+Puerto Montt,Santiago,111900
+Puerto Montt,buin,111900
+Puerto Montt,paine,111900
+Puerto Montt,casablanca,123200
+Puerto Montt,Valparaiso,123200
+Puerto Montt,algarrobo,120300
+Puerto Montt,talagante,111900
+Puerto Montt,San Antonio,120300
+Puerto Montt,San Felipe,121300
+Puerto Montt,los andes,99100
+Puerto Montt,codegua,99100
+Puerto Montt,Rancagua,99100
+Puerto Montt,machali,99100
+Puerto Montt,Nancagua,110200
+Puerto Montt,rengo,110200
+Puerto Montt,san fernando,110200
+Puerto Montt,santa cruz,110200
+Puerto Montt,Curico,97300
+Puerto Montt,Talca,86200
+Puerto Montt,linares,86200
+Puerto Montt,Chillan,76700
+Puerto Montt,concepcion,86200
+Puerto Montt,Talcahuano,86200
+Puerto Montt,Los Angeles,59500
+Puerto Montt,Temuco,39900
+Puerto Montt,pucon,28800
+Puerto Montt,Valdivia,17700
+Puerto Montt,Osorno,6900
+Puerto Montt,frutillar,0
+Puerto Montt,Puerto Montt,0
+Puerto Montt,ANCUD,55200
+Puerto Montt,CASTRO,55200
+ANCUD,Arica,294770
+ANCUD,Iquique,294770
+ANCUD,alto hospicio,294770
+ANCUD,Tocopilla,229070
+ANCUD,Calama,239570
+ANCUD,mejillones,216420
+ANCUD,Antofagasta,216420
+ANCUD,el salvador,216420
+ANCUD,diego de almagro,216420
+ANCUD,chañaral,216420
+ANCUD,Caldera,216420
+ANCUD,Copiapo,204720
+ANCUD,Los Loros,204720
+ANCUD,Huasco,193170
+ANCUD,Vallenar,193170
+ANCUD,freirina,193170
+ANCUD,alto del carmen,193170
+ANCUD,el trapiche,193170
+ANCUD,La Serena,193170
+ANCUD,coquimbo,193170
+ANCUD,Ovalle,179620
+ANCUD,Illapel,166070
+ANCUD,salamanca,166070
+ANCUD,Los Vilos,166070
+ANCUD,cabildo,166070
+ANCUD,la calera,166070
+ANCUD,puchuncavi,166070
+ANCUD,Nogales,175470
+ANCUD,quillota,166070
+ANCUD,quilpue,151770
+ANCUD,Santiago,134970
+ANCUD,buin,134970
+ANCUD,paine,134970
+ANCUD,casablanca,151770
+ANCUD,Valparaiso,151770
+ANCUD,algarrobo,147770
+ANCUD,talagante,134970
+ANCUD,San Antonio,147770
+ANCUD,San Felipe,137870
+ANCUD,los andes,96700
+ANCUD,codegua,96700
+ANCUD,Rancagua,96700
+ANCUD,machali,96700
+ANCUD,Nancagua,98500
+ANCUD,rengo,98500
+ANCUD,san fernando,98500
+ANCUD,santa cruz,98500
+ANCUD,Curico,85600
+ANCUD,Talca,76100
+ANCUD,linares,76100
+ANCUD,Chillan,66600
+ANCUD,concepcion,83800
+ANCUD,Talcahuano,83800
+ANCUD,Los Angeles,56800
+ANCUD,Temuco,35900
+ANCUD,pucon,24950
+ANCUD,Valdivia,14000
+ANCUD,Osorno,7100
+ANCUD,frutillar,0
+ANCUD,Puerto Montt,0
+ANCUD,ANCUD,0
+ANCUD,CASTRO,0
+CASTRO,Arica,294770
+CASTRO,Iquique,294770
+CASTRO,alto hospicio,294770
+CASTRO,Tocopilla,229070
+CASTRO,Calama,239570
+CASTRO,mejillones,216420
+CASTRO,Antofagasta,216420
+CASTRO,el salvador,216420
+CASTRO,diego de almagro,216420
+CASTRO,chañaral,216420
+CASTRO,Caldera,216420
+CASTRO,Copiapo,204720
+CASTRO,Los Loros,204720
+CASTRO,Huasco,193170
+CASTRO,Vallenar,193170
+CASTRO,freirina,193170
+CASTRO,alto del carmen,193170
+CASTRO,el trapiche,193170
+CASTRO,La Serena,193170
+CASTRO,coquimbo,193170
+CASTRO,Ovalle,179620
+CASTRO,Illapel,166070
+CASTRO,salamanca,166070
+CASTRO,Los Vilos,166070
+CASTRO,cabildo,166070
+CASTRO,la calera,166070
+CASTRO,puchuncavi,166070
+CASTRO,Nogales,175470
+CASTRO,quillota,166070
+CASTRO,quilpue,151770
+CASTRO,Santiago,134970
+CASTRO,buin,134970
+CASTRO,paine,134970
+CASTRO,casablanca,151770
+CASTRO,Valparaiso,151770
+CASTRO,algarrobo,147770
+CASTRO,talagante,134970
+CASTRO,San Antonio,147770
+CASTRO,San Felipe,137870
+CASTRO,los andes,96700
+CASTRO,codegua,96700
+CASTRO,Rancagua,96700
+CASTRO,machali,96700
+CASTRO,Nancagua,98500
+CASTRO,rengo,98500
+CASTRO,san fernando,98500
+CASTRO,santa cruz,98500
+CASTRO,Curico,85600
+CASTRO,Talca,76100
+CASTRO,linares,76100
+CASTRO,Chillan,66600
+CASTRO,concepcion,83800
+CASTRO,Talcahuano,83800
+CASTRO,Los Angeles,56800
+CASTRO,Temuco,35900
+CASTRO,pucon,24950
+CASTRO,Valdivia,14000
+CASTRO,Osorno,7100
+CASTRO,frutillar,0
+CASTRO,Puerto Montt,0
+CASTRO,ANCUD,0
+CASTRO,CASTRO,0
+Autopista Antofagasta,Arica,23150
+Autopista Antofagasta,Calama,27170
+Autopista Antofagasta (R1),Arica,12650
+Autopista Antofagasta (R1),Los Loros,0
+peaje antofagasta nuevo,Arica,26950
+peaje antofagasta nuevo,Los Loros,136010
+PUNTA COLORADA,Arica,11700
+PUNTA COLORADA,Los Loros,0
+Algarrobo vallenar TOTORAL,Arica,10500
+puerto viejo,Arica,5700
+Cachiyuyo,Arica,11700
+Trapiche,Arica,8550
+las cardas a ovalle,Arica,11850
+las cardas a ovalle,Los Loros,0
+Totoral,Arica,11550
+Totoral,Los Loros,0
+Tongoy,Arica,13550
+Tongoy,Los Loros,0
+Puerto Oscuro,Arica,13550
+Puerto Oscuro,Los Loros,0
+Pichidangui,Arica,9400
+Pichidangui,Los Loros,0
+Túnel El Melón,Arica,9400
+Túnel El Melón,Los Loros,0
+Las Vegas,Arica,9400
+Las Vegas,Los Loros,0
+Lampa,Arica,2900
+Lampa,Los Loros,136010
+Lo Prado,Arica,8400
+Zapata,Arica,8400
+Melipilla,Arica,12800
+Angostura,Arica,11100
+Lateral Acceso Nancagua,Arica,1800
+Quinta,Arica,11100
+Rio Claro,Arica,9500
+Retiro,Arica,9500
+Agua Amarilla,Arica,17200
+Santa Clara,Arica,9800
+Las Maicas,Arica,9800
+Púa,Arica,11100
+Quepe,Arica,11100
+Lanco,Arica,10800
+La Unión,Arica,6900

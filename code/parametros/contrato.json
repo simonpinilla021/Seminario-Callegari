@@ -1,0 +1,41 @@
+{
+  "version": "2026-10-30-contrato-parametros-v1",
+  "fuentes": {"costos": "costos/parametros_costo_manual.csv", "tarificador": "tarificador/parametros_valor_manual.csv"},
+  "metodos": {"costos": ["tarificador", "propuesto"], "tarificador": ["cotizacion"]},
+  "positivos": ["divisor_flota", "meses_anio", "meses_reposicion", "dias_mes", "km_por_dia", "capacidad_equipos", "n_neumaticos", "n_neumaticos_rampla", "vida_util_km", "rendimiento_kml", "km_hora", "horas_dia"],
+  "unidades": {
+    "CLP/año": {"unidad": "CLP/anio", "moneda": "CLP"},
+    "equipos": {"unidad": "equipos", "moneda": null},
+    "meses": {"unidad": "meses", "moneda": null},
+    "días": {"unidad": "dias", "moneda": null},
+    "km/día": {"unidad": "km/dia", "moneda": null},
+    "USD": {"unidad": "USD", "moneda": "USD"},
+    "CLP/USD": {"unidad": "CLP/USD", "moneda": "CLP/USD"},
+    "CLP": {"unidad": "CLP", "moneda": "CLP"},
+    "$": {"unidad": "CLP", "moneda": "CLP"},
+    "$/L": {"unidad": "CLP/L", "moneda": "CLP"},
+    "$/día": {"unidad": "CLP/dia", "moneda": "CLP"},
+    "$/km": {"unidad": "CLP/km", "moneda": "CLP"},
+    "unidades": {"unidad": "unidades", "moneda": null},
+    "km": {"unidad": "km", "moneda": null},
+    "km/L": {"unidad": "km/L", "moneda": null},
+    "km/h": {"unidad": "km/h", "moneda": null},
+    "h/día": {"unidad": "h/dia", "moneda": null},
+    "L/h": {"unidad": "L/h", "moneda": null},
+    "fracción": {"unidad": "fraccion", "moneda": null},
+    "0/1": {"unidad": "indicador", "moneda": null}
+  },
+  "reglas": {
+    "vigencia": "desde inclusivo, hasta exclusivo; sin solapes por politica/codigo/ambito",
+    "identidad": "familia, metodo, codigo y ambito: nombres iguales no fusionan politicas",
+    "seleccion": "Se conservan los resolutores existentes; no hay nueva prioridad financiera",
+    "registro": "Snapshot administrativo; no es segunda fuente de calculo. Agregar versiones, no borrar evidencia anterior",
+    "confirmacion": "No se infiere de notas heredadas; exige fecha de valoracion, responsable y evidencia",
+    "moneda_dolar": "El simbolo $ del catalogo actual representa CLP en este DW; no es conversion de moneda"
+  },
+  "decisiones_abiertas": [
+    {"id": "valor_camion_reposicion", "estado": "pendiente_empresa", "detalle": "Costos usa USD 124159 por 951.03 CLP/USD; cotizacion usa 121000000 CLP. Mantener ambos hasta decidir politica y vigencia."},
+    {"id": "vigencia_historica", "estado": "pendiente_empresa", "detalle": "1900 no acredita valor economico historico; separar supuesto retrospectivo y serie validada."},
+    {"id": "capacidad_flota", "estado": "pendiente_empresa", "detalle": "Divisores y capacidades necesitan politica y eventual serie temporal; conservar actuales."}
+  ]
+}
