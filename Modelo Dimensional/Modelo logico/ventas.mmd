@@ -1,0 +1,64 @@
+---
+title: Modelo lógico - esquema ventas
+---
+erDiagram
+    COMUN__DIM_FECHA ||--o{ VENTAS__FACT_VIAJE_VENTA : "sk_fecha"
+    DIM_COMUN__DIM_CONDUCTOR ||--o{ VENTAS__FACT_VIAJE_VENTA : "conductor_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ VENTAS__FACT_VIAJE_VENTA : "equipo_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ VENTAS__FACT_VIAJE_VENTA : "rampla_id"
+    DIM_COMUN__DIM_PRODUCTO_VIAJE ||--o{ VENTAS__FACT_VIAJE_VENTA : "producto_id"
+    DIM_COMUN__DIM_SOCIO_NEGOCIO ||--o{ VENTAS__FACT_VIAJE_VENTA : "cliente_id"
+    DIM_COMUN__DIM_SOCIO_NEGOCIO ||--o{ VENTAS__FACT_VIAJE_VENTA : "transportista_id"
+    DIM_COMUN__DIM_TRAMO_COMERCIAL ||--o{ VENTAS__FACT_VIAJE_VENTA : "sit_stretch_id"
+    VENTAS__FACT_VIAJE_VENTA {
+        id nro_viaje PK
+        atributo nro_orden
+        id sk_fecha FK
+        id cliente_id FK
+        id producto_id FK
+        id sit_stretch_id FK
+        id equipo_id FK
+        id rampla_id FK
+        atributo operador_grupo
+        atributo tipo_operador
+        id transportista_id FK
+        atributo conductor_interno
+        atributo es_retorno
+        atributo es_tractoreo
+        atributo estado_viaje
+        medida cantidad
+        medida ingreso
+        medida valor_orden_venta
+        medida precio_cotizado
+        medida valor_facturado
+        atributo facturas
+        medida comision_conductor
+        medida pago_tercero
+        medida pct_pago_tercero
+        medida comision_conductor_observada
+        medida pago_tercero_observado
+        id conductor_id FK
+    }
+    COMUN__DIM_FECHA {
+        id sk_fecha PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_CONDUCTOR {
+        id conductor_id PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_EQUIPO {
+        id equipo_id PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_PRODUCTO_VIAJE {
+        id producto_id PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_SOCIO_NEGOCIO {
+        id socio_id PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_TRAMO_COMERCIAL {
+        id tramo_id PK "tabla de otro esquema"
+    }
+    VISTAS_VENTAS {
+        view dim_cliente
+        view dim_producto_viaje
+        view v_viaje_descriptivo
+    }

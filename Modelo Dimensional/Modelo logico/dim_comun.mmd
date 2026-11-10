@@ -1,0 +1,69 @@
+---
+title: Modelo lógico - esquema dim_comun
+---
+erDiagram
+    DIM_COMUN__DIM_PRODUCTO_VIAJE {
+        id producto_id PK
+        atributo producto
+        atributo control_temperatura_fuente
+        atributo multicarga_fuente
+        atributo viaje_vacio_fuente
+        atributo activo_fuente
+    }
+    DIM_COMUN__DIM_SOCIO_NEGOCIO {
+        id socio_id PK
+        atributo razon_social
+        atributo es_cliente_fuente
+        atributo es_proveedor_fuente
+        atributo forhire_fuente
+        atributo flota_mixta_fuente
+        atributo activo_fuente
+    }
+    DIM_COMUN__ROLES_SOCIO {
+        id socio_id PK
+        id rol PK
+        atributo usado_en_viajes
+        atributo marca_fuente
+    }
+    DIM_COMUN__DIM_EQUIPO {
+        id equipo_id PK
+        atributo codigo
+        atributo patente
+        atributo nombre_fuente
+        atributo categoria_fuente
+        atributo marca
+        atributo modelo
+        atributo anio_fabricacion_fuente
+        atributo es_flota_fuente
+        atributo es_propio_fuente
+        atributo estado_fuente
+        atributo grupo_empresa_fuente
+        atributo centro_costo_id
+        atributo unidad_negocio_id
+        atributo activo_fuente
+    }
+    DIM_COMUN__DIM_CONDUCTOR {
+        id conductor_id PK
+        atributo conductor_origen_id
+        atributo nombre_completo
+        atributo forhire_fuente
+        atributo activo_fuente
+        atributo estado_fuente
+    }
+    DIM_COMUN__DIM_TRAMO_COMERCIAL {
+        id tramo_id PK
+        atributo nombre_fuente
+        medida km_fuente
+        atributo activo_fuente
+    }
+    VISTAS_DIM_COMUN {
+        view dim_fecha
+        view v_dim_cliente
+        view v_dim_equipo
+        view v_dim_otros_equipos
+        view v_dim_proveedor
+        view v_dim_rampla
+        view v_dim_tracto
+        view v_dim_transportista
+        view v_tramo_version_peaje
+    }

@@ -1,0 +1,111 @@
+---
+title: Modelo lógico - esquema ciclos
+---
+erDiagram
+    CICLOS__DIM_CICLO_COMERCIAL ||--o{ CICLOS__FACT_VIAJE_CICLO : "ciclo_comercial"
+    COMUN__DIM_FECHA ||--o{ CICLOS__FACT_VIAJE_CICLO : "sk_fecha"
+    DIM_COMUN__DIM_EQUIPO ||--o{ CICLOS__DIM_CICLO_COMERCIAL : "equipo_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ CICLOS__FACT_VIAJE_CICLO : "equipo_id"
+    DIM_COMUN__DIM_PRODUCTO_VIAJE ||--o{ CICLOS__FACT_VIAJE_CICLO : "producto_id"
+    DIM_COMUN__DIM_PRODUCTO_VIAJE ||--o{ CICLOS__REGLA_RETORNO : "producto_id"
+    DIM_COMUN__DIM_SOCIO_NEGOCIO ||--o{ CICLOS__FACT_VIAJE_CICLO : "cliente_id"
+    DIM_COMUN__DIM_SOCIO_NEGOCIO ||--o{ CICLOS__REGLA_RETORNO : "cliente_id"
+    DIM_COMUN__DIM_TRAMO_COMERCIAL ||--o{ CICLOS__DIM_TRAMO_BASE : "sit_stretch_id"
+    DIM_COMUN__DIM_TRAMO_COMERCIAL ||--o{ CICLOS__FACT_VIAJE_CICLO : "sit_stretch_id"
+    VENTAS__FACT_VIAJE_VENTA ||--o{ CICLOS__FACT_VIAJE_CICLO : "nro_viaje"
+    CICLOS__DIM_CICLO_COMERCIAL {
+        id ciclo_comercial PK
+        id equipo_id FK
+        fecha fecha_inicio
+        fecha fecha_fin
+        atributo dias
+        atributo motivo_apertura
+        atributo motivo_cierre
+        atributo estado
+        atributo viajes
+        atributo viajes_virtuales
+        atributo envios
+        atributo retornos
+        atributo vacios
+        medida km
+        medida km_cargado
+        medida ingreso
+        atributo patron
+        atributo recorrido
+        atributo viaje_principal
+    }
+    CICLOS__DIM_TRAMO_BASE {
+        id sit_stretch_id PK,FK
+        atributo tramo
+        medida km
+        atributo ciudad_origen
+        atributo ciudad_origen_limpia
+        atributo ciudad_destino
+        atributo ciudad_destino_limpia
+        atributo base_origen
+        atributo base_destino
+        atributo tipo_movimiento_base
+    }
+    CICLOS__FACT_VIAJE_CICLO {
+        id id_viaje PK
+        id nro_viaje FK
+        id equipo_id FK
+        atributo orden_procesado
+        id sk_fecha FK
+        id sit_stretch_id FK
+        medida km
+        atributo ciudad_origen_limpia
+        atributo ciudad_destino_limpia
+        atributo base_origen
+        atributo base_destino
+        id cliente_id FK
+        id producto_id FK
+        medida ingreso
+        medida ingreso_por_km
+        atributo tipo_movimiento
+        atributo clasificacion_viaje
+        atributo regla_clasificacion
+        atributo tipo_carga_final
+        atributo calidad_trayectoria
+        atributo es_virtual
+        atributo tipo_virtual
+        id ciclo_comercial FK
+        atributo orden_ciclo_comercial
+        atributo rol_comercial
+    }
+    CICLOS__REGLA_RETORNO {
+        atributo orden
+        atributo rompe_regla
+        id cliente_id FK
+        atributo razon_social
+        atributo carga_estricta
+        id producto_id FK
+        atributo tipo_carga
+        atributo nombre_carga
+    }
+    COMUN__DIM_FECHA {
+        id sk_fecha PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_EQUIPO {
+        id equipo_id PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_PRODUCTO_VIAJE {
+        id producto_id PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_SOCIO_NEGOCIO {
+        id socio_id PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_TRAMO_COMERCIAL {
+        id tramo_id PK "tabla de otro esquema"
+    }
+    VENTAS__FACT_VIAJE_VENTA {
+        id nro_viaje PK "tabla de otro esquema"
+        id sk_fecha FK
+        id cliente_id FK
+        id producto_id FK
+        id sit_stretch_id FK
+        id equipo_id FK
+        id rampla_id FK
+        id transportista_id FK
+        id conductor_id FK
+    }

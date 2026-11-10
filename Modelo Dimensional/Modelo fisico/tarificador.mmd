@@ -1,0 +1,242 @@
+---
+title: Modelo físico - esquema tarificador
+---
+erDiagram
+    TARIFICADOR__DIM_PARAMETRO ||--o{ TARIFICADOR__FACT_PARAMETRO_VALOR : "sk_parametro"
+    TARIFICADOR__FACT_COTIZACION_SERVICIO {
+        bigint nro_viaje PK
+        bigint fecha_documental_id
+        bigint cliente_id
+        bigint equipo_id
+        bigint tramo_id
+        text es_tractoreo
+        float ingreso_estimado
+        text clasificacion
+        bigint escenario_id PK
+        text tipo_carga
+        text version
+        text fuente_sha256
+        text estado_km
+        bool supuesto_rm
+        text texto_tramo
+        bigint n_puntos
+        text c9
+        text c10
+        text c11
+        text c12
+        text c13
+        text b4
+        text b5
+        text b6
+        text b7
+        text n5
+        float rendimiento
+        float i4
+        float costo_presentacion
+        bool evaluable
+        text estado
+        float e10
+        float e11
+        float e12
+        float e13
+        float e14
+        text g4
+        text n4
+        text g5
+        text e7
+        text c21
+        text e8
+        float e5
+        float e6
+        float g7
+        float e22
+        float d22
+        float c22
+        float f22
+        float e15
+        float f15
+        float g6
+        float g8
+        float d27
+        float i5
+        float k5
+        float i6
+        float i7
+        float k15
+        float j8
+        float i8
+        float i9
+        float i10
+        float i11
+        float i12
+        float i13
+        float i14
+        float i15
+        float i16
+        float factor_retorno
+        float subtotal
+        float i17
+        float i18
+        float i19
+        float i20
+        float i21
+        float i22
+        float k10
+        float k11
+        float k12
+        text j8_estado
+        float margen_tarificador
+        float razon_ingreso_cotizacion
+    }
+    TARIFICADOR__CIUDAD_EXCEL_EXACTO {
+        text ciudad PK
+        text clave
+        int indice_columna
+        int fila_distancia
+        bool puede_ser_origen
+        text ciudad_peaje
+        text ciudad_peaje_origen
+    }
+    TARIFICADOR__DIM_PARAMETRO {
+        int sk_parametro PK
+        text codigo
+        text nombre
+        text categoria
+        text unidad
+        text origen_valor
+        text descripcion
+        text regla_calculo
+        text referencia_tarificador
+    }
+    TARIFICADOR__EQUIVALENCIA_LUGAR_TARIFICADOR {
+        text clave_lugar PK
+        text nombre_erp
+        text localidad
+        text region
+        text ciudad_tarificador
+        text ciudad_peaje
+        text metodo
+        text estado
+    }
+    TARIFICADOR__FACT_COTIZACION_SUPUESTO {
+        bigint nro_viaje PK
+        bigint escenario_id PK
+        text supuestos
+    }
+    TARIFICADOR__FACT_DISTANCIA_TARIFICADOR {
+        text origen PK
+        text destino PK
+        float km
+        date vigente_desde PK
+        date vigente_hasta
+        text fuente
+        text fuente_sha256
+    }
+    TARIFICADOR__FACT_PARAMETRO_VALOR {
+        int sk_parametro PK,FK
+        text ambito PK
+        date vigente_desde PK
+        date vigente_hasta
+        float valor
+        text origen PK
+        float monto_base
+        float cantidad_inductor
+        text nota
+        timestamp fecha_registro
+    }
+    TARIFICADOR__FACT_PEAJE_TARIFICADOR {
+        text origen
+        text destino
+        text origen_norm PK
+        text destino_norm PK
+        date vigente_desde PK
+        date vigente_hasta
+        float peaje
+        text nota
+    }
+    TARIFICADOR__FACT_PRECIO_COMBUSTIBLE_TARIFICADOR {
+        date fecha PK
+        int sk_fecha
+        float costo_base
+        float costo_tct
+        float pct_base
+        text origen_pct
+        float recargo
+        float precio_tarificador
+    }
+    TARIFICADOR__FACT_PRECIO_EXCEL_DIA {
+        date fecha
+        bigint fecha_documental_id PK
+        float base_neto
+        float base_ie
+        bigint base_sk_carta
+        bigint base_sk_precio
+        text base_hash_sha256
+        text base_fecha_carta
+        text base_neto_deducido
+        text base_localidad_region
+        text base_origen_precio
+        text base_origen_entrada
+        float base_operacion
+        float base_recuperacion
+        float base_costo_excel
+        float tct_neto
+        float tct_ie
+        bigint tct_sk_carta
+        bigint tct_sk_precio
+        text tct_hash_sha256
+        text tct_fecha_carta
+        text tct_neto_deducido
+        text tct_localidad_region
+        text tct_origen_precio
+        text tct_origen_entrada
+        float tct_operacion
+        float tct_recuperacion
+        float tct_costo_excel
+        float pct_base
+        float pct_tct
+        float colchon
+        float precio_excel
+    }
+    TARIFICADOR__KM_TRAMO_TARIFICADOR {
+        float sit_stretch_id PK
+        text texto_tramo
+        float n_puntos
+        float km_erp
+        text c9
+        text c10
+        text c11
+        text c12
+        text c13
+        float km_pierna_1
+        float km_pierna_2
+        float km_pierna_3
+        bool destino_4_sin_km
+        float intermedios
+        float km_ida
+        float km_ida_vuelta
+        text estado
+        text motivo
+        date vigente_desde PK
+        date vigente_hasta
+    }
+    TARIFICADOR__PEAJE_EXCEL_EXACTO {
+        int fila PK
+        text origen
+        text destino PK
+        int indice_destino
+        float peaje
+        text estado
+    }
+    TARIFICADOR__VERSION_EXCEL_EXACTO {
+        text version PK
+        text fuente_sha256
+        date vigente_desde
+        date vigente_hasta
+        json parametros
+        json manifiesto
+    }
+    VISTAS_TARIFICADOR {
+        view v_parametro_vigente
+        view v_parametro_vigente_candidatos
+    }

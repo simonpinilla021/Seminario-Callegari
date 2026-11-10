@@ -1,0 +1,229 @@
+---
+title: Modelo físico - esquema combustible
+---
+erDiagram
+    COMUN__DIM_FECHA ||--o{ COMBUSTIBLE__FACT_CARGA_COMBUSTIBLE : "sk_fecha"
+    COMUN__DIM_FECHA ||--o{ COMBUSTIBLE__FACT_VIAJE_COMBUSTIBLE : "sk_fecha_inicio"
+    COMBUSTIBLE__DIM_GENERACION_CAMION {
+        bigint equipo_id PK
+        text codigo
+        text modelo
+        bigint anio
+        text generacion
+        float max_cargado
+        float max_vacio
+    }
+    COMBUSTIBLE__FACT_BLOQUE_CERTIFICACION {
+        bigint equipo_id PK
+        bigint bloque PK
+        timestamp t_ini
+        timestamp t_fin
+        float litros
+        float km_viajes
+        float km_c
+        float km_v
+        float centro
+        float km_odo
+        text calidad
+        float sis_ini
+        float sis_fin
+        float gps_ini
+        float gps_fin
+        float km_sis
+        float km_gps
+        text grado_lectura
+        text fuente_km_cert
+        float km_cert
+        float razon_cert
+        float rend_cert
+        float rend_max
+        text motivo
+        bool certificado
+    }
+    COMBUSTIBLE__FACT_BLOQUE_COMBUSTIBLE {
+        bigint equipo_id PK
+        int bloque PK
+        float litros
+        int paradas
+        int cargas_ruta
+        timestamp inicio
+        timestamp termino
+        float odometro_ini
+        float odometro_fin
+        float razon_habitual_camion
+        int bloques_unidos
+        int viajes
+        float km_viajes
+        float km_cargados
+        float km_vacios
+        float km_local
+        float dias
+        float km_odometro
+        float razon_odo_viajes
+        float razon_relativa
+        float rendimiento_odo
+        float rendimiento_viajes
+        text calidad
+        int anio
+        float litros_atp
+        float litros_cop
+        float litros_otro
+        float litros_sin_precio
+        float precio_medio_litro
+        float costo_combustible
+    }
+    COMBUSTIBLE__FACT_CARGA_COMBUSTIBLE {
+        bigint id_carga PK
+        bigint equipo_id
+        timestamp fecha
+        int sk_fecha FK
+        float litros
+        text oilsupplier
+        bigint producto_id
+        bigint parada
+        int bloque
+        int bloque_original
+        text es_llenado_corte
+        float precio_litro_aplicado
+        float monto
+        int sk_carta_precio
+    }
+    COMBUSTIBLE__FACT_RENDIMIENTO_CAMION_MES {
+        bigint equipo_id PK
+        text mes PK
+        float litros_mes
+        bigint bloques
+        float litros_cert
+        float km_cert
+        bigint bloques_cert
+        float pct_litros_cert
+        float rendimiento
+        bool publicado
+        float mediana_12m
+        float desvio
+        bool alerta
+    }
+    COMBUSTIBLE__FACT_VIAJE_COMBUSTIBLE {
+        bigint sk_viaje_comb PK
+        bigint nro_viaje
+        text id_viaje_fuente
+        bigint equipo_id
+        float orden_cadena
+        int sk_fecha_inicio FK
+        text tramo_texto
+        float km_tramo
+        text tipo_movimiento
+        text vacio_fisico
+        text grupo_carga
+        text es_virtual
+        text relacion_base
+        float litros_bloque
+        float fraccion_cubierta
+        float fraccion_cubierta_ok
+        float litros_estimado
+        float litros_asignados
+        text metodo_asignacion
+        float costo_bloque
+        float costo_estimado
+        float costo_combustible
+        float precio_litro_aplicado
+        bigint id_calculo
+        float fraccion_certificada
+        text fuente_ficha
+        float l100_teorico
+        float litros_teoricos
+        float razon_real_teorico
+        float rendimiento_viaje
+        float rendimiento_max
+        text motivo_bloque
+        text estado_litros
+        float litros_margen
+        float ajuste_litros
+        float costo_combustible_margen
+        float costo_ajuste
+        float precio_litro_margen
+    }
+    COMBUSTIBLE__FACT_VIAJE_COMBUSTIBLE_TARIFICADOR {
+        bigint nro_viaje PK
+        date fecha
+        bigint equipo_id
+        text codigo_camion
+        text grupo_equipo
+        bigint sk_tramo
+        float km_tramo
+        float precio_base
+        float precio_ruta
+        float pct_base
+        float recargo_precio
+        float precio_ponderado
+        float rendimiento_camion
+        int bloques_rendimiento
+        timestamp fecha_ultimo_bloque
+        float litros_rend_camion
+        float costo_rend_camion
+        float rendimiento_tarificador
+        float litros_tarificador
+        float costo_tarificador
+        text estado
+    }
+    COMBUSTIBLE__PARAM_FICHA_CONSUMO {
+        bigint equipo_id PK
+        text mes PK
+        text generacion
+        bigint bloques_cert_12m
+        text fuente
+        float l100_cargado
+        float l100_vacio
+        float kml_cargado
+        float kml_vacio
+        date vigente_desde
+        date vigente_hasta
+    }
+    COMBUSTIBLE__PARAMETRO_CERTIFICACION {
+        text parametro PK
+        date vigente_desde PK
+        date vigente_hasta
+        json valor
+        text fuente_sha256
+    }
+    COMBUSTIBLE__PARAMETRO_RENDIMIENTO_TARIFICADOR {
+        text parametro PK
+        int valor
+        date vigente_desde PK
+        date vigente_hasta
+    }
+    COMBUSTIBLE__PUENTE_VIAJE_BLOQUE {
+        bigint equipo_id
+        int bloque
+        text id_viaje_fuente
+        bigint nro_viaje
+        text es_virtual
+        float fraccion_viaje
+        float km_tramo_parte
+        float km_ponderados
+        float km_ponderados_bloque
+        float litros_asignados
+        float costo_asignado
+        text calidad_bloque
+        bigint id_calculo
+    }
+    COMBUSTIBLE__REF_REGRESION_CAMION {
+        bigint equipo_id PK
+        text codigo
+        text modelo
+        int bloques
+        float l100_cargado
+        float error_cargado
+        float l100_vacio
+        float error_vacio
+        float peso_cargado_vs_vacio
+        float km_cargado_pct
+    }
+    COMUN__DIM_FECHA {
+        int sk_fecha PK "tabla de otro esquema"
+    }
+    VISTAS_COMBUSTIBLE {
+        view v_alerta_certificacion_mensual
+        view v_litros_no_asignables
+        view v_rendimiento_tarificador_certificado
+    }

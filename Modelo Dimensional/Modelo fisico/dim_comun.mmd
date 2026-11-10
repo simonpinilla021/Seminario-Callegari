@@ -1,0 +1,84 @@
+---
+title: Modelo físico - esquema dim_comun
+---
+erDiagram
+    DIM_COMUN__DIM_PRODUCTO_VIAJE {
+        bigint producto_id PK
+        text producto
+        text control_temperatura_fuente
+        text multicarga_fuente
+        text viaje_vacio_fuente
+        text activo_fuente
+        text actualizado_fuente
+        text extraccion_id
+        text fuente_sha256
+    }
+    DIM_COMUN__DIM_SOCIO_NEGOCIO {
+        bigint socio_id PK
+        text razon_social
+        text es_cliente_fuente
+        text es_proveedor_fuente
+        text forhire_fuente
+        text flota_mixta_fuente
+        text activo_fuente
+        text actualizado_fuente
+        text extraccion_id
+        text fuente_sha256
+    }
+    DIM_COMUN__ROLES_SOCIO {
+        bigint socio_id PK
+        text rol PK
+        bool usado_en_viajes
+        text marca_fuente
+    }
+    DIM_COMUN__DIM_EQUIPO {
+        bigint equipo_id PK
+        text codigo
+        text patente
+        text nombre_fuente
+        text categoria_fuente
+        text marca
+        text modelo
+        text anio_fabricacion_fuente
+        text es_flota_fuente
+        text es_propio_fuente
+        text estado_fuente
+        text grupo_empresa_fuente
+        bigint centro_costo_id
+        bigint unidad_negocio_id
+        text activo_fuente
+        text actualizado_fuente
+        text extraccion_id
+        text fuente_sha256
+    }
+    DIM_COMUN__DIM_CONDUCTOR {
+        bigint conductor_id PK
+        bigint conductor_origen_id
+        text nombre_completo
+        text forhire_fuente
+        text activo_fuente
+        text estado_fuente
+        text actualizado_fuente
+        text extraccion_id
+        text fuente_sha256
+    }
+    DIM_COMUN__DIM_TRAMO_COMERCIAL {
+        bigint tramo_id PK
+        text nombre_fuente
+        float km_fuente
+        text activo_fuente
+        text actualizado_fuente
+        text extraccion_id
+        text fuente_sha256
+    }
+    VISTAS_DIM_COMUN {
+        view dim_fecha
+        view v_dim_cliente
+        view v_dim_equipo
+        view v_dim_otros_equipos
+        view v_dim_proveedor
+        view v_dim_rampla
+        view v_dim_tracto
+        view v_dim_transportista
+        view v_tramo_version_peaje
+    }

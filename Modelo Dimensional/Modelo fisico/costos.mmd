@@ -1,0 +1,116 @@
+---
+title: Modelo físico - esquema costos
+---
+erDiagram
+    COMUN__DIM_FECHA ||--o{ COSTOS__FACT_CONTABILIDAD_MENSUAL : "sk_fecha_mes"
+    COMUN__DIM_FECHA ||--o{ COSTOS__FACT_VIAJE_COSTO_INDIRECTO : "sk_fecha_inicio"
+    COSTOS__DIM_CUENTA_CONTABLE ||--o{ COSTOS__FACT_CONTABILIDAD_MENSUAL : "sk_cuenta"
+    COSTOS__FACT_VIAJE_COSTO_INDIRECTO {
+        bigint nro_viaje PK
+        text metodo PK
+        int sk_fecha_inicio FK
+        bigint sit_stretch_id
+        bigint equipo_id
+        bigint rampla_id
+        text operador
+        text es_flota_propia
+        text es_tractoreo
+        text usa_rampla_callegari
+        float km_tramo
+        float dias_viaje
+        float costo_fijo_asignado
+        float cf_flota
+        float cf_rampla
+        float cf_estructura
+        float cf_directo_fleteros
+        float reposicion_asignada
+        float costo_neumatico_asignado
+        float costo_indirecto_total
+        float tasa_costo_fijo_aplicada
+        float tasa_reposicion_aplicada
+        float tasa_neumatico_aplicada
+        float km_por_dia_aplicado
+        text estado_costo_indirecto
+    }
+    COSTOS__DIM_CENTRO_COSTO {
+        bigint c_activity_id PK
+        text nombre
+        text bolsa
+        text rol
+        text origen
+    }
+    COSTOS__DIM_CUENTA_CONTABLE {
+        int sk_cuenta PK
+        text codigo
+        text nombre
+        text tipo
+        text linea_eerr
+        text nombre_linea_eerr
+        text clase_tarificador
+        text clase_real
+        text inductor
+        text origen_clasificacion
+        text nota
+    }
+    COSTOS__FACT_ABSORCION_VIAJE {
+        text id_viaje PK
+        text bolsa PK
+        bigint nro_viaje
+        bool es_virtual
+        int sk_fecha
+        text mes
+        float dias
+        float cuota
+        float monto
+        text estado
+    }
+    COSTOS__FACT_CAPACIDAD_BOLSA {
+        int anio PK
+        text bolsa PK
+        numeric monto_bolsa
+        numeric capacidad_dias
+        numeric cuota_media
+        numeric dias_usados
+        numeric absorbido
+        numeric capacidad_ociosa
+        numeric pct_absorbido
+    }
+    COSTOS__FACT_CONTABILIDAD_MENSUAL {
+        int sk_fecha_mes FK
+        int anio
+        int mes
+        int sk_cuenta FK
+        bigint unidad_negocio_id
+        bigint equipo_id
+        text es_un_fleteros
+        bigint c_activity_id
+        numeric monto
+        int n_lineas
+        text bolsa
+    }
+    COSTOS__PARAMETRO_COSTO {
+        text parametro PK
+        text metodo PK
+        text ambito PK
+        numeric valor
+        text unidad
+        date vigente_desde PK
+        date vigente_hasta
+        text parametro_padre
+        text origen
+        text fuente_detalle
+        numeric monto_base
+        numeric cantidad_inductor
+        text nota
+    }
+    COMUN__DIM_FECHA {
+        int sk_fecha PK "tabla de otro esquema"
+    }
+    VISTAS_COSTOS {
+        view v_cobertura_referencias_mensual
+        view v_puente_absorcion_total
+        view v_ref_centro_contable
+        view v_ref_unidad_negocio
+        view v_referencias_contabilidad
+        view v_reglas_centro_costo
+    }

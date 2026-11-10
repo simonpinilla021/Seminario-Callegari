@@ -1,0 +1,74 @@
+---
+title: Modelo físico - esquema ciclos
+---
+erDiagram
+    CICLOS__DIM_CICLO_COMERCIAL {
+        text ciclo_comercial PK
+        bigint equipo_id
+        date fecha_inicio
+        date fecha_fin
+        int dias
+        text motivo_apertura
+        text motivo_cierre
+        text estado
+        int viajes
+        int viajes_virtuales
+        int envios
+        int retornos
+        int vacios
+        float km
+        float km_cargado
+        float ingreso
+        text patron
+        text recorrido
+        text viaje_principal
+    }
+    CICLOS__DIM_TRAMO_BASE {
+        bigint sit_stretch_id PK
+        text tramo
+        float km
+        text ciudad_origen
+        text ciudad_origen_limpia
+        text ciudad_destino
+        text ciudad_destino_limpia
+        text base_origen
+        text base_destino
+        text tipo_movimiento_base
+    }
+    CICLOS__FACT_VIAJE_CICLO {
+        text id_viaje PK
+        bigint nro_viaje
+        bigint equipo_id
+        int orden_procesado
+        int sk_fecha
+        bigint sit_stretch_id
+        float km
+        text ciudad_origen_limpia
+        text ciudad_destino_limpia
+        text base_origen
+        text base_destino
+        bigint cliente_id
+        bigint producto_id
+        float ingreso
+        float ingreso_por_km
+        text tipo_movimiento
+        text clasificacion_viaje
+        text regla_clasificacion
+        text tipo_carga_final
+        text calidad_trayectoria
+        text es_virtual
+        text tipo_virtual
+        text ciclo_comercial
+        int orden_ciclo_comercial
+        text rol_comercial
+    }
+    CICLOS__REGLA_RETORNO {
+        int orden
+        text rompe_regla
+        bigint cliente_id
+        text razon_social
+        text carga_estricta
+        bigint producto_id
+        text tipo_carga
+        text nombre_carga
+    }

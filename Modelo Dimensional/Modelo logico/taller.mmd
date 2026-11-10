@@ -1,0 +1,168 @@
+---
+title: Modelo lógico - esquema taller
+---
+erDiagram
+    COMUN__DIM_FECHA ||--o{ TALLER__FACT_CONSUMO_REPUESTO : "sk_fecha"
+    COMUN__DIM_FECHA ||--o{ TALLER__FACT_ESTADO_DIARIO_EQUIPO : "sk_fecha"
+    COMUN__DIM_FECHA ||--o{ TALLER__FACT_ORDEN_TALLER : "sk_fecha_apertura"
+    COMUN__DIM_FECHA ||--o{ TALLER__FACT_ORDEN_TALLER : "sk_fecha_cierre"
+    DIM_COMUN__DIM_EQUIPO ||--o{ TALLER__FACT_CONSUMO_REPUESTO : "equipo_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ TALLER__FACT_ESTADO_DIARIO_EQUIPO : "equipo_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ TALLER__FACT_ORDEN_TALLER : "equipo_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ TALLER__INTERVALO_PAUTA_EQUIPO : "equipo_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ TALLER__REF_EQUIPO_TALLER : "equipo_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ TALLER__RESUMEN_ACTIVIDAD_EQUIPO : "equipo_id"
+    DIM_COMUN__DIM_PRODUCTO_VIAJE ||--o{ TALLER__DIM_REPUESTO : "producto_id"
+    DIM_COMUN__DIM_PRODUCTO_VIAJE ||--o{ TALLER__FACT_CONSUMO_REPUESTO : "producto_id"
+    TALLER__DIM_TIPO_INTERVENCION ||--o{ TALLER__FACT_ORDEN_TALLER : "tipo_id"
+    TALLER__FACT_ORDEN_TALLER ||--o{ TALLER__FACT_CONSUMO_REPUESTO : "sit_workorder_id"
+    TALLER__REF_EQUIPO_TALLER {
+        id equipo_id PK,FK
+        atributo codigo
+        atributo patente
+        atributo nombre
+        atributo categoria
+        atributo tipo_equipo
+        atributo grupo_empresa
+        atributo es_propio
+        atributo es_flota
+        atributo es_camion
+        atributo estado_actual
+        atributo marca
+        atributo modelo
+        atributo anio_fabricacion
+        medida rendimiento_ficha
+        atributo centro_costo_id
+        atributo unidad_negocio_id
+        atributo fuente
+    }
+    TALLER__RESUMEN_ACTIVIDAD_EQUIPO {
+        id equipo_id PK,FK
+        fecha primera_actividad
+        fecha ultima_actividad
+        fecha fecha_alta
+        fecha fecha_baja
+    }
+    TALLER__DIM_PAUTA {
+        id pauta_id PK
+        atributo nombre
+        medida intervalo
+        atributo unidad
+        atributo fuente
+    }
+    TALLER__DIM_REPUESTO {
+        id producto_id PK,FK
+        atributo codigo
+        atributo descripcion
+        atributo categoria
+        atributo unidad
+        medida costo_estandar
+        atributo es_combustible
+        atributo es_mantencion
+    }
+    TALLER__DIM_TIPO_INTERVENCION {
+        id tipo_id PK
+        atributo c_doctype_id
+        atributo tipo_documento
+        atributo tipo_mant
+        atributo area_taller
+        atributo tipo_medicion
+        atributo es_sanitizacion
+    }
+    TALLER__FACT_CONSUMO_REPUESTO {
+        id consumo_id PK
+        atributo nro_documento
+        id sk_fecha FK
+        fecha fecha
+        id producto_id FK
+        atributo bodega_id
+        atributo ubicacion_id
+        atributo centro_costo_id
+        atributo unidad_negocio_id
+        id sit_workorder_id FK
+        id equipo_id FK
+        atributo via_imputacion
+        medida cantidad
+        medida costo
+        medida odometro
+    }
+    TALLER__FACT_ESTADO_DIARIO_EQUIPO {
+        id equipo_id PK,FK
+        id sk_fecha PK,FK
+        atributo en_flota
+        medida horas_taller
+        medida horas_preventiva
+        medida horas_correctiva
+        medida horas_cierre_real
+        atributo en_taller
+        atributo en_taller_cierre_real
+        atributo tipo_taller
+        atributo con_viaje
+        atributo viaje_estimado
+        atributo dia_disponible
+        atributo dia_trabajado
+        atributo viajes_iniciados
+        medida km_viajes
+        medida ingreso_viajes
+    }
+    TALLER__FACT_ORDEN_TALLER {
+        id sit_workorder_id PK
+        atributo nro_ot
+        id tipo_id FK
+        id equipo_id FK
+        atributo pauta_id
+        atributo pauta_siguiente_id
+        atributo seqno
+        atributo solicitud_id
+        atributo nro_solicitud
+        id sk_fecha_apertura FK
+        id sk_fecha_cierre FK
+        fecha fecha_hora_apertura
+        fecha fecha_hora_cierre
+        atributo flag_cierre_imputado
+        atributo docstatus
+        medida horas_ciclo
+        medida odometro
+        medida horometro
+        atributo prioridad
+        medida costo_repuestos
+        atributo lineas_consumo
+    }
+    TALLER__INTERVALO_PAUTA_EQUIPO {
+        id equipo_id PK,FK
+        id pauta_id PK
+        medida intervalo
+        atributo unidad
+        atributo fuente
+    }
+    TALLER__PARAMETRO_TALLER {
+        id parametro PK
+        atributo valor
+        atributo unidad
+        atributo nota
+    }
+    COMUN__DIM_FECHA {
+        id sk_fecha PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_EQUIPO {
+        id equipo_id PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_PRODUCTO_VIAJE {
+        id producto_id PK "tabla de otro esquema"
+    }
+    VISTAS_TALLER {
+        view dim_equipo
+        view v_calidad_ot
+        view v_calidad_ot_mensual
+        view v_cobertura_imputacion_mensual
+        view v_cobertura_preventiva
+        view v_cobertura_preventiva_mensual
+        view v_consumo_km_mensual
+        view v_costo_mantencion_mensual
+        view v_cumplimiento_preventivo
+        view v_flota_mensual
+        view v_ot_abiertas
+        view v_ot_mantencion
+        view v_reincidencia_correctiva
+        view v_rendimiento_combustible
+    }

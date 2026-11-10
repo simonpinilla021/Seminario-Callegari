@@ -1,0 +1,259 @@
+---
+title: Modelo lógico - esquema combustible
+---
+erDiagram
+    COMUN__DIM_FECHA ||--o{ COMBUSTIBLE__FACT_CARGA_COMBUSTIBLE : "sk_fecha"
+    COMUN__DIM_FECHA ||--o{ COMBUSTIBLE__FACT_VIAJE_COMBUSTIBLE : "sk_fecha_inicio"
+    DIM_COMUN__DIM_EQUIPO ||--o{ COMBUSTIBLE__DIM_GENERACION_CAMION : "equipo_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ COMBUSTIBLE__FACT_BLOQUE_CERTIFICACION : "equipo_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ COMBUSTIBLE__FACT_BLOQUE_COMBUSTIBLE : "equipo_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ COMBUSTIBLE__FACT_CARGA_COMBUSTIBLE : "equipo_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ COMBUSTIBLE__FACT_RENDIMIENTO_CAMION_MES : "equipo_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ COMBUSTIBLE__FACT_VIAJE_COMBUSTIBLE : "equipo_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ COMBUSTIBLE__FACT_VIAJE_COMBUSTIBLE_TARIFICADOR : "equipo_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ COMBUSTIBLE__PARAM_FICHA_CONSUMO : "equipo_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ COMBUSTIBLE__PUENTE_VIAJE_BLOQUE : "equipo_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ COMBUSTIBLE__REF_REGRESION_CAMION : "equipo_id"
+    DIM_COMUN__DIM_PRODUCTO_VIAJE ||--o{ COMBUSTIBLE__FACT_CARGA_COMBUSTIBLE : "producto_id"
+    VENTAS__FACT_VIAJE_VENTA ||--o{ COMBUSTIBLE__FACT_VIAJE_COMBUSTIBLE : "nro_viaje"
+    VENTAS__FACT_VIAJE_VENTA ||--o{ COMBUSTIBLE__FACT_VIAJE_COMBUSTIBLE_TARIFICADOR : "nro_viaje"
+    VENTAS__FACT_VIAJE_VENTA ||--o{ COMBUSTIBLE__PUENTE_VIAJE_BLOQUE : "nro_viaje"
+    COMBUSTIBLE__DIM_GENERACION_CAMION {
+        id equipo_id PK,FK
+        atributo codigo
+        atributo modelo
+        atributo anio
+        atributo generacion
+        medida max_cargado
+        medida max_vacio
+    }
+    COMBUSTIBLE__FACT_BLOQUE_CERTIFICACION {
+        id equipo_id PK,FK
+        id bloque PK
+        fecha t_ini
+        fecha t_fin
+        medida litros
+        medida km_viajes
+        medida km_c
+        medida km_v
+        medida centro
+        medida km_odo
+        atributo calidad
+        medida sis_ini
+        medida sis_fin
+        medida gps_ini
+        medida gps_fin
+        medida km_sis
+        medida km_gps
+        atributo grado_lectura
+        atributo fuente_km_cert
+        medida km_cert
+        medida razon_cert
+        medida rend_cert
+        medida rend_max
+        atributo motivo
+        atributo certificado
+    }
+    COMBUSTIBLE__FACT_BLOQUE_COMBUSTIBLE {
+        id equipo_id PK,FK
+        id bloque PK
+        medida litros
+        atributo paradas
+        atributo cargas_ruta
+        fecha inicio
+        fecha termino
+        medida odometro_ini
+        medida odometro_fin
+        medida razon_habitual_camion
+        atributo bloques_unidos
+        atributo viajes
+        medida km_viajes
+        medida km_cargados
+        medida km_vacios
+        medida km_local
+        medida dias
+        medida km_odometro
+        medida razon_odo_viajes
+        medida razon_relativa
+        medida rendimiento_odo
+        medida rendimiento_viajes
+        atributo calidad
+        atributo anio
+        medida litros_atp
+        medida litros_cop
+        medida litros_otro
+        medida litros_sin_precio
+        medida precio_medio_litro
+        medida costo_combustible
+    }
+    COMBUSTIBLE__FACT_CARGA_COMBUSTIBLE {
+        id id_carga PK
+        id equipo_id FK
+        fecha fecha
+        id sk_fecha FK
+        medida litros
+        atributo oilsupplier
+        id producto_id FK
+        atributo parada
+        atributo bloque
+        atributo bloque_original
+        atributo es_llenado_corte
+        medida precio_litro_aplicado
+        medida monto
+        atributo sk_carta_precio
+    }
+    COMBUSTIBLE__FACT_RENDIMIENTO_CAMION_MES {
+        id equipo_id PK,FK
+        id mes PK
+        medida litros_mes
+        atributo bloques
+        medida litros_cert
+        medida km_cert
+        atributo bloques_cert
+        medida pct_litros_cert
+        medida rendimiento
+        atributo publicado
+        medida mediana_12m
+        medida desvio
+        atributo alerta
+    }
+    COMBUSTIBLE__FACT_VIAJE_COMBUSTIBLE {
+        id sk_viaje_comb PK
+        id nro_viaje FK
+        atributo id_viaje_fuente
+        id equipo_id FK
+        medida orden_cadena
+        id sk_fecha_inicio FK
+        atributo tramo_texto
+        medida km_tramo
+        atributo tipo_movimiento
+        atributo vacio_fisico
+        atributo grupo_carga
+        atributo es_virtual
+        atributo relacion_base
+        medida litros_bloque
+        medida fraccion_cubierta
+        medida fraccion_cubierta_ok
+        medida litros_estimado
+        medida litros_asignados
+        atributo metodo_asignacion
+        medida costo_bloque
+        medida costo_estimado
+        medida costo_combustible
+        medida precio_litro_aplicado
+        atributo id_calculo
+        medida fraccion_certificada
+        atributo fuente_ficha
+        medida l100_teorico
+        medida litros_teoricos
+        medida razon_real_teorico
+        medida rendimiento_viaje
+        medida rendimiento_max
+        atributo motivo_bloque
+        atributo estado_litros
+        medida litros_margen
+        medida ajuste_litros
+        medida costo_combustible_margen
+        medida costo_ajuste
+        medida precio_litro_margen
+    }
+    COMBUSTIBLE__FACT_VIAJE_COMBUSTIBLE_TARIFICADOR {
+        id nro_viaje PK,FK
+        fecha fecha
+        id equipo_id FK
+        atributo codigo_camion
+        atributo grupo_equipo
+        atributo sk_tramo
+        medida km_tramo
+        medida precio_base
+        medida precio_ruta
+        medida pct_base
+        medida recargo_precio
+        medida precio_ponderado
+        medida rendimiento_camion
+        atributo bloques_rendimiento
+        fecha fecha_ultimo_bloque
+        medida litros_rend_camion
+        medida costo_rend_camion
+        medida rendimiento_tarificador
+        medida litros_tarificador
+        medida costo_tarificador
+        atributo estado
+    }
+    COMBUSTIBLE__PARAM_FICHA_CONSUMO {
+        id equipo_id PK,FK
+        id mes PK
+        atributo generacion
+        atributo bloques_cert_12m
+        atributo fuente
+        medida l100_cargado
+        medida l100_vacio
+        medida kml_cargado
+        medida kml_vacio
+        fecha vigente_desde
+        fecha vigente_hasta
+    }
+    COMBUSTIBLE__PARAMETRO_CERTIFICACION {
+        id parametro PK
+        id vigente_desde PK
+        fecha vigente_hasta
+        atributo valor
+    }
+    COMBUSTIBLE__PARAMETRO_RENDIMIENTO_TARIFICADOR {
+        id parametro PK
+        atributo valor
+        id vigente_desde PK
+        fecha vigente_hasta
+    }
+    COMBUSTIBLE__PUENTE_VIAJE_BLOQUE {
+        id equipo_id FK
+        atributo bloque
+        atributo id_viaje_fuente
+        id nro_viaje FK
+        atributo es_virtual
+        medida fraccion_viaje
+        medida km_tramo_parte
+        medida km_ponderados
+        medida km_ponderados_bloque
+        medida litros_asignados
+        medida costo_asignado
+        atributo calidad_bloque
+        atributo id_calculo
+    }
+    COMBUSTIBLE__REF_REGRESION_CAMION {
+        id equipo_id PK,FK
+        atributo codigo
+        atributo modelo
+        atributo bloques
+        medida l100_cargado
+        medida error_cargado
+        medida l100_vacio
+        medida error_vacio
+        medida peso_cargado_vs_vacio
+        medida km_cargado_pct
+    }
+    COMUN__DIM_FECHA {
+        id sk_fecha PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_EQUIPO {
+        id equipo_id PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_PRODUCTO_VIAJE {
+        id producto_id PK "tabla de otro esquema"
+    }
+    VENTAS__FACT_VIAJE_VENTA {
+        id nro_viaje PK "tabla de otro esquema"
+        id sk_fecha FK
+        id cliente_id FK
+        id producto_id FK
+        id sit_stretch_id FK
+        id equipo_id FK
+        id rampla_id FK
+        id transportista_id FK
+        id conductor_id FK
+    }
+    VISTAS_COMBUSTIBLE {
+        view v_alerta_certificacion_mensual
+        view v_litros_no_asignables
+        view v_rendimiento_tarificador_certificado
+    }

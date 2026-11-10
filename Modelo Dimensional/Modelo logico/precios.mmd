@@ -1,0 +1,97 @@
+---
+title: Modelo lógico - esquema precios
+---
+erDiagram
+    PRECIOS__DIM_CARTA_PRECIO ||--o{ PRECIOS__CARTA_ARCHIVO : "sk_carta"
+    PRECIOS__DIM_CARTA_PRECIO ||--o{ PRECIOS__FACT_COSTO_COMBUSTIBLE_VIGENTE : "sk_carta"
+    PRECIOS__DIM_CARTA_PRECIO ||--o{ PRECIOS__FACT_PRECIO_COMBUSTIBLE : "sk_carta"
+    PRECIOS__DIM_FUENTE_PRECIO ||--o{ PRECIOS__DIM_CARTA_PRECIO : "sk_fuente"
+    PRECIOS__DIM_FUENTE_PRECIO ||--o{ PRECIOS__FACT_COSTO_COMBUSTIBLE_VIGENTE : "sk_fuente"
+    PRECIOS__DIM_FUENTE_PRECIO ||--o{ PRECIOS__FACT_PRECIO_COMBUSTIBLE : "sk_fuente"
+    PRECIOS__FACT_PRECIO_COMBUSTIBLE ||--o{ PRECIOS__FACT_COSTO_COMBUSTIBLE_VIGENTE : "sk_precio"
+    PRECIOS__CARTA_ARCHIVO {
+        id archivo PK
+        atributo hash_sha256
+        atributo tipo
+        id sk_carta FK
+        atributo estado
+        atributo motivo
+        atributo remitente
+        fecha fecha_hora_correo
+        atributo asunto
+        atributo message_id
+    }
+    PRECIOS__DIM_CARTA_PRECIO {
+        id sk_carta PK
+        atributo id_carta
+        id sk_fuente FK
+        atributo nro_carta
+        fecha fecha_emision
+        atributo hora_emision
+        fecha fecha_vigencia
+        fecha fecha_hora_correo
+        atributo destinatarios
+        atributo copias
+        atributo es_rectificacion
+        atributo anulada
+        atributo reemplazada_por
+        medida ie_fijo
+        medida ie_variable
+        medida ie_total
+        atributo archivo
+        atributo hash_sha256
+    }
+    PRECIOS__DIM_FUENTE_PRECIO {
+        id sk_fuente PK
+        atributo fuente
+        atributo oilsupplier
+        atributo descripcion
+    }
+    PRECIOS__FACT_COSTO_COMBUSTIBLE_VIGENTE {
+        id sk_fuente PK,FK
+        id vigente_desde PK
+        fecha vigente_hasta
+        id sk_carta FK
+        id sk_precio FK
+        atributo origen_precio
+        atributo localidad_region
+        medida volumen_camion
+        medida neto
+        medida ie_carta
+        medida ie_aplicado
+        atributo ie_corregido
+        medida pct_recuperacion_ie
+        medida precio_facturado
+        medida desembolso_neto_iva
+        medida costo_real
+    }
+    PRECIOS__FACT_PRECIO_COMBUSTIBLE {
+        id sk_precio PK
+        id sk_carta FK
+        id sk_fuente FK
+        atributo localidad_region
+        atributo solicitante
+        atributo producto
+        medida volumen_camion
+        medida neto
+        atributo neto_deducido
+        medida fepp
+        medida monto_afecto
+        medida iva
+        medida ie
+        medida precio_final
+        atributo es_base
+        atributo es_elegida
+        atributo es_tct_historico
+    }
+    PRECIOS__PARAMETRO_PRECIO {
+        id clave PK
+        medida valor
+        id vigente_desde PK
+        fecha vigente_hasta
+        atributo fuente
+        atributo nota
+    }
+    VISTAS_PRECIOS {
+        view v_costo_combustible_dia
+    }

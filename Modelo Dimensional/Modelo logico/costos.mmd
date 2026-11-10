@@ -1,0 +1,140 @@
+---
+title: Modelo lógico - esquema costos
+---
+erDiagram
+    COMUN__DIM_FECHA ||--o{ COSTOS__FACT_ABSORCION_VIAJE : "sk_fecha"
+    COMUN__DIM_FECHA ||--o{ COSTOS__FACT_CONTABILIDAD_MENSUAL : "sk_fecha_mes"
+    COMUN__DIM_FECHA ||--o{ COSTOS__FACT_VIAJE_COSTO_INDIRECTO : "sk_fecha_inicio"
+    COSTOS__DIM_CUENTA_CONTABLE ||--o{ COSTOS__FACT_CONTABILIDAD_MENSUAL : "sk_cuenta"
+    DIM_COMUN__DIM_EQUIPO ||--o{ COSTOS__FACT_CONTABILIDAD_MENSUAL : "equipo_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ COSTOS__FACT_VIAJE_COSTO_INDIRECTO : "equipo_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ COSTOS__FACT_VIAJE_COSTO_INDIRECTO : "rampla_id"
+    DIM_COMUN__DIM_TRAMO_COMERCIAL ||--o{ COSTOS__FACT_VIAJE_COSTO_INDIRECTO : "sit_stretch_id"
+    VENTAS__FACT_VIAJE_VENTA ||--o{ COSTOS__FACT_ABSORCION_VIAJE : "nro_viaje"
+    VENTAS__FACT_VIAJE_VENTA ||--o{ COSTOS__FACT_VIAJE_COSTO_INDIRECTO : "nro_viaje"
+    COSTOS__FACT_VIAJE_COSTO_INDIRECTO {
+        id nro_viaje PK,FK
+        id metodo PK
+        id sk_fecha_inicio FK
+        id sit_stretch_id FK
+        id equipo_id FK
+        id rampla_id FK
+        atributo operador
+        atributo es_flota_propia
+        atributo es_tractoreo
+        atributo usa_rampla_callegari
+        medida km_tramo
+        medida dias_viaje
+        medida costo_fijo_asignado
+        medida cf_flota
+        medida cf_rampla
+        medida cf_estructura
+        medida cf_directo_fleteros
+        medida reposicion_asignada
+        medida costo_neumatico_asignado
+        medida costo_indirecto_total
+        medida tasa_costo_fijo_aplicada
+        medida tasa_reposicion_aplicada
+        medida tasa_neumatico_aplicada
+        medida km_por_dia_aplicado
+        atributo estado_costo_indirecto
+    }
+    COSTOS__DIM_CENTRO_COSTO {
+        id c_activity_id PK
+        atributo nombre
+        atributo bolsa
+        atributo rol
+        atributo origen
+    }
+    COSTOS__DIM_CUENTA_CONTABLE {
+        id sk_cuenta PK
+        atributo codigo
+        atributo nombre
+        atributo tipo
+        atributo linea_eerr
+        atributo nombre_linea_eerr
+        atributo clase_tarificador
+        atributo clase_real
+        atributo inductor
+        atributo origen_clasificacion
+        atributo nota
+    }
+    COSTOS__FACT_ABSORCION_VIAJE {
+        id id_viaje PK
+        id bolsa PK
+        id nro_viaje FK
+        atributo es_virtual
+        id sk_fecha FK
+        atributo mes
+        medida dias
+        medida cuota
+        medida monto
+        atributo estado
+    }
+    COSTOS__FACT_CAPACIDAD_BOLSA {
+        id anio PK
+        id bolsa PK
+        medida monto_bolsa
+        medida capacidad_dias
+        medida cuota_media
+        medida dias_usados
+        medida absorbido
+        medida capacidad_ociosa
+        medida pct_absorbido
+    }
+    COSTOS__FACT_CONTABILIDAD_MENSUAL {
+        id sk_fecha_mes FK
+        atributo anio
+        atributo mes
+        id sk_cuenta FK
+        atributo unidad_negocio_id
+        id equipo_id FK
+        atributo es_un_fleteros
+        atributo c_activity_id
+        medida monto
+        atributo n_lineas
+        atributo bolsa
+    }
+    COSTOS__PARAMETRO_COSTO {
+        id parametro PK
+        id metodo PK
+        id ambito PK
+        medida valor
+        atributo unidad
+        id vigente_desde PK
+        fecha vigente_hasta
+        atributo parametro_padre
+        atributo origen
+        atributo fuente_detalle
+        medida monto_base
+        medida cantidad_inductor
+        atributo nota
+    }
+    COMUN__DIM_FECHA {
+        id sk_fecha PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_EQUIPO {
+        id equipo_id PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_TRAMO_COMERCIAL {
+        id tramo_id PK "tabla de otro esquema"
+    }
+    VENTAS__FACT_VIAJE_VENTA {
+        id nro_viaje PK "tabla de otro esquema"
+        id sk_fecha FK
+        id cliente_id FK
+        id producto_id FK
+        id sit_stretch_id FK
+        id equipo_id FK
+        id rampla_id FK
+        id transportista_id FK
+        id conductor_id FK
+    }
+    VISTAS_COSTOS {
+        view v_cobertura_referencias_mensual
+        view v_puente_absorcion_total
+        view v_ref_centro_contable
+        view v_ref_unidad_negocio
+        view v_referencias_contabilidad
+        view v_reglas_centro_costo
+    }
