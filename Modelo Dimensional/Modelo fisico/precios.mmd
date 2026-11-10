@@ -1,0 +1,97 @@
+---
+title: Modelo físico - esquema precios
+---
+erDiagram
+    PRECIOS__DIM_CARTA_PRECIO ||--o{ PRECIOS__CARTA_ARCHIVO : "sk_carta"
+    PRECIOS__DIM_CARTA_PRECIO ||--o{ PRECIOS__FACT_COSTO_COMBUSTIBLE_VIGENTE : "sk_carta"
+    PRECIOS__DIM_CARTA_PRECIO ||--o{ PRECIOS__FACT_PRECIO_COMBUSTIBLE : "sk_carta"
+    PRECIOS__DIM_FUENTE_PRECIO ||--o{ PRECIOS__DIM_CARTA_PRECIO : "sk_fuente"
+    PRECIOS__DIM_FUENTE_PRECIO ||--o{ PRECIOS__FACT_COSTO_COMBUSTIBLE_VIGENTE : "sk_fuente"
+    PRECIOS__DIM_FUENTE_PRECIO ||--o{ PRECIOS__FACT_PRECIO_COMBUSTIBLE : "sk_fuente"
+    PRECIOS__FACT_PRECIO_COMBUSTIBLE ||--o{ PRECIOS__FACT_COSTO_COMBUSTIBLE_VIGENTE : "sk_precio"
+    PRECIOS__CARTA_ARCHIVO {
+        text archivo PK
+        text hash_sha256
+        text tipo
+        int sk_carta FK
+        text estado
+        text motivo
+        text remitente
+        timestamp fecha_hora_correo
+        text asunto
+        text message_id
+    }
+    PRECIOS__DIM_CARTA_PRECIO {
+        int sk_carta PK
+        text id_carta
+        int sk_fuente FK
+        text nro_carta
+        date fecha_emision
+        time hora_emision
+        date fecha_vigencia
+        timestamp fecha_hora_correo
+        text destinatarios
+        int copias
+        text es_rectificacion
+        text anulada
+        text reemplazada_por
+        numeric ie_fijo
+        numeric ie_variable
+        numeric ie_total
+        text archivo
+        text hash_sha256
+    }
+    PRECIOS__DIM_FUENTE_PRECIO {
+        int sk_fuente PK
+        text fuente
+        text oilsupplier
+        text descripcion
+    }
+    PRECIOS__FACT_COSTO_COMBUSTIBLE_VIGENTE {
+        int sk_fuente PK,FK
+        date vigente_desde PK
+        date vigente_hasta
+        int sk_carta FK
+        int sk_precio FK
+        text origen_precio
+        text localidad_region
+        numeric volumen_camion
+        numeric neto
+        numeric ie_carta
+        numeric ie_aplicado
+        text ie_corregido
+        numeric pct_recuperacion_ie
+        numeric precio_facturado
+        numeric desembolso_neto_iva
+        numeric costo_real
+    }
+    PRECIOS__FACT_PRECIO_COMBUSTIBLE {
+        int sk_precio PK
+        int sk_carta FK
+        int sk_fuente FK
+        text localidad_region
+        text solicitante
+        text producto
+        numeric volumen_camion
+        numeric neto
+        text neto_deducido
+        numeric fepp
+        numeric monto_afecto
+        numeric iva
+        numeric ie
+        numeric precio_final
+        text es_base
+        text es_elegida
+        text es_tct_historico
+    }
+    PRECIOS__PARAMETRO_PRECIO {
+        text clave PK
+        numeric valor
+        date vigente_desde PK
+        date vigente_hasta
+        text fuente
+        text nota
+    }
+    VISTAS_PRECIOS {
+        view v_costo_combustible_dia
+    }

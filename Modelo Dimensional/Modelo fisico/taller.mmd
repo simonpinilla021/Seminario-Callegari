@@ -1,0 +1,147 @@
+---
+title: Modelo físico - esquema taller
+---
+erDiagram
+    TALLER__DIM_TIPO_INTERVENCION ||--o{ TALLER__FACT_ORDEN_TALLER : "tipo_id"
+    TALLER__REF_EQUIPO_TALLER {
+        bigint equipo_id PK
+        text codigo
+        text patente
+        text nombre
+        text categoria
+        text tipo_equipo
+        text grupo_empresa
+        text es_propio
+        text es_flota
+        text es_camion
+        text estado_actual
+        text marca
+        text modelo
+        int anio_fabricacion
+        float rendimiento_ficha
+        bigint centro_costo_id
+        bigint unidad_negocio_id
+        text fuente
+        timestamp fecha_carga
+    }
+    TALLER__RESUMEN_ACTIVIDAD_EQUIPO {
+        bigint equipo_id PK
+        date primera_actividad
+        date ultima_actividad
+        date fecha_alta
+        date fecha_baja
+    }
+    TALLER__DIM_PAUTA {
+        bigint pauta_id PK
+        text nombre
+        float intervalo
+        text unidad
+        text fuente
+    }
+    TALLER__DIM_REPUESTO {
+        bigint producto_id PK
+        text codigo
+        text descripcion
+        text categoria
+        text unidad
+        float costo_estandar
+        text es_combustible
+        text es_mantencion
+    }
+    TALLER__DIM_TIPO_INTERVENCION {
+        int tipo_id PK
+        bigint c_doctype_id
+        text tipo_documento
+        text tipo_mant
+        text area_taller
+        text tipo_medicion
+        text es_sanitizacion
+    }
+    TALLER__FACT_CONSUMO_REPUESTO {
+        bigint consumo_id PK
+        text nro_documento
+        int sk_fecha
+        date fecha
+        bigint producto_id
+        bigint bodega_id
+        bigint ubicacion_id
+        bigint centro_costo_id
+        bigint unidad_negocio_id
+        bigint sit_workorder_id
+        bigint equipo_id
+        text via_imputacion
+        float cantidad
+        float costo
+        float odometro
+    }
+    TALLER__FACT_ESTADO_DIARIO_EQUIPO {
+        bigint equipo_id PK
+        int sk_fecha PK
+        int en_flota
+        float horas_taller
+        float horas_preventiva
+        float horas_correctiva
+        float horas_cierre_real
+        int en_taller
+        int en_taller_cierre_real
+        text tipo_taller
+        int con_viaje
+        int viaje_estimado
+        int dia_disponible
+        int dia_trabajado
+        int viajes_iniciados
+        float km_viajes
+        float ingreso_viajes
+    }
+    TALLER__FACT_ORDEN_TALLER {
+        bigint sit_workorder_id PK
+        text nro_ot
+        int tipo_id FK
+        bigint equipo_id
+        bigint pauta_id
+        bigint pauta_siguiente_id
+        int seqno
+        bigint solicitud_id
+        text nro_solicitud
+        int sk_fecha_apertura
+        int sk_fecha_cierre
+        timestamp fecha_hora_apertura
+        timestamp fecha_hora_cierre
+        text flag_cierre_imputado
+        text docstatus
+        float horas_ciclo
+        float odometro
+        float horometro
+        text prioridad
+        float costo_repuestos
+        int lineas_consumo
+    }
+    TALLER__INTERVALO_PAUTA_EQUIPO {
+        bigint equipo_id PK
+        bigint pauta_id PK
+        float intervalo
+        text unidad
+        text fuente
+    }
+    TALLER__PARAMETRO_TALLER {
+        text parametro PK
+        text valor
+        text unidad
+        text nota
+    }
+    VISTAS_TALLER {
+        view dim_equipo
+        view v_calidad_ot
+        view v_calidad_ot_mensual
+        view v_cobertura_imputacion_mensual
+        view v_cobertura_preventiva
+        view v_cobertura_preventiva_mensual
+        view v_consumo_km_mensual
+        view v_costo_mantencion_mensual
+        view v_cumplimiento_preventivo
+        view v_flota_mensual
+        view v_ot_abiertas
+        view v_ot_mantencion
+        view v_reincidencia_correctiva
+        view v_rendimiento_combustible
+    }

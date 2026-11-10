@@ -1,0 +1,269 @@
+---
+title: Modelo lógico - esquema tarificador
+---
+erDiagram
+    COMUN__DIM_FECHA ||--o{ TARIFICADOR__FACT_COTIZACION_SERVICIO : "fecha_documental_id"
+    COMUN__DIM_FECHA ||--o{ TARIFICADOR__FACT_PRECIO_COMBUSTIBLE_TARIFICADOR : "sk_fecha"
+    COMUN__DIM_FECHA ||--o{ TARIFICADOR__FACT_PRECIO_EXCEL_DIA : "fecha_documental_id"
+    DIM_COMUN__DIM_EQUIPO ||--o{ TARIFICADOR__FACT_COTIZACION_SERVICIO : "equipo_id"
+    DIM_COMUN__DIM_SOCIO_NEGOCIO ||--o{ TARIFICADOR__FACT_COTIZACION_SERVICIO : "cliente_id"
+    DIM_COMUN__DIM_TRAMO_COMERCIAL ||--o{ TARIFICADOR__FACT_COTIZACION_SERVICIO : "tramo_id"
+    DIM_COMUN__DIM_TRAMO_COMERCIAL ||--o{ TARIFICADOR__KM_TRAMO_TARIFICADOR : "sit_stretch_id"
+    TARIFICADOR__DIM_PARAMETRO ||--o{ TARIFICADOR__FACT_PARAMETRO_VALOR : "sk_parametro"
+    VENTAS__FACT_VIAJE_VENTA ||--o{ TARIFICADOR__FACT_COTIZACION_SERVICIO : "nro_viaje"
+    VENTAS__FACT_VIAJE_VENTA ||--o{ TARIFICADOR__FACT_COTIZACION_SUPUESTO : "nro_viaje"
+    TARIFICADOR__FACT_COTIZACION_SERVICIO {
+        id nro_viaje PK,FK
+        id fecha_documental_id FK
+        id cliente_id FK
+        id equipo_id FK
+        id tramo_id FK
+        atributo es_tractoreo
+        medida ingreso_estimado
+        atributo clasificacion
+        id escenario_id PK
+        atributo tipo_carga
+        atributo estado_km
+        atributo supuesto_rm
+        atributo texto_tramo
+        atributo n_puntos
+        atributo c9
+        atributo c10
+        atributo c11
+        atributo c12
+        atributo c13
+        atributo b4
+        atributo b5
+        atributo b6
+        atributo b7
+        atributo n5
+        medida rendimiento
+        medida i4
+        medida costo_presentacion
+        atributo evaluable
+        atributo estado
+        medida e10
+        medida e11
+        medida e12
+        medida e13
+        medida e14
+        atributo g4
+        atributo n4
+        atributo g5
+        atributo e7
+        atributo c21
+        atributo e8
+        medida e5
+        medida e6
+        medida g7
+        medida e22
+        medida d22
+        medida c22
+        medida f22
+        medida e15
+        medida f15
+        medida g6
+        medida g8
+        medida d27
+        medida i5
+        medida k5
+        medida i6
+        medida i7
+        medida k15
+        medida j8
+        medida i8
+        medida i9
+        medida i10
+        medida i11
+        medida i12
+        medida i13
+        medida i14
+        medida i15
+        medida i16
+        medida factor_retorno
+        medida subtotal
+        medida i17
+        medida i18
+        medida i19
+        medida i20
+        medida i21
+        medida i22
+        medida k10
+        medida k11
+        medida k12
+        atributo j8_estado
+        medida margen_tarificador
+        medida razon_ingreso_cotizacion
+    }
+    TARIFICADOR__CIUDAD_EXCEL_EXACTO {
+        id ciudad PK
+        atributo clave
+        atributo indice_columna
+        atributo fila_distancia
+        atributo puede_ser_origen
+        atributo ciudad_peaje
+        atributo ciudad_peaje_origen
+    }
+    TARIFICADOR__DIM_PARAMETRO {
+        id sk_parametro PK
+        atributo codigo
+        atributo nombre
+        atributo categoria
+        atributo unidad
+        atributo origen_valor
+        atributo descripcion
+        atributo regla_calculo
+        atributo referencia_tarificador
+    }
+    TARIFICADOR__EQUIVALENCIA_LUGAR_TARIFICADOR {
+        id clave_lugar PK
+        atributo nombre_erp
+        atributo localidad
+        atributo region
+        atributo ciudad_tarificador
+        atributo ciudad_peaje
+        atributo metodo
+        atributo estado
+    }
+    TARIFICADOR__FACT_COTIZACION_SUPUESTO {
+        id nro_viaje PK,FK
+        id escenario_id PK
+        atributo supuestos
+    }
+    TARIFICADOR__FACT_DISTANCIA_TARIFICADOR {
+        id origen PK
+        id destino PK
+        medida km
+        id vigente_desde PK
+        fecha vigente_hasta
+        atributo fuente
+    }
+    TARIFICADOR__FACT_PARAMETRO_VALOR {
+        id sk_parametro PK,FK
+        id ambito PK
+        id vigente_desde PK
+        fecha vigente_hasta
+        medida valor
+        id origen PK
+        medida monto_base
+        medida cantidad_inductor
+        atributo nota
+        fecha fecha_registro
+    }
+    TARIFICADOR__FACT_PEAJE_TARIFICADOR {
+        atributo origen
+        atributo destino
+        id origen_norm PK
+        id destino_norm PK
+        id vigente_desde PK
+        fecha vigente_hasta
+        medida peaje
+        atributo nota
+    }
+    TARIFICADOR__FACT_PRECIO_COMBUSTIBLE_TARIFICADOR {
+        id fecha PK
+        id sk_fecha FK
+        medida costo_base
+        medida costo_tct
+        medida pct_base
+        atributo origen_pct
+        medida recargo
+        medida precio_tarificador
+    }
+    TARIFICADOR__FACT_PRECIO_EXCEL_DIA {
+        fecha fecha
+        id fecha_documental_id PK,FK
+        medida base_neto
+        medida base_ie
+        atributo base_sk_carta
+        atributo base_sk_precio
+        atributo base_hash_sha256
+        atributo base_fecha_carta
+        atributo base_neto_deducido
+        atributo base_localidad_region
+        atributo base_origen_precio
+        atributo base_origen_entrada
+        medida base_operacion
+        medida base_recuperacion
+        medida base_costo_excel
+        medida tct_neto
+        medida tct_ie
+        atributo tct_sk_carta
+        atributo tct_sk_precio
+        atributo tct_hash_sha256
+        atributo tct_fecha_carta
+        atributo tct_neto_deducido
+        atributo tct_localidad_region
+        atributo tct_origen_precio
+        atributo tct_origen_entrada
+        medida tct_operacion
+        medida tct_recuperacion
+        medida tct_costo_excel
+        medida pct_base
+        medida pct_tct
+        medida colchon
+        medida precio_excel
+    }
+    TARIFICADOR__KM_TRAMO_TARIFICADOR {
+        id sit_stretch_id PK,FK
+        atributo texto_tramo
+        medida n_puntos
+        medida km_erp
+        atributo c9
+        atributo c10
+        atributo c11
+        atributo c12
+        atributo c13
+        medida km_pierna_1
+        medida km_pierna_2
+        medida km_pierna_3
+        atributo destino_4_sin_km
+        medida intermedios
+        medida km_ida
+        medida km_ida_vuelta
+        atributo estado
+        atributo motivo
+        id vigente_desde PK
+        fecha vigente_hasta
+    }
+    TARIFICADOR__PEAJE_EXCEL_EXACTO {
+        id fila PK
+        atributo origen
+        id destino PK
+        atributo indice_destino
+        medida peaje
+        atributo estado
+    }
+    TARIFICADOR__VERSION_EXCEL_EXACTO {
+        fecha vigente_desde
+        fecha vigente_hasta
+        atributo parametros
+        atributo manifiesto
+    }
+    COMUN__DIM_FECHA {
+        id sk_fecha PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_EQUIPO {
+        id equipo_id PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_SOCIO_NEGOCIO {
+        id socio_id PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_TRAMO_COMERCIAL {
+        id tramo_id PK "tabla de otro esquema"
+    }
+    VENTAS__FACT_VIAJE_VENTA {
+        id nro_viaje PK "tabla de otro esquema"
+        id sk_fecha FK
+        id cliente_id FK
+        id producto_id FK
+        id sit_stretch_id FK
+        id equipo_id FK
+        id rampla_id FK
+        id transportista_id FK
+        id conductor_id FK
+    }
+    VISTAS_TARIFICADOR {
+        view v_parametro_vigente
+        view v_parametro_vigente_candidatos
+    }

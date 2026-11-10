@@ -1,0 +1,30 @@
+---
+title: Modelo lógico - esquema comun
+---
+erDiagram
+    COMUN__DIM_FECHA {
+        id sk_fecha PK
+        fecha fecha
+        atributo anio
+        atributo mes
+        atributo dia
+        atributo dia_semana
+        atributo nombre_dia
+        atributo es_fin_de_semana
+    }
+    COMUN__REGISTRO_CARGA {
+        id id PK
+        atributo area
+        atributo version_script
+        atributo fecha_cambio
+        atributo detalle
+    }
+    COMUN__REGISTRO_EJECUCION {
+        id id PK
+        fecha fecha
+        atributo manifiesto
+    }
+    VISTAS_COMUN {
+        view v_fact_viaje
+        view v_margen_viaje
+    }

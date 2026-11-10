@@ -1,0 +1,38 @@
+---
+title: Modelo físico - esquema ventas
+---
+erDiagram
+    VENTAS__FACT_VIAJE_VENTA {
+        bigint nro_viaje PK
+        text nro_orden
+        int sk_fecha
+        bigint cliente_id
+        bigint producto_id
+        bigint sit_stretch_id
+        bigint equipo_id
+        bigint rampla_id
+        text operador_grupo
+        text tipo_operador
+        bigint transportista_id
+        text conductor_interno
+        text es_retorno
+        text es_tractoreo
+        text estado_viaje
+        float cantidad
+        float ingreso
+        float valor_orden_venta
+        float precio_cotizado
+        float valor_facturado
+        int facturas
+        float comision_conductor
+        float pago_tercero
+        float pct_pago_tercero
+        float comision_conductor_observada
+        float pago_tercero_observado
+        bigint conductor_id
+    }
+    VISTAS_VENTAS {
+        view dim_cliente
+        view dim_producto_viaje
+        view v_viaje_descriptivo
+    }

@@ -1,0 +1,210 @@
+---
+title: Modelo físico - esquema peajes
+---
+erDiagram
+    COMUN__DIM_FECHA ||--o{ PEAJES__FACT_VIAJE_PEAJE : "sk_fecha_inicio"
+    PEAJES__DIM_CONDICION_TARIFA ||--o{ PEAJES__FACT_TARIFA_PEAJE : "sk_condicion"
+    PEAJES__DIM_DOCUMENTO_TARIFA ||--o{ PEAJES__FACT_TARIFA_PEAJE : "sk_documento"
+    PEAJES__DIM_LUGAR ||--o{ PEAJES__DIM_SEGMENTO_RUTA : "sk_lugar_desde"
+    PEAJES__DIM_LUGAR ||--o{ PEAJES__DIM_SEGMENTO_RUTA : "sk_lugar_hasta"
+    PEAJES__DIM_LUGAR ||--o{ PEAJES__DIM_TRAMO : "sk_lugar_destino"
+    PEAJES__DIM_LUGAR ||--o{ PEAJES__DIM_TRAMO : "sk_lugar_origen"
+    PEAJES__DIM_PLAZA_PEAJE ||--o{ PEAJES__FACT_TARIFA_PEAJE : "sk_plaza"
+    PEAJES__DIM_SEGMENTO_RUTA ||--o{ PEAJES__FACT_PEAJE_REFERENCIAL_PLAZA : "sk_segmento"
+    PEAJES__DIM_SEGMENTO_RUTA ||--o{ PEAJES__PUENTE_SEGMENTO_PLAZA : "sk_segmento"
+    PEAJES__DIM_SEGMENTO_RUTA ||--o{ PEAJES__PUENTE_TRAMO_SEGMENTO : "sk_segmento"
+    PEAJES__DIM_TRAMO ||--o{ PEAJES__FACT_PEAJE_REFERENCIAL_PLAZA : "sk_tramo"
+    PEAJES__DIM_TRAMO ||--o{ PEAJES__FACT_PEAJE_REFERENCIAL_TRAMO : "sk_tramo"
+    PEAJES__DIM_TRAMO ||--o{ PEAJES__FACT_VIAJE_PEAJE : "sk_tramo"
+    PEAJES__DIM_TRAMO ||--o{ PEAJES__PUENTE_TRAMO_SEGMENTO : "sk_tramo"
+    PEAJES__DIM_TRAMO {
+        bigint sk_tramo PK
+        bigint sit_stretch_id
+        text texto_tramo
+        bigint sk_lugar_origen FK
+        bigint sk_lugar_destino FK
+        int n_puntos
+        float km_erp
+        float km_ruta_calculada
+        text es_recorrido
+        text isactive
+        text estado_deteccion
+        date vigente_desde
+        date vigente_hasta
+        text es_actual
+    }
+    PEAJES__FACT_VIAJE_PEAJE {
+        bigint sk_viaje PK
+        bigint nro_viaje
+        bigint nro_hoja_ruta
+        bigint sk_tramo FK
+        int sk_fecha_inicio FK
+        text es_retorno
+        float peaje_referencial
+        float peaje_referencial_maximo
+        text estado_peaje
+    }
+    PEAJES__AJUSTE_SEGMENTO_PLAZA {
+        text desde_clave
+        text hasta_clave
+        text id_plaza
+        text accion
+        float km_desde_inicio
+        date vigente_desde
+        text motivo
+    }
+    PEAJES__DIM_CONDICION_TARIFA {
+        bigint sk_condicion PK
+        text categoria_vehicular
+        text horario
+        text modalidad
+        text aplica_a_flota
+    }
+    PEAJES__DIM_DOCUMENTO_TARIFA {
+        bigint sk_documento PK
+        text url
+        text documento
+        text seccion
+        int anio
+        text archivo_local
+        text sha256
+        bigint bytes
+        timestamp fecha_descarga
+    }
+    PEAJES__DIM_LUGAR {
+        bigint sk_lugar PK
+        text clave_lugar
+        text nombre_erp
+        text localidad
+        text sublugar
+        text region
+        float latitud
+        float longitud
+        text _precision_
+        text fuente
+        text es_base
+        text es_lugar
+    }
+    PEAJES__DIM_PLAZA_PEAJE {
+        bigint sk_plaza PK
+        text id_plaza
+        text clave_plaza_script
+        text plaza_id_mop
+        text nombre_plaza
+        text codigo_portico
+        text concesion
+        text documento_tarifa
+        text tipo_red
+        text cobro_por_recorrido
+        text ruta
+        float km_ruta
+        text region
+        float latitud
+        float longitud
+        text fuente_coordenadas
+        text posicion
+        text tipo_cobro
+        text fuente_registro
+        text estado
+        date vigente_desde
+        date vigente_hasta
+        text es_actual
+    }
+    PEAJES__DIM_SEGMENTO_RUTA {
+        bigint sk_segmento PK
+        text desde_clave
+        text hasta_clave
+        bigint sk_lugar_desde FK
+        bigint sk_lugar_hasta FK
+        float km_ruta
+        float horas_ruta
+        text estado
+        text version_ruta
+    }
+    PEAJES__FACT_PEAJE_REFERENCIAL_PLAZA {
+        bigint sk_tramo PK,FK
+        date vigente_desde PK
+        date vigente_hasta
+        int orden_segmento PK
+        bigint sk_segmento FK
+        int orden_en_segmento PK
+        text id_plaza
+        float tarifa_base_plaza
+        float tarifa_maxima_plaza
+        text categoria_base
+        text horario_base
+        text modalidad_base
+        text cobrada
+        float peaje_base
+        float peaje_maximo
+        text motivo
+    }
+    PEAJES__FACT_PEAJE_REFERENCIAL_TRAMO {
+        bigint sk_tramo PK,FK
+        date vigente_desde PK
+        date vigente_hasta
+        float peaje_base
+        float peaje_maximo
+        int cantidad_plazas
+        int plazas_sin_tarifa
+        text estado
+    }
+    PEAJES__FACT_TARIFA_PEAJE {
+        bigint sk_tarifa PK
+        bigint sk_plaza FK
+        text id_plaza
+        bigint sk_condicion FK
+        int variante
+        date vigente_desde
+        date vigente_hasta
+        float tarifa_clp
+        text origen_tarifa
+        text metodo_asignacion
+        text confianza
+        text categoria_texto_lamina
+        bigint sk_documento FK
+        date fecha_carga
+        text observacion
+    }
+    PEAJES__PARAMETRO_PEAJE {
+        text parametro PK
+        text valor
+        text descripcion
+    }
+    PEAJES__PUENTE_SEGMENTO_PLAZA {
+        bigint id_fila PK
+        bigint sk_segmento FK
+        text id_plaza
+        int orden
+        float km_desde_inicio
+        text metodo_deteccion
+        text confianza
+        text origen
+        date vigente_desde
+        date vigente_hasta
+    }
+    PEAJES__PUENTE_SEGMENTO_PLAZA_DETECCION {
+        bigint id_fila PK
+        bigint sk_segmento
+        text id_plaza
+        int orden
+        float km_desde_inicio
+        text metodo_deteccion
+        text confianza
+        date vigente_desde
+        date vigente_hasta
+    }
+    PEAJES__PUENTE_TRAMO_SEGMENTO {
+        bigint sk_tramo PK,FK
+        bigint sk_segmento FK
+        int orden PK
+    }
+    COMUN__DIM_FECHA {
+        int sk_fecha PK "tabla de otro esquema"
+    }
+    VISTAS_PEAJES {
+        view v_peaje_tramo_detalle
+        view v_peaje_viaje
+        view v_puente_tramo_plaza
+        view v_tarifa_vigente
+    }

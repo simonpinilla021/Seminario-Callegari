@@ -1,0 +1,31 @@
+---
+title: Modelo físico - esquema comun
+---
+erDiagram
+    COMUN__DIM_FECHA {
+        int sk_fecha PK
+        date fecha
+        int anio
+        int mes
+        int dia
+        int dia_semana
+        text nombre_dia
+        text es_fin_de_semana
+    }
+    COMUN__REGISTRO_CARGA {
+        bigint id PK
+        text area
+        timestamp fecha_carga
+        text version_script
+        text fecha_cambio
+        text detalle
+    }
+    COMUN__REGISTRO_EJECUCION {
+        text id PK
+        timestamp fecha
+        json manifiesto
+    }
+    VISTAS_COMUN {
+        view v_fact_viaje
+        view v_margen_viaje
+    }

@@ -1,0 +1,87 @@
+---
+title: Modelo físico - esquema escenarios
+---
+erDiagram
+    ESCENARIOS__DIM_COMPONENTE_COSTO ||--o{ ESCENARIOS__FACT_COSTO_VIAJE : "sk_componente"
+    ESCENARIOS__DIM_COMPONENTE_COSTO ||--o{ ESCENARIOS__FACT_COSTO_VIRTUAL : "sk_componente"
+    ESCENARIOS__DIM_ESCENARIO ||--o{ ESCENARIOS__FACT_COSTO_VIAJE : "sk_escenario"
+    ESCENARIOS__DIM_ESCENARIO ||--o{ ESCENARIOS__FACT_COSTO_VIRTUAL : "sk_escenario"
+    ESCENARIOS__FACT_COSTO_VIAJE {
+        bigint nro_viaje PK
+        int sk_escenario PK,FK
+        int sk_componente PK,FK
+        int sk_fecha
+        float cantidad
+        float tasa
+        float monto
+        float monto_comercial
+        text rol_comercial
+        text ciclo_comercial
+        text estado
+        text estado_comercial
+    }
+    ESCENARIOS__FACT_COSTO_VIRTUAL {
+        text id_viaje PK
+        text ciclo_comercial
+        bigint nro_viaje_destino
+        int sk_fecha
+        int sk_escenario PK,FK
+        int sk_componente PK,FK
+        float cantidad
+        float tasa
+        float monto
+        text estado
+        text estado_asignacion
+        text estado_tramo
+        text estado_contexto
+        text origen_calculo
+        float cf_flota_virtual
+        float cf_rampla_virtual
+        float cf_estructura_virtual
+    }
+    ESCENARIOS__FACT_COTIZACION_VIAJE {
+        bigint nro_viaje PK
+        int sk_fecha
+        text clasificacion_viaje
+        text modalidad
+        text tipo_carga
+        text es_tractoreo
+        int n_intermedios
+        float km_cotizados
+        float dias
+        float combustible
+        float termo
+        float peaje
+        float costo_fijo
+        float reposicion
+        float neumaticos
+        float intermedios
+        float costo_total
+        float margen
+        float cotizacion
+        float subtotal_componentes_conocidos
+        float subtotal_conocido
+        bool costo_completo
+        bool cotizacion_completa
+        int n_componentes_faltantes
+        text faltantes
+        text estado
+    }
+    ESCENARIOS__DIM_ESCENARIO {
+        int sk_escenario PK
+        text nombre
+        text descripcion
+    }
+    ESCENARIOS__DIM_COMPONENTE_COSTO {
+        int sk_componente PK
+        text nombre
+        text unidad
+        text tipo
+    }
+    VISTAS_ESCENARIOS {
+        view v_capacidad_con_virtuales
+        view v_costo_viaje_resumen
+        view v_costo_virtual_resumen
+        view v_tramos_virtuales_pendientes
+        view v_tramos_virtuales_pendientes_resumen
+    }

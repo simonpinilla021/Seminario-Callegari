@@ -1,0 +1,224 @@
+---
+title: Modelo lógico - esquema peajes
+---
+erDiagram
+    COMUN__DIM_FECHA ||--o{ PEAJES__FACT_VIAJE_PEAJE : "sk_fecha_inicio"
+    DIM_COMUN__DIM_TRAMO_COMERCIAL ||--o{ PEAJES__DIM_TRAMO : "sit_stretch_id"
+    PEAJES__DIM_CONDICION_TARIFA ||--o{ PEAJES__FACT_TARIFA_PEAJE : "sk_condicion"
+    PEAJES__DIM_DOCUMENTO_TARIFA ||--o{ PEAJES__FACT_TARIFA_PEAJE : "sk_documento"
+    PEAJES__DIM_LUGAR ||--o{ PEAJES__DIM_SEGMENTO_RUTA : "sk_lugar_desde"
+    PEAJES__DIM_LUGAR ||--o{ PEAJES__DIM_SEGMENTO_RUTA : "sk_lugar_hasta"
+    PEAJES__DIM_LUGAR ||--o{ PEAJES__DIM_TRAMO : "sk_lugar_destino"
+    PEAJES__DIM_LUGAR ||--o{ PEAJES__DIM_TRAMO : "sk_lugar_origen"
+    PEAJES__DIM_PLAZA_PEAJE ||--o{ PEAJES__FACT_TARIFA_PEAJE : "sk_plaza"
+    PEAJES__DIM_SEGMENTO_RUTA ||--o{ PEAJES__FACT_PEAJE_REFERENCIAL_PLAZA : "sk_segmento"
+    PEAJES__DIM_SEGMENTO_RUTA ||--o{ PEAJES__PUENTE_SEGMENTO_PLAZA : "sk_segmento"
+    PEAJES__DIM_SEGMENTO_RUTA ||--o{ PEAJES__PUENTE_TRAMO_SEGMENTO : "sk_segmento"
+    PEAJES__DIM_TRAMO ||--o{ PEAJES__FACT_PEAJE_REFERENCIAL_PLAZA : "sk_tramo"
+    PEAJES__DIM_TRAMO ||--o{ PEAJES__FACT_PEAJE_REFERENCIAL_TRAMO : "sk_tramo"
+    PEAJES__DIM_TRAMO ||--o{ PEAJES__FACT_VIAJE_PEAJE : "sk_tramo"
+    PEAJES__DIM_TRAMO ||--o{ PEAJES__PUENTE_TRAMO_SEGMENTO : "sk_tramo"
+    VENTAS__FACT_VIAJE_VENTA ||--o{ PEAJES__FACT_VIAJE_PEAJE : "nro_viaje"
+    PEAJES__DIM_TRAMO {
+        id sk_tramo PK
+        id sit_stretch_id FK
+        atributo texto_tramo
+        id sk_lugar_origen FK
+        id sk_lugar_destino FK
+        atributo n_puntos
+        medida km_erp
+        medida km_ruta_calculada
+        atributo es_recorrido
+        atributo isactive
+        atributo estado_deteccion
+        fecha vigente_desde
+        fecha vigente_hasta
+        atributo es_actual
+    }
+    PEAJES__FACT_VIAJE_PEAJE {
+        id sk_viaje PK
+        id nro_viaje FK
+        atributo nro_hoja_ruta
+        id sk_tramo FK
+        id sk_fecha_inicio FK
+        atributo es_retorno
+        medida peaje_referencial
+        medida peaje_referencial_maximo
+        atributo estado_peaje
+    }
+    PEAJES__AJUSTE_SEGMENTO_PLAZA {
+        atributo desde_clave
+        atributo hasta_clave
+        atributo id_plaza
+        atributo accion
+        medida km_desde_inicio
+        fecha vigente_desde
+        atributo motivo
+    }
+    PEAJES__DIM_CONDICION_TARIFA {
+        id sk_condicion PK
+        atributo categoria_vehicular
+        atributo horario
+        atributo modalidad
+        atributo aplica_a_flota
+    }
+    PEAJES__DIM_DOCUMENTO_TARIFA {
+        id sk_documento PK
+        atributo url
+        atributo documento
+        atributo seccion
+        atributo anio
+        atributo archivo_local
+        atributo bytes
+        fecha fecha_descarga
+    }
+    PEAJES__DIM_LUGAR {
+        id sk_lugar PK
+        atributo clave_lugar
+        atributo nombre_erp
+        atributo localidad
+        atributo sublugar
+        atributo region
+        medida latitud
+        medida longitud
+        atributo _precision_
+        atributo fuente
+        atributo es_base
+        atributo es_lugar
+    }
+    PEAJES__DIM_PLAZA_PEAJE {
+        id sk_plaza PK
+        atributo id_plaza
+        atributo clave_plaza_script
+        atributo plaza_id_mop
+        atributo nombre_plaza
+        atributo codigo_portico
+        atributo concesion
+        atributo documento_tarifa
+        atributo tipo_red
+        atributo cobro_por_recorrido
+        atributo ruta
+        medida km_ruta
+        atributo region
+        medida latitud
+        medida longitud
+        atributo fuente_coordenadas
+        atributo posicion
+        atributo tipo_cobro
+        atributo fuente_registro
+        atributo estado
+        fecha vigente_desde
+        fecha vigente_hasta
+        atributo es_actual
+    }
+    PEAJES__DIM_SEGMENTO_RUTA {
+        id sk_segmento PK
+        atributo desde_clave
+        atributo hasta_clave
+        id sk_lugar_desde FK
+        id sk_lugar_hasta FK
+        medida km_ruta
+        medida horas_ruta
+        atributo estado
+        atributo version_ruta
+    }
+    PEAJES__FACT_PEAJE_REFERENCIAL_PLAZA {
+        id sk_tramo PK,FK
+        id vigente_desde PK
+        fecha vigente_hasta
+        id orden_segmento PK
+        id sk_segmento FK
+        id orden_en_segmento PK
+        atributo id_plaza
+        medida tarifa_base_plaza
+        medida tarifa_maxima_plaza
+        atributo categoria_base
+        atributo horario_base
+        atributo modalidad_base
+        atributo cobrada
+        medida peaje_base
+        medida peaje_maximo
+        atributo motivo
+    }
+    PEAJES__FACT_PEAJE_REFERENCIAL_TRAMO {
+        id sk_tramo PK,FK
+        id vigente_desde PK
+        fecha vigente_hasta
+        medida peaje_base
+        medida peaje_maximo
+        atributo cantidad_plazas
+        atributo plazas_sin_tarifa
+        atributo estado
+    }
+    PEAJES__FACT_TARIFA_PEAJE {
+        id sk_tarifa PK
+        id sk_plaza FK
+        atributo id_plaza
+        id sk_condicion FK
+        atributo variante
+        fecha vigente_desde
+        fecha vigente_hasta
+        medida tarifa_clp
+        atributo origen_tarifa
+        atributo metodo_asignacion
+        atributo confianza
+        atributo categoria_texto_lamina
+        id sk_documento FK
+        atributo observacion
+    }
+    PEAJES__PARAMETRO_PEAJE {
+        id parametro PK
+        atributo valor
+        atributo descripcion
+    }
+    PEAJES__PUENTE_SEGMENTO_PLAZA {
+        id id_fila PK
+        id sk_segmento FK
+        atributo id_plaza
+        atributo orden
+        medida km_desde_inicio
+        atributo metodo_deteccion
+        atributo confianza
+        atributo origen
+        fecha vigente_desde
+        fecha vigente_hasta
+    }
+    PEAJES__PUENTE_SEGMENTO_PLAZA_DETECCION {
+        id id_fila PK
+        atributo sk_segmento
+        atributo id_plaza
+        atributo orden
+        medida km_desde_inicio
+        atributo metodo_deteccion
+        atributo confianza
+        fecha vigente_desde
+        fecha vigente_hasta
+    }
+    PEAJES__PUENTE_TRAMO_SEGMENTO {
+        id sk_tramo PK,FK
+        id sk_segmento FK
+        id orden PK
+    }
+    COMUN__DIM_FECHA {
+        id sk_fecha PK "tabla de otro esquema"
+    }
+    DIM_COMUN__DIM_TRAMO_COMERCIAL {
+        id tramo_id PK "tabla de otro esquema"
+    }
+    VENTAS__FACT_VIAJE_VENTA {
+        id nro_viaje PK "tabla de otro esquema"
+        id sk_fecha FK
+        id cliente_id FK
+        id producto_id FK
+        id sit_stretch_id FK
+        id equipo_id FK
+        id rampla_id FK
+        id transportista_id FK
+        id conductor_id FK
+    }
+    VISTAS_PEAJES {
+        view v_peaje_tramo_detalle
+        view v_peaje_viaje
+        view v_puente_tramo_plaza
+        view v_tarifa_vigente
+    }

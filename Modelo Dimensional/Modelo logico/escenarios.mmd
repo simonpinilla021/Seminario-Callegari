@@ -1,0 +1,112 @@
+---
+title: Modelo lógico - esquema escenarios
+---
+erDiagram
+    CICLOS__DIM_CICLO_COMERCIAL ||--o{ ESCENARIOS__FACT_COSTO_VIAJE : "ciclo_comercial"
+    CICLOS__DIM_CICLO_COMERCIAL ||--o{ ESCENARIOS__FACT_COSTO_VIRTUAL : "ciclo_comercial"
+    COMUN__DIM_FECHA ||--o{ ESCENARIOS__FACT_COSTO_VIAJE : "sk_fecha"
+    COMUN__DIM_FECHA ||--o{ ESCENARIOS__FACT_COSTO_VIRTUAL : "sk_fecha"
+    COMUN__DIM_FECHA ||--o{ ESCENARIOS__FACT_COTIZACION_VIAJE : "sk_fecha"
+    ESCENARIOS__DIM_COMPONENTE_COSTO ||--o{ ESCENARIOS__FACT_COSTO_VIAJE : "sk_componente"
+    ESCENARIOS__DIM_COMPONENTE_COSTO ||--o{ ESCENARIOS__FACT_COSTO_VIRTUAL : "sk_componente"
+    ESCENARIOS__DIM_ESCENARIO ||--o{ ESCENARIOS__FACT_COSTO_VIAJE : "sk_escenario"
+    ESCENARIOS__DIM_ESCENARIO ||--o{ ESCENARIOS__FACT_COSTO_VIRTUAL : "sk_escenario"
+    VENTAS__FACT_VIAJE_VENTA ||--o{ ESCENARIOS__FACT_COSTO_VIAJE : "nro_viaje"
+    VENTAS__FACT_VIAJE_VENTA ||--o{ ESCENARIOS__FACT_COTIZACION_VIAJE : "nro_viaje"
+    ESCENARIOS__FACT_COSTO_VIAJE {
+        id nro_viaje PK,FK
+        id sk_escenario PK,FK
+        id sk_componente PK,FK
+        id sk_fecha FK
+        medida cantidad
+        medida tasa
+        medida monto
+        medida monto_comercial
+        atributo rol_comercial
+        id ciclo_comercial FK
+        atributo estado
+        atributo estado_comercial
+    }
+    ESCENARIOS__FACT_COSTO_VIRTUAL {
+        id id_viaje PK
+        id ciclo_comercial FK
+        atributo nro_viaje_destino
+        id sk_fecha FK
+        id sk_escenario PK,FK
+        id sk_componente PK,FK
+        medida cantidad
+        medida tasa
+        medida monto
+        atributo estado
+        atributo estado_asignacion
+        atributo estado_tramo
+        atributo estado_contexto
+        atributo origen_calculo
+        medida cf_flota_virtual
+        medida cf_rampla_virtual
+        medida cf_estructura_virtual
+    }
+    ESCENARIOS__FACT_COTIZACION_VIAJE {
+        id nro_viaje PK,FK
+        id sk_fecha FK
+        atributo clasificacion_viaje
+        atributo modalidad
+        atributo tipo_carga
+        atributo es_tractoreo
+        atributo n_intermedios
+        medida km_cotizados
+        medida dias
+        medida combustible
+        medida termo
+        medida peaje
+        medida costo_fijo
+        medida reposicion
+        medida neumaticos
+        medida intermedios
+        medida costo_total
+        medida margen
+        medida cotizacion
+        medida subtotal_componentes_conocidos
+        medida subtotal_conocido
+        atributo costo_completo
+        atributo cotizacion_completa
+        atributo n_componentes_faltantes
+        atributo faltantes
+        atributo estado
+    }
+    ESCENARIOS__DIM_ESCENARIO {
+        id sk_escenario PK
+        atributo nombre
+        atributo descripcion
+    }
+    ESCENARIOS__DIM_COMPONENTE_COSTO {
+        id sk_componente PK
+        atributo nombre
+        atributo unidad
+        atributo tipo
+    }
+    CICLOS__DIM_CICLO_COMERCIAL {
+        id ciclo_comercial PK "tabla de otro esquema"
+        id equipo_id FK
+    }
+    COMUN__DIM_FECHA {
+        id sk_fecha PK "tabla de otro esquema"
+    }
+    VENTAS__FACT_VIAJE_VENTA {
+        id nro_viaje PK "tabla de otro esquema"
+        id sk_fecha FK
+        id cliente_id FK
+        id producto_id FK
+        id sit_stretch_id FK
+        id equipo_id FK
+        id rampla_id FK
+        id transportista_id FK
+        id conductor_id FK
+    }
+    VISTAS_ESCENARIOS {
+        view v_capacidad_con_virtuales
+        view v_costo_viaje_resumen
+        view v_costo_virtual_resumen
+        view v_tramos_virtuales_pendientes
+        view v_tramos_virtuales_pendientes_resumen
+    }
