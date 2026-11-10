@@ -46,10 +46,10 @@ WITH f AS (
  sum(monto::numeric) AS fijo_conocido,
  sum(monto::numeric) FILTER(WHERE NOT virtual) AS fijo_real_conocido,
  sum(monto::numeric) FILTER(WHERE virtual) AS fijo_virtual_conocido
- FROM f WHERE sk_escenario IN(1,2,3,4) GROUP BY 1,2)
+ FROM f WHERE sk_escenario IN(1,2,3) GROUP BY 1,2)
 SELECT m.*,c.fijo_comparable AS fijo_contable_comparable,
  c.registros_contables IS NOT NULL AS hay_contabilidad,
- 'Subtotales conocidos; 1/2 cotizaciones con otra cobertura y retornos sin costo; 3/4 reales y virtuales; totales entre escenarios no implican poblacion equivalente'::text AS alcance
+ 'Subtotales conocidos; 1/2 cotizaciones con otra cobertura y retornos sin costo; 3 reales y virtuales; totales entre escenarios no implican poblacion equivalente'::text AS alcance
 FROM m LEFT JOIN ds_gestion.v_referencia_contable_mensual c USING(mes_id);
 
 CREATE OR REPLACE VIEW ds_gestion.v_conciliacion_operacional_mensual AS
@@ -61,9 +61,9 @@ WITH ventas AS (
  max(sk_fecha) AS ultima_fecha_viaje
  FROM ventas.fact_viaje_venta GROUP BY 1),fuente AS (
  SELECT sk_fecha/100 AS mes_id,sk_escenario,sk_componente,monto,estado,false AS virtual
- FROM escenarios.fact_costo_viaje WHERE sk_escenario IN(3,4)
+ FROM escenarios.fact_costo_viaje WHERE sk_escenario =3
  UNION ALL SELECT sk_fecha/100,sk_escenario,sk_componente,monto,estado,true
- FROM escenarios.fact_costo_virtual WHERE sk_escenario IN(3,4)),costos AS (
+ FROM escenarios.fact_costo_virtual WHERE sk_escenario =3),costos AS (
  SELECT mes_id,sk_escenario,count(*) AS registros_componentes,
  count(*) FILTER(WHERE monto IS NULL) AS montos_faltantes,
  count(*) FILTER(WHERE estado IS DISTINCT FROM 'ok' OR monto IS NULL) AS componentes_no_validos,
@@ -86,7 +86,7 @@ WITH ventas AS (
  v.mes_id IS NOT NULL AS hay_ventas,k.mes_id IS NOT NULL AS hay_costos,
  c.mes_id IS NOT NULL AS hay_contabilidad,
  v.ingreso_estimado_conocido-k.costo_modelado_conocido AS margen_modelado_subtotal
- FROM meses m CROSS JOIN (VALUES(3),(4)) e(sk_escenario)
+ FROM meses m CROSS JOIN (VALUES(3)) e(sk_escenario)
  LEFT JOIN ventas v USING(mes_id) LEFT JOIN costos k USING(mes_id,sk_escenario)
  LEFT JOIN ds_gestion.v_referencia_contable_mensual c USING(mes_id)),pasos AS (
  SELECT *,ingreso_explotacion-ingreso_estimado_conocido AS diferencia_ingresos,
@@ -106,7 +106,7 @@ SELECT *,margen_modelado_subtotal+diferencia_ingresos+diferencia_fijos
  ELSE 'Puente agregado de subtotales; hay faltantes o estados no validos' END
  ELSE 'Sin todas las fuentes del periodo; no conciliable' END AS estado_conciliacion,
  mes_id=max(mes_id) OVER() AS ultimo_mes_observado,
- 'Toda la empresa por fecha de movimiento; sin filtro de ciclos; E3/4; conciliacion de agregados, no documental ni causal; no altera reposicion ni margenes fuente; ultimo mes puede estar incompleto'::text AS alcance
+ 'Toda la empresa por fecha de movimiento; sin filtro de ciclos; E3; conciliacion de agregados, no documental ni causal; no altera reposicion ni margenes fuente; ultimo mes puede estar incompleto'::text AS alcance
 FROM pasos;
 
 CREATE OR REPLACE VIEW ds_gestion.v_puente_operacional_mensual AS
@@ -162,7 +162,7 @@ CONTROLES = {
         WHERE componentes_modelados_completos AND (montos_faltantes>0 OR componentes_no_validos>0 OR ingresos_faltantes>0)''',
     'fuentes_incompletas_con_resultado_conciliado': '''SELECT count(*) FROM ds_gestion.v_conciliacion_operacional_mensual
         WHERE NOT periodo_con_fuentes_comunes AND resultado_conciliado_antes_depreciacion IS NOT NULL''',
-    'otros_escenarios_en_puente': '''SELECT count(*) FROM ds_gestion.v_conciliacion_operacional_mensual WHERE sk_escenario NOT IN(3,4)''',
+    'otros_escenarios_en_puente': '''SELECT count(*) FROM ds_gestion.v_conciliacion_operacional_mensual WHERE sk_escenario <>3''',
     'formula_resultado_total': '''SELECT count(*) FROM ds_gestion.v_referencia_contable_mensual
         WHERE abs(resultado_total-(ingreso_total-gasto_total))>0.01''',
     'formula_operacional': '''SELECT count(*) FROM ds_gestion.v_referencia_contable_mensual

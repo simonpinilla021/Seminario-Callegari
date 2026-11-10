@@ -150,6 +150,7 @@ def ejecutar(conn,args,carpeta,reporte,entradas):
                     with patch.dict(os.environ,{'DW_BLOQUES_SALIDA':str(bloques)}):
                         contexto_litros = runpy.run_path(str(MVP/'combustible/asignar_litros.py'),run_name='asignar_litros')
                         from combustible.certificado_dw import ejecutar_p7
+                        conn.execute("CREATE SCHEMA IF NOT EXISTS combustible")
                         ejecutar_p7(contexto_litros, db.Base(compartida))
                     entradas.verificar()
                     procedencia = dict(ciclos_sha256=cadena,entradas=list(entradas.archivos.values()),
@@ -193,8 +194,8 @@ def ejecutar(conn,args,carpeta,reporte,entradas):
         reporte['calendario_referencias'] = calendario.verificar_referencias(db.Base(compartida))
         reporte['tramo_versiones'] = tramos.publicar(db.Base(compartida))
         reporte['ds_gestion'] = ds_gestion.publicar(db.Base(compartida))
-        reporte['resultado_servicio'] = resultado_servicio.publicar(db.Base(compartida))
-        reporte['resultado_ciclo'] = resultado_ciclo.publicar(db.Base(compartida))
+        reporte['resultado_servicio'] = resultado_servicio.publicar(db.Base(compartida), materializar_controles=True)
+        reporte['resultado_ciclo'] = resultado_ciclo.publicar(db.Base(compartida), materializar_controles=True)
         from publicacion import contrato_dashboard
         reporte['contrato_dashboard'] = contrato_dashboard.publicar(db.Base(compartida))
         from publicacion import contrato_retornos
@@ -245,8 +246,8 @@ def principal(argv=None):
             print(json.dumps(reporte['fuentes'],ensure_ascii=False,indent=2))
             print('Plan: dimensiones_comunes, '+', '.join(nombre for area,nombre in ETAPAS))
             print('Publicación final: versiones de tramo y ds_gestion, después de conciliaciones.')
-            print('Conciliación operacional: referencias contables y puente mensual E3/4, sin modificar costos de escenarios.')
-            print('Escenarios 1/2: tarificador exacto para propios y comisión observada para fleteros; 3: certificado y capacidad práctica; 4: certificado y absorción total mensual.')
+            print('Conciliación operacional: referencias contables y puente mensual E3, sin modificar costos de escenarios.')
+            print('Escenarios 1/2: tarificador exacto para propios y comisión observada para fleteros; 3: certificado y capacidad práctica.')
             print('No se conectó a PostgreSQL ni se ejecutó ninguna carga.')
             return reporte
         cfg = db.leer_config()['postgres']

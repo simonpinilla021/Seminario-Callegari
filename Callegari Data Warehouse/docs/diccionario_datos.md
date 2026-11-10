@@ -9,9 +9,9 @@ Generado con `python -B dw.py documentar` a partir del catálogo de PostgreSQL.
 | ciclos | 4 | 0 |
 | combustible | 12 | 3 |
 | comun | 3 | 2 |
-| costos | 7 | 6 |
-| dim_comun | 6 | 9 |
-| ds_gestion | 0 | 29 |
+| costos | 6 | 5 |
+| dim_comun | 6 | 6 |
+| ds_gestion | 0 | 28 |
 | escenarios | 5 | 5 |
 | peajes | 15 | 4 |
 | precios | 6 | 1 |
@@ -253,11 +253,11 @@ Generado con `python -B dw.py documentar` a partir del catálogo de PostgreSQL.
 | `litros_estimado` | double precision | sí |  |
 | `litros_asignados` | double precision | sí |  |
 | `metodo_asignacion` | text | sí |  |
+| `id_calculo` | bigint | sí |  |
 | `costo_bloque` | double precision | sí |  |
 | `costo_estimado` | double precision | sí |  |
 | `costo_combustible` | double precision | sí |  |
 | `precio_litro_aplicado` | double precision | sí |  |
-| `id_calculo` | bigint | sí |  |
 | `fraccion_certificada` | double precision | sí |  |
 | `fuente_ficha` | text | sí |  |
 | `l100_teorico` | double precision | sí |  |
@@ -344,6 +344,7 @@ Generado con `python -B dw.py documentar` a partir del catálogo de PostgreSQL.
 |---|---|---|---|
 | `equipo_id` | bigint | sí |  |
 | `bloque` | integer | sí |  |
+| `id_calculo` | bigint | sí |  |
 | `id_viaje_fuente` | text | sí |  |
 | `nro_viaje` | bigint | sí |  |
 | `es_virtual` | text | sí |  |
@@ -354,7 +355,6 @@ Generado con `python -B dw.py documentar` a partir del catálogo de PostgreSQL.
 | `litros_asignados` | double precision | sí |  |
 | `costo_asignado` | double precision | sí |  |
 | `calidad_bloque` | text | sí |  |
-| `id_calculo` | bigint | sí |  |
 
 ### `combustible.ref_regresion_camion` (tabla)
 - Llave primaria: `PRIMARY KEY (equipo_id)`
@@ -635,22 +635,6 @@ Generado con `python -B dw.py documentar` a partir del catálogo de PostgreSQL.
 | `origen_clasificacion` | text | sí |  |
 | `nota` | text | sí |  |
 
-### `costos.fact_absorcion_viaje` (tabla)
-- Llave primaria: `PRIMARY KEY (id_viaje, bolsa)`
-
-| Columna | Tipo | Nulo | Descripción |
-|---|---|---|---|
-| `id_viaje` | text | no |  |
-| `bolsa` | text | no |  |
-| `nro_viaje` | bigint | sí |  |
-| `es_virtual` | boolean | sí |  |
-| `sk_fecha` | integer | sí |  |
-| `mes` | text | sí |  |
-| `dias` | double precision | sí |  |
-| `cuota` | double precision | sí |  |
-| `monto` | double precision | sí |  |
-| `estado` | text | sí |  |
-
 ### `costos.fact_capacidad_bolsa` (tabla)
 - Llave primaria: `PRIMARY KEY (anio, bolsa)`
 
@@ -667,8 +651,8 @@ Generado con `python -B dw.py documentar` a partir del catálogo de PostgreSQL.
 | `pct_absorbido` | numeric(8,4) | sí |  |
 
 ### `costos.fact_contabilidad_mensual` (tabla)
-- Llave foránea: `FOREIGN KEY (sk_fecha_mes) REFERENCES comun.dim_fecha(sk_fecha)`
 - Llave foránea: `FOREIGN KEY (sk_cuenta) REFERENCES costos.dim_cuenta_contable(sk_cuenta)`
+- Llave foránea: `FOREIGN KEY (sk_fecha_mes) REFERENCES comun.dim_fecha(sk_fecha)`
 
 | Columna | Tipo | Nulo | Descripción |
 |---|---|---|---|
@@ -750,28 +734,6 @@ Montos bajo alcance contable del ETL: neto y absoluto de grupos; no equivale a m
 | `lineas_fuente` | bigint | sí |  |
 | `monto_neto` | numeric | sí |  |
 | `suma_absoluta_montos_agrupados` | numeric | sí |  |
-
-### `costos.v_puente_absorcion_total` (vista)
-
-| Columna | Tipo | Nulo | Descripción |
-|---|---|---|---|
-| `anio` | integer | sí |  |
-| `ingreso_estimado` | double precision | sí |  |
-| `costo_real_conocido` | double precision | sí |  |
-| `costo_virtual_conocido` | double precision | sí |  |
-| `margen_modelado_subtotal` | double precision | sí |  |
-| `reposicion_modelada` | double precision | sí |  |
-| `depreciacion_contable` | double precision | sí |  |
-| `litros_no_asignables_clp` | double precision | sí |  |
-| `diferencia_ingresos` | double precision | sí |  |
-| `resultado_contable_referencia` | double precision | sí |  |
-| `cuentas_sin_linea_eerr` | double precision | sí |  |
-| `componentes_reales_pendientes` | bigint | sí |  |
-| `componentes_virtuales_pendientes` | bigint | sí |  |
-| `ajustes_sin_precio` | bigint | sí |  |
-| `resultado_tras_pasos_identificados` | double precision | sí |  |
-| `residuo_por_explicar` | double precision | sí |  |
-| `alcance` | text | sí |  |
 
 ### `costos.v_ref_centro_contable` (vista)
 
@@ -932,23 +894,6 @@ Proyección de las reglas existentes. No es un catálogo empresarial ni una nuev
 | `usado_en_viajes` | boolean | sí |  |
 | `marca_fuente` | text | sí |  |
 
-### `dim_comun.v_dim_cliente` (vista)
-
-| Columna | Tipo | Nulo | Descripción |
-|---|---|---|---|
-| `socio_id` | bigint | sí |  |
-| `razon_social` | text | sí |  |
-| `es_cliente_fuente` | text | sí |  |
-| `es_proveedor_fuente` | text | sí |  |
-| `forhire_fuente` | text | sí |  |
-| `flota_mixta_fuente` | text | sí |  |
-| `activo_fuente` | text | sí |  |
-| `actualizado_fuente` | text | sí |  |
-| `extraccion_id` | text | sí |  |
-| `fuente_sha256` | text | sí |  |
-| `usado_en_viajes` | boolean | sí |  |
-| `marca_rol_fuente` | text | sí |  |
-
 ### `dim_comun.v_dim_equipo` (vista)
 
 | Columna | Tipo | Nulo | Descripción |
@@ -996,23 +941,6 @@ Proyección de las reglas existentes. No es un catálogo empresarial ni una nuev
 | `extraccion_id` | text | sí |  |
 | `fuente_sha256` | text | sí |  |
 | `tipo_equipo_derivado` | text | sí |  |
-
-### `dim_comun.v_dim_proveedor` (vista)
-
-| Columna | Tipo | Nulo | Descripción |
-|---|---|---|---|
-| `socio_id` | bigint | sí |  |
-| `razon_social` | text | sí |  |
-| `es_cliente_fuente` | text | sí |  |
-| `es_proveedor_fuente` | text | sí |  |
-| `forhire_fuente` | text | sí |  |
-| `flota_mixta_fuente` | text | sí |  |
-| `activo_fuente` | text | sí |  |
-| `actualizado_fuente` | text | sí |  |
-| `extraccion_id` | text | sí |  |
-| `fuente_sha256` | text | sí |  |
-| `usado_en_viajes` | boolean | sí |  |
-| `marca_rol_fuente` | text | sí |  |
 
 ### `dim_comun.v_dim_rampla` (vista)
 
@@ -1062,23 +990,6 @@ Proyección de las reglas existentes. No es un catálogo empresarial ni una nuev
 | `fuente_sha256` | text | sí |  |
 | `tipo_equipo_derivado` | text | sí |  |
 
-### `dim_comun.v_dim_transportista` (vista)
-
-| Columna | Tipo | Nulo | Descripción |
-|---|---|---|---|
-| `socio_id` | bigint | sí |  |
-| `razon_social` | text | sí |  |
-| `es_cliente_fuente` | text | sí |  |
-| `es_proveedor_fuente` | text | sí |  |
-| `forhire_fuente` | text | sí |  |
-| `flota_mixta_fuente` | text | sí |  |
-| `activo_fuente` | text | sí |  |
-| `actualizado_fuente` | text | sí |  |
-| `extraccion_id` | text | sí |  |
-| `fuente_sha256` | text | sí |  |
-| `usado_en_viajes` | boolean | sí |  |
-| `marca_rol_fuente` | text | sí |  |
-
 ### `dim_comun.v_tramo_version_peaje` (vista)
 
 | Columna | Tipo | Nulo | Descripción |
@@ -1095,21 +1006,6 @@ Proyección de las reglas existentes. No es un catálogo empresarial ni una nuev
 | `estado_maestro` | text | sí |  |
 
 ## Esquema `ds_gestion`
-
-### `ds_gestion.v_absorcion_total` (vista)
-
-| Columna | Tipo | Nulo | Descripción |
-|---|---|---|---|
-| `movimiento_cadena_id` | text | sí |  |
-| `nro_viaje` | bigint | sí |  |
-| `es_virtual` | boolean | sí |  |
-| `fecha_documental_id` | integer | sí |  |
-| `bolsa` | text | sí |  |
-| `mes` | text | sí |  |
-| `dias` | double precision | sí |  |
-| `cuota` | double precision | sí |  |
-| `monto` | double precision | sí |  |
-| `estado` | text | sí |  |
 
 ### `ds_gestion.v_capacidad_flota_modelada_mensual` (vista)
 
@@ -1593,6 +1489,8 @@ Proyección de las reglas existentes. No es un catálogo empresarial ni una nuev
 | `condiciones_estructura` | text | sí |  |
 | `recorrido_movimientos` | text | sí |  |
 | `conexiones` | text | sí |  |
+| `tipo_operacion_ciclo` | text | sí |  |
+| `ig_heredada_admitida` | boolean | sí |  |
 
 ### `ds_gestion.v_resultado_servicio` (vista)
 
@@ -1824,8 +1722,8 @@ Proyección de las reglas existentes. No es un catálogo empresarial ni una nuev
 | `estado_comercial` | text | sí |  |
 
 ### `escenarios.fact_costo_virtual` (tabla)
-- Llave foránea: `FOREIGN KEY (sk_escenario) REFERENCES escenarios.dim_escenario(sk_escenario)`
 - Llave foránea: `FOREIGN KEY (sk_componente) REFERENCES escenarios.dim_componente_costo(sk_componente)`
+- Llave foránea: `FOREIGN KEY (sk_escenario) REFERENCES escenarios.dim_escenario(sk_escenario)`
 - Llave primaria: `PRIMARY KEY (id_viaje, sk_escenario, sk_componente)`
 
 | Columna | Tipo | Nulo | Descripción |
@@ -1915,30 +1813,22 @@ Proyección de las reglas existentes. No es un catálogo empresarial ni una nuev
 | `costo_1_tarificador` | double precision | sí |  |
 | `costo_2_tarif_rend_camion` | double precision | sí |  |
 | `costo_3_real` | double precision | sí |  |
-| `costo_4_absorcion_total` | double precision | sí |  |
 | `margen_1` | double precision | sí |  |
 | `margen_2` | double precision | sí |  |
 | `margen_3` | double precision | sí |  |
-| `margen_4` | double precision | sí |  |
 | `ciclo_comercial` | text | sí |  |
 | `rol_comercial` | text | sí |  |
 | `costo_comercial_1` | double precision | sí |  |
 | `costo_comercial_2` | double precision | sí |  |
 | `costo_comercial_3` | double precision | sí |  |
-| `costo_comercial_4` | double precision | sí |  |
 | `margen_comercial_1` | double precision | sí |  |
 | `margen_comercial_2` | double precision | sí |  |
 | `margen_comercial_3` | double precision | sí |  |
-| `margen_comercial_4` | double precision | sí |  |
 | `costos_completos` | boolean | sí |  |
 | `subtotal_conocido_3` | double precision | sí |  |
-| `subtotal_conocido_4` | double precision | sí |  |
 | `subtotal_comercial_conocido_3` | double precision | sí |  |
-| `subtotal_comercial_conocido_4` | double precision | sí |  |
 | `completo_3` | boolean | sí |  |
-| `completo_4` | boolean | sí |  |
 | `completo_comercial_3` | boolean | sí |  |
-| `completo_comercial_4` | boolean | sí |  |
 
 ### `escenarios.v_costo_virtual_resumen` (vista)
 
@@ -2103,8 +1993,8 @@ Proyección de las reglas existentes. No es un catálogo empresarial ni una nuev
 | `version_ruta` | text | sí |  |
 
 ### `peajes.dim_tramo` (tabla)
-- Llave foránea: `FOREIGN KEY (sk_lugar_origen) REFERENCES peajes.dim_lugar(sk_lugar)`
 - Llave foránea: `FOREIGN KEY (sk_lugar_destino) REFERENCES peajes.dim_lugar(sk_lugar)`
+- Llave foránea: `FOREIGN KEY (sk_lugar_origen) REFERENCES peajes.dim_lugar(sk_lugar)`
 - Llave primaria: `PRIMARY KEY (sk_tramo)`
 
 | Columna | Tipo | Nulo | Descripción |
@@ -3268,6 +3158,7 @@ Calidad documental: created y enddate no acreditan por sí solos inicio/fin fís
 | `operador_grupo` | text | sí |  |
 | `tipo_operador` | text | sí |  |
 | `transportista_id` | bigint | sí |  |
+| `conductor_id` | bigint | sí |  |
 | `conductor_interno` | text | sí |  |
 | `es_retorno` | text | sí |  |
 | `es_tractoreo` | text | sí |  |
@@ -3283,7 +3174,6 @@ Calidad documental: created y enddate no acreditan por sí solos inicio/fin fís
 | `pct_pago_tercero` | double precision | sí |  |
 | `comision_conductor_observada` | double precision | sí |  |
 | `pago_tercero_observado` | double precision | sí |  |
-| `conductor_id` | bigint | sí |  |
 
 ### `ventas.v_viaje_descriptivo` (vista)
 
@@ -3300,6 +3190,7 @@ Calidad documental: created y enddate no acreditan por sí solos inicio/fin fís
 | `operador_grupo` | text | sí |  |
 | `tipo_operador` | text | sí |  |
 | `transportista_id` | bigint | sí |  |
+| `conductor_id` | bigint | sí |  |
 | `conductor_interno` | text | sí |  |
 | `es_retorno` | text | sí |  |
 | `es_tractoreo` | text | sí |  |
@@ -3315,7 +3206,6 @@ Calidad documental: created y enddate no acreditan por sí solos inicio/fin fís
 | `pct_pago_tercero` | double precision | sí |  |
 | `comision_conductor_observada` | double precision | sí |  |
 | `pago_tercero_observado` | double precision | sí |  |
-| `conductor_id` | bigint | sí |  |
 | `conductor_nombre` | text | sí |  |
 | `estado_conductor` | text | sí |  |
 | `cliente_nombre` | text | sí |  |

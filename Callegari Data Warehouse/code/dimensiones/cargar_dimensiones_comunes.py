@@ -43,8 +43,6 @@ def sql_esquema():
         campos = ', '.join(f'{c} {tipo(c)}' for c in columnas)
         sql.append(f'CREATE TABLE IF NOT EXISTS dim_comun.{tabla} ({campos}, PRIMARY KEY ({", ".join(claves)}));')
     sql.append(vistas_comunes_sql())
-    for rol in ['cliente', 'transportista', 'proveedor']:
-        sql.append(f"CREATE OR REPLACE VIEW dim_comun.v_dim_{rol} AS SELECT s.*, r.usado_en_viajes, r.marca_fuente AS marca_rol_fuente FROM dim_comun.dim_socio_negocio s JOIN dim_comun.roles_socio r USING(socio_id) WHERE r.rol='{rol}';")
     return '\n'.join(sql)
 
 

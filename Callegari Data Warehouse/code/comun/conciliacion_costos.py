@@ -13,8 +13,8 @@ def concilia(fisico, virtual, comercial, sin_imputar):
 
 
 def consulta(escenario):
-    if escenario not in (3,4):
-        raise ValueError('Conciliación global disponible para escenarios 3 y 4')
+    if escenario != 3:
+        raise ValueError('Conciliación global disponible para el escenario 3')
     # Convertir ANTES de SUM. Convertir a decimal la suma float ya calculada
     # conservaría su error acumulado. ::text mantiene la representación del
     # importe almacenado; no redondear cada componente a pesos/centavos.
@@ -39,7 +39,7 @@ def consulta(escenario):
 
 def comprobar(conn):
     controles, diagnostico = {}, {}
-    for escenario in (3,4):
+    for escenario in (3,):
         fila = conn.execute(consulta(escenario)).fetchone()
         delta = diferencia(*fila[:4])
         controles[f'conservacion_con_virtuales_{escenario}'] = int(not concilia(*fila[:4]))

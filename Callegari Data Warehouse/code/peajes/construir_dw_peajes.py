@@ -302,15 +302,17 @@ def cargar_documentos(con, base):
     return dict(con.execute("SELECT url, sk_documento FROM dim_documento_tarifa"))
 
 
-def fuentes_plazas(base):
+def fuentes_plazas(base, solo_mop=False):
     """Catálogo de plazas como lo arma peajes_por_tramo.py (tabla_integrada + pórticos urbanos), con su id estable."""
     pd_dir = base / "peajes_datos"
     ti = leer(pd_dir / "tabla_integrada.csv")
     pu = leer(pd_dir / "porticos_urbanos.csv")
     mop = leer(pd_dir / "plazas_mop.csv")
-    man = leer(pd_dir / "plazas_manual.csv", dtype=str)
-    ubic = leer(base / "tramos_peajes" / "plazas_ubicacion.csv")
+    man = None if solo_mop else leer(pd_dir / "plazas_manual.csv", dtype=str)
+    ubic = None if solo_mop else leer(base / "tramos_peajes" / "plazas_ubicacion.csv")
     ti["fuente_plaza"] = ti["fuente_plaza"].fillna("")
+    if solo_mop:
+        ti = ti[ti["fuente_plaza"].isin(("capa MOP", "solo PDF"))].copy()
     ti["nombre_plaza"] = ti["plaza_mop"].fillna(ti["plaza_pdf"]).fillna("(sin nombre)").astype(str)
     ti["posicion"] = ti["posicion"].fillna("")
     filas = [ti]
@@ -469,7 +471,7 @@ def sk_plaza_en(con, id_plaza, fecha):
     return r[0] if r else None
 
 
-def cargar_tarifas(con, base, ti, sk_doc, hoy):
+def cargar_tarifas(con, base, ti, sk_doc, hoy, solo_mop=False):
     """Las tarifas de lámina de un año reemplazan solo las de ese año. tarifas_manual.csv se recarga completo."""
     cache = {}
     t = ti[ti["tarifa_clp"].notna()].copy()
@@ -487,7 +489,7 @@ def cargar_tarifas(con, base, ti, sk_doc, hoy):
                        vigente_hasta, tarifa_clp, origen_tarifa, metodo_asignacion, confianza, categoria_texto_lamina,
                        sk_documento, fecha_carga, observacion) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", filas)
     con.execute("DELETE FROM fact_tarifa_peaje WHERE origen_tarifa='manual'")
-    man = leer(base / "dw_peajes" / "tarifas_manual.csv", dtype=str)
+    man = None if solo_mop else leer(base / "dw_peajes" / "tarifas_manual.csv", dtype=str)
     n_man = 0
     if man is not None:
         for _, r in man.fillna("").iterrows():
@@ -802,32 +804,50 @@ def principal(argv=None, _conn=None):
     print(f"construir_dw_peajes.py versión {VERSION}")
     ap = argparse.ArgumentParser(description="Arma o actualiza el esquema peajes de la base PostgreSQL del MVP.")
     ap.add_argument("--base", default=str(AQUI), help="carpeta de peajes (donde están peajes_datos/ y tramos_peajes/)")
+    ap.add_argument("--solo-mop", action="store_true",
+                    help="demo académica de plazas y tarifas públicas en la base local dw_callegari_demo")
     ap.add_argument("--viajes", default=None, help="parquet o csv de travelvta_v (por defecto el del parquet del ERP)")
     ap.add_argument("--fecha-cambio", default=None,
                     help="AAAA-MM-DD: las plazas que aparecen o desaparecen de las rutas son un cambio real desde esa fecha")
     ap.add_argument("--hoy", default=date.today().isoformat(), help=argparse.SUPPRESS)
     a = ap.parse_args(argv)
     base = Path(a.base)
-    carpeta = base / "dw_peajes"
-    plantillas(carpeta)
+    if a.solo_mop:
+        if a.viajes or a.fecha_cambio:
+            ap.error("--solo-mop se ejecuta sin viajes ni cambios de rutas")
+        pg = db.leer_config()["postgres"]
+        if pg.get("host", "localhost").lower() not in ("localhost", "127.0.0.1", "::1") or pg.get("dbname") != "dw_callegari_demo":
+            ap.error("--solo-mop requiere la base local dw_callegari_demo")
+        for nombre in ("documentos.csv", "tabla_integrada.csv", "porticos_urbanos.csv", "plazas_mop.csv"):
+            if not (base / "peajes_datos" / nombre).is_file():
+                ap.error(f"Falta peajes_datos/{nombre}")
+        db.crear_base_si_falta()
+    else:
+        plantillas(base / "dw_peajes")
     con = db.conectar(ESQUEMAS, _conn=_conn)
     with con:
         con.execute(ESQUEMA)
     with con:
         cargar_fechas(con)
-        sk_lugar = cargar_lugares(con, base)
-        sk_seg = cargar_segmentos(con, base, sk_lugar)
-        n_tr = cargar_tramos(con, base, sk_lugar, sk_seg, a.hoy)
+        if not a.solo_mop:
+            sk_lugar = cargar_lugares(con, base)
+            sk_seg = cargar_segmentos(con, base, sk_lugar)
+            n_tr = cargar_tramos(con, base, sk_lugar, sk_seg, a.hoy)
         sk_doc = cargar_documentos(con, base)
-        ti, ub = fuentes_plazas(base)
+        ti, ub = fuentes_plazas(base, solo_mop=a.solo_mop)
         id_de_clave, (pn, pv, pb) = cargar_plazas(con, ti, ub, a.hoy)
-        n_tar, n_man = cargar_tarifas(con, base, ti, sk_doc, a.hoy)
-        ag, ce, qu = cargar_puente(con, base, id_de_clave, sk_seg, a.fecha_cambio)
-        n_ref = calcular_referencial(con)
-        viajes = cargar_viajes(con, base, a.viajes)
-        detalle = (f"tramos nuevos/versiones {n_tr}; plazas nuevas {pn}, versiones {pv}, bajas {pb}; tarifas lámina {n_tar}, "
-                   f"manuales {n_man}; detección +{ag} -{ce}, ajustes manuales {qu}; periodos referenciales {n_ref}; "
-                   f"viajes {viajes}")
+        n_tar, n_man = cargar_tarifas(con, base, ti, sk_doc, a.hoy, solo_mop=a.solo_mop)
+        if a.solo_mop:
+            detalle = f"Demo MOP: plazas nuevas {pn}, versiones {pv}, bajas {pb}; tarifas lámina {n_tar}"
+            if not sk_doc or not id_de_clave or not n_tar:
+                raise ValueError("La demo requiere documentos, plazas y tarifas MOP")
+        else:
+            ag, ce, qu = cargar_puente(con, base, id_de_clave, sk_seg, a.fecha_cambio)
+            n_ref = calcular_referencial(con)
+            viajes = cargar_viajes(con, base, a.viajes)
+            detalle = (f"tramos nuevos/versiones {n_tr}; plazas nuevas {pn}, versiones {pv}, bajas {pb}; tarifas lámina {n_tar}, "
+                       f"manuales {n_man}; detección +{ag} -{ce}, ajustes manuales {qu}; periodos referenciales {n_ref}; "
+                       f"viajes {viajes}")
         con.execute("INSERT INTO comun.registro_carga (area, fecha_carga, version_script, fecha_cambio, detalle) "
                     "VALUES (?,?,?,?,?)", ("peajes", db.ahora(), VERSION, a.fecha_cambio or "", detalle))
     for tabla in ["dim_lugar", "dim_tramo", "dim_segmento_ruta", "puente_tramo_segmento", "dim_plaza_peaje",

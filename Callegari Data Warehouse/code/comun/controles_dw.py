@@ -44,20 +44,18 @@ def controles(conn, habia_escenarios):
     """)
     checks["comision_incorrecta"] = uno("""
       SELECT count(*) FROM escenarios.fact_costo_viaje f JOIN ventas.fact_viaje_venta v USING(nro_viaje)
-      WHERE f.sk_componente = 10 AND (f.sk_escenario NOT IN (3,4) OR v.tipo_operador <> 'propio'
+      WHERE f.sk_componente = 10 AND (f.sk_escenario <> 3 OR v.tipo_operador <> 'propio'
         OR f.monto IS DISTINCT FROM v.comision_conductor_observada)
     """)
     checks["pago_tercero_incorrecto"] = uno("""
       SELECT count(*) FROM escenarios.fact_costo_viaje f JOIN ventas.fact_viaje_venta v USING(nro_viaje)
-      WHERE f.sk_componente = 9 AND f.sk_escenario IN (3,4)
+      WHERE f.sk_componente = 9 AND f.sk_escenario = 3
         AND f.monto IS DISTINCT FROM v.pago_tercero_observado
     """)
     checks["margenes_incompletos_publicados"] = uno("""
       SELECT count(*) FROM escenarios.v_costo_viaje_resumen
       WHERE (NOT coalesce(completo_3,false) AND margen_3 IS NOT NULL)
-         OR (NOT coalesce(completo_4,false) AND margen_4 IS NOT NULL)
          OR (NOT coalesce(completo_comercial_3,false) AND margen_comercial_3 IS NOT NULL)
-         OR (NOT coalesce(completo_comercial_4,false) AND margen_comercial_4 IS NOT NULL)
     """)
     checks["virtuales_con_destino_incorrecto"] = uno("""
       SELECT count(*) FROM escenarios.fact_costo_virtual x
@@ -73,6 +71,15 @@ def controles(conn, habia_escenarios):
       SELECT count(*) FROM escenarios.fact_costo_virtual
       WHERE sk_componente IN (3,4,5,6) AND monto IS NOT NULL
         AND estado_contexto IS DISTINCT FROM 'propio concordante inferido'
+        AND NOT coalesce(
+          sk_escenario=3 AND estado_tramo='disponible'
+          AND estado_contexto='configuracion de rampla o tractoreo no concordante'
+          AND ((sk_componente=3 AND estado='ok')
+            OR (sk_componente=4 AND estado='parcial: cuota de rampla sin confirmar'
+              AND cf_rampla_virtual IS NULL
+              AND (cf_flota_virtual IS NOT NULL OR cf_estructura_virtual IS NOT NULL)
+              AND abs(monto-coalesce(cf_flota_virtual,0)-coalesce(cf_estructura_virtual,0))<=0.01)),
+          false)
     """)
     checks['virtuales_fijo_distinto_de_bolsas'] = uno("""
       SELECT count(*) FROM escenarios.fact_costo_virtual

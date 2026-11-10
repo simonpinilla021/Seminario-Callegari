@@ -1,9 +1,0 @@
-nombre,concesion,ruta,km,posicion,observacion,lat,lon
-Punta Colorada,Ruta 5 Norte La Serena - Vallenar,RUTA 5,554,Troncal,km tomado de una fuente secundaria (Chócale 2026): verificar,,
-Paso superior Lo Marcoleta,Concesión Internacional Ruta 5 Tramo Santiago - Los Vilos,RUTA 5,11.55,Pórtico,km del pórtico según MOP (Presentación proyecto tramo urbano Santiago–Lampa); coordenadas: pórtico sin nombre de OpenStreetMap en ese punto de la Ruta 5,-33.358000,-70.703962
-Enlace Buenaventura,Concesión Internacional Ruta 5 Tramo Santiago - Los Vilos,RUTA 5,13.70,Pórtico,km del pórtico según MOP (Presentación proyecto tramo urbano Santiago–Lampa); coordenadas: pórtico sin nombre de OpenStreetMap a 2 km del anterior,-33.339822,-70.712108
-Paso superior La Montaña,Concesión Internacional Ruta 5 Tramo Santiago - Los Vilos,RUTA 5,16.40,Pórtico,km del pórtico según MOP (Presentación proyecto tramo urbano Santiago–Lampa); coordenadas: pórticos de OpenStreetMap con ese nombre (uno por sentido),-33.317094,-70.722310
-Enlace Lo Pinto,Concesión Internacional Ruta 5 Tramo Santiago - Los Vilos,RUTA 5,20.80,Pórtico,km del pórtico según MOP (Presentación proyecto tramo urbano Santiago–Lampa); coordenadas: pórticos de OpenStreetMap con ese nombre (uno por sentido),-33.279935,-70.738988
-Las Cardas,RUTA 43,RUTA 43,34.5,Troncal,"Peaje Las Cardas, Dm 34,5 de la Ruta 43 (díptico DGC Ruta 43, enero 2026); km de la Ruta 43, no de la Ruta 5; coordenadas: caseta sin nombre de OpenStreetMap en la Ruta 43",-30.330350,-71.244194
-Cerritos Bayos,RUTAS DEL LOA,RUTA 25,,Troncal,"Plaza de Peaje Cerritos Bayos (OpenStreetMap), en la Ruta 25 Carmen Alto–Calama: única plaza de Rutas del Loa en los recorridos",-22.695780,-69.188449
-Bypass Puchuncaví,Camino Nogales - Puchuncaví,F-20,,Troncal,"caseta y pórticos sin nombre de OpenStreetMap junto a Puchuncaví, en el recorrido hacia Ventanas: verificar que sea el Bypass",-32.714289,-71.439930

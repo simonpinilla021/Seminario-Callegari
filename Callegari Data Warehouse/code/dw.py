@@ -1,22 +1,4 @@
-#!/usr/bin/env python3
-"""Punto de entrada único del DW Callegari.
-
-Uso (desde la carpeta code, con config.ini creado):
-
-  python -B dw.py crear-base                 Crea la base de datos de config.ini si no existe.
-  python -B dw.py crear-esquema              Crea todas las tablas, vistas y relaciones, sin datos
-                                             (postgres/esquema_dw.sql). --reemplazar borra los esquemas existentes.
-  python -B dw.py demo                       Esquema vacío + carga real del área de peajes con datos públicos del MOP
-                                             y el calendario. No necesita datos de la empresa.
-  python -B dw.py documentar                 Genera docs/diccionario_datos.md leyendo la base (tablas, columnas,
-                                             llaves y comentarios).
-  python -B dw.py desde-archivos --validar   Construcción completa con los Parquet de src/ (construir_todo.py).
-  python -B dw.py desde-erp --validar        Descarga todas las fuentes del ERP por red y construye (actualizar_dw.py).
-  python -B dw.py actualizar --validar       Descarga solo las fuentes vencidas del ERP y reconstruye.
-
-En los tres últimos, --validar construye y revierte; --guardar confirma. Sin ninguno de los dos solo se describe el plan.
-desde-erp y actualizar necesitan acceso a la red de la empresa y credenciales del ERP.
-"""
+"""Entrada para revisión académica y construcción autorizada del DW."""
 import argparse
 import re
 import subprocess
@@ -57,21 +39,21 @@ def esquemas_con_tablas(con, esquemas=ESQUEMAS):
         "WHERE n.nspname = ANY(%s) AND c.relkind IN ('r','v','m')", (list(esquemas),)).fetchall()]
 
 
-def crear_esquema(reemplazar=False):
+def crear_esquema():
     if not ESQUEMA_SQL.exists():
         raise SystemExit(f'Falta {ESQUEMA_SQL}. Se genera con pg_dump --schema-only (ver README).')
     texto = ESQUEMA_SQL.read_text(encoding='utf-8')
     esquemas = sorted(set(ESQUEMAS) | set(esquemas_del_volcado(texto)))
     db = _db()
+    pg = db.leer_config()["postgres"]
+    if pg.get("dbname") != "dw_callegari_esquema" or pg.get("host","localhost").lower() not in ("localhost","127.0.0.1","::1"):
+        raise SystemExit("crear-esquema requiere la base local dw_callegari_esquema")
     db.crear_base_si_falta()
     con = db.conectar()
     try:
         existentes = esquemas_con_tablas(con, esquemas)
-        if existentes and not reemplazar:
-            raise SystemExit(f'La base ya tiene objetos en {", ".join(existentes)}. '
-                             'Use --reemplazar para borrarlos y crear el esquema vacío.')
-        for esquema in esquemas:
-            con.execute(f'DROP SCHEMA IF EXISTS "{esquema}" CASCADE')
+        if existentes:
+            raise SystemExit('La base de revisión ya tiene objetos. Use una base vacía.')
         con.execute(_sentencias_sql(texto))
         con.execute("SELECT pg_catalog.set_config('search_path', 'public', false)")
         con.commit()
@@ -86,25 +68,6 @@ def crear_esquema(reemplazar=False):
         raise
     finally:
         con.close()
-
-
-def demo(reemplazar=False):
-    """Esquema vacío y carga del área peajes con sus CSV públicos. La etapa de peajes es la misma que usa la
-    construcción completa: lee láminas MOP ya procesadas, arma plazas, tarifas por fecha y peaje por tramo."""
-    crear_esquema(reemplazar=reemplazar)
-    from peajes import construir_dw_peajes
-    print('\nCargando el área peajes (datos públicos del MOP)...')
-    # Los viajes son datos de la empresa: se entrega un archivo vacío con sus columnas, así fact_viaje_peaje
-    # queda vacía y el resto del área se carga completo.
-    import tempfile
-    with tempfile.TemporaryDirectory() as tmp:
-        vacio = Path(tmp) / 'viajes_vacio.csv'
-        vacio.write_text('c_orderline_id,sit_roadmap_id,sit_stretch_id,datepromised,isreturn\n', encoding='utf-8')
-        construir_dw_peajes.principal(['--viajes', str(vacio)])
-    print('\nDemo lista. Consultas sugeridas:')
-    print('  SELECT * FROM peajes.dim_plaza_peaje LIMIT 20;')
-    print('  SELECT * FROM peajes.fact_tarifa_peaje LIMIT 20;')
-    print('  SELECT * FROM peajes.fact_peaje_referencial_tramo LIMIT 20;')
 
 
 def documentar(salida=None):
@@ -170,9 +133,8 @@ def principal(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest='comando', required=True)
     sub.add_parser('crear-base', help='crea la base de datos si no existe')
-    for nombre, ayuda in [('crear-esquema', 'tablas y vistas vacías'), ('demo', 'esquema + peajes públicos')]:
-        p = sub.add_parser(nombre, help=ayuda)
-        p.add_argument('--reemplazar', action='store_true', help='borra los esquemas del DW antes de crearlos')
+    sub.add_parser('crear-esquema', help='crea tablas y vistas vacías')
+    sub.add_parser('demo', help='carga plazas y tarifas públicas MOP')
     p = sub.add_parser('documentar', help='genera el diccionario de datos')
     p.add_argument('--salida')
     for nombre, ayuda in [('desde-archivos', 'construcción completa con los Parquet de src/'),
@@ -186,9 +148,10 @@ def principal(argv=None):
     if a.comando == 'crear-base':
         return crear_base()
     if a.comando == 'crear-esquema':
-        return crear_esquema(a.reemplazar)
+        return crear_esquema()
     if a.comando == 'demo':
-        return demo(a.reemplazar)
+        from peajes import construir_dw_peajes
+        return construir_dw_peajes.principal(["--solo-mop"])
     if a.comando == 'documentar':
         return documentar(a.salida)
     modo = ['--validar'] if a.validar else ['--guardar'] if a.guardar else []

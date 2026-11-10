@@ -78,7 +78,7 @@ def evaluar_contexto(vt):
          'configuracion de rampla o tractoreo no concordante'],default='propio concordante inferido'),index=vt.index)
 
 
-def componentes_adicionales(vt):
+def componentes_adicionales(vt, *, permitir_parcial=False):
     """Una fila por virtual con montos candidatos admisibles y motivos por componente."""
     x=vt.copy()
     def num(n):
@@ -118,6 +118,30 @@ def componentes_adicionales(vt):
     x['estado_peaje']=np.select([estado_tramo_virtual(x).ne('disponible'),~valido,~peaje_ok],
         ['sin dato: tramo pendiente de revision','sin dato: contexto operativo no concordante',
          'sin dato: peaje sin referencia completa a la fecha'],default='ok')
+    if permitir_parcial:
+        # La categoría coincide entre vecinos propios. La identidad o propiedad
+        # de la rampla sigue sin confirmarse y su cuota queda en blanco.
+        parcial = (
+            estado_tramo_virtual(x).eq('disponible')
+            & x.estado_contexto.eq('configuracion de rampla o tractoreo no concordante')
+            & col('anterior_tractoreo').eq('N') & col('siguiente_tractoreo').eq('N')
+        )
+        bolsas = ['cf_flota_virtual', 'cf_estructura_virtual']
+        for bolsa in ('flota', 'estructura'):
+            monto = dias * num(f'cuota_{bolsa}')
+            x.loc[parcial, f'cf_{bolsa}_virtual'] = monto.where(np.isfinite(monto))
+        subtotal = x[bolsas].sum(axis=1, min_count=1)
+        fijo_parcial = parcial & subtotal.notna()
+        x.loc[fijo_parcial, 'monto_costo_fijo'] = subtotal
+        x.loc[fijo_parcial, 'cantidad_costo_fijo'] = dias
+        x.loc[fijo_parcial, 'tasa_costo_fijo'] = subtotal / dias.where(dias > 0)
+        x.loc[fijo_parcial, 'estado_costo_fijo'] = 'parcial: cuota de rampla sin confirmar'
+        peaje_parcial = parcial & peaje_ok
+        x.loc[peaje_parcial, ['monto_peaje', 'tasa_peaje']] = x.loc[
+            peaje_parcial, ['peaje_ref_virtual', 'peaje_ref_virtual']
+        ].to_numpy()
+        x.loc[peaje_parcial, 'cantidad_peaje'] = 1.
+        x.loc[peaje_parcial, 'estado_peaje'] = 'ok'
     return x
 
 

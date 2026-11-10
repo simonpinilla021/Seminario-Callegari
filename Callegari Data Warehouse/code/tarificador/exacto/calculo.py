@@ -14,8 +14,14 @@ def calcular(entrada,parametros):
     r={k:float(e[k]) for k in ('e10','e11','e12')};r['e13']=0.;r['e14']=0.
     r.update({k:e[k] for k in ['g4','n4','g5','e7','c21','e8','e5','e6','g7','e22','d22','c22','f22']})
     r['e15']=r['e10']+r['e11']+r['e12']
+    extras=e.get('tramos_adicionales',())
+    for i,(km,_) in enumerate(extras,start=13):
+        r[f'e{i}']=km
+        r['e15']+=km
     r['f15']=r['e15']*(1 if si(e['b6']) else 2)
     r['g6']=sum(str(e['c'+str(i)]).casefold()!=str(e['c'+str(i-1)]).casefold() for i in (11,12,13))
+    if extras:
+        r['g6']=2+len(extras)
     r['g8']=r['g6']+float(e['g7'])
     r['i4']=float(e['i4']) if e['i4'] is not None else float('nan')
     value=e.get('d27',p['B5']);r['d27']=float(value) if value is not None else float('nan')
@@ -24,7 +30,7 @@ def calcular(entrada,parametros):
     r['i6']=r['f15']*r['i4']/r['d27'] if math.isfinite(r['d27']) and r['d27']>0 else float('nan')
     lh=p['E11'] if si(e['b5']) else p['E10']
     r['i7']=(r['e15']/p['B36']*24*lh*r['i4'] if si(e['b4']) else 0.)/(2 if si(e['b6']) else 1)
-    tolls=[e.get('k'+str(i)) for i in (10,11,12)]
+    tolls=[e.get('k'+str(i)) for i in (10,11,12)]+[peaje for _,peaje in extras]
     r['k15']=sum(tolls) if all(isinstance(x,(int,float)) and math.isfinite(x) for x in tolls) else None
     r['j8']=sum(tolls) if all(isinstance(x,(int,float)) and math.isfinite(x) for x in tolls) else 'SIN PEAJE'
     r['i8']=(r['j8']*(1 if si(e['b6']) else 2)) if isinstance(r['j8'],(int,float)) else 0.

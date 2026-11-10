@@ -1,7 +1,7 @@
 """Carga del contrato exacto: nunca modifica precios ni parámetros operacionales."""
 from pathlib import Path
 from datetime import datetime
-import hashlib,json,math
+import hashlib,json,math,unicodedata
 import pandas as pd
 from .calculo import calcular,buscar_peajes
 
@@ -77,15 +77,45 @@ def rendimiento_primer_bloque(con,viajes):
     viajes.loc[usar,'rendimiento_camion']=p_r[usar];viajes.loc[usar,'rendimiento_supuesto']=True
     return viajes
 
-def preparar(con):
+TRAMO_EXTENSION = 1000348
+ESTADO_EXTENSION = 'ok: extension de seis puntos'
+
+
+def extension_seis_puntos(km, peajes):
+    def clave(texto):
+        return ''.join(c for c in unicodedata.normalize('NFD', texto.strip().casefold())
+                       if not unicodedata.combining(c))
+
+    ruta = km.loc[km.sit_stretch_id.eq(TRAMO_EXTENSION)].iloc[0]
+    ciudades = [c.strip() for c in ruta.texto_tramo.split('/')]
+    distancias = pd.read_csv(INPUT/'distancia_tarificador.csv.gz').to_dict('records')
+    pares = []
+    for origen, destino in zip(ciudades, ciudades[1:]):
+        par = clave(origen), clave(destino)
+        kms = [float(f['km']) for f in distancias if (clave(f['origen']), clave(f['destino'])) == par]
+        tasas = [float(f['peaje']) for f in peajes if f['estado']=='ok'
+                 and (clave(f['origen']), clave(f['destino'])) == par]
+        if len(kms)!=1 or len(tasas)!=1:
+            raise ValueError(f'Extensión sin referencia única para {origen} / {destino}')
+        distancia, peaje = kms[0], tasas[0]
+        if not (math.isfinite(distancia) and distancia>0 and math.isfinite(peaje) and peaje>=0):
+            raise ValueError(f'Referencia inválida para {origen} / {destino}')
+        pares.append((distancia, peaje))
+    if len(pares)!=5:
+        raise ValueError('La extensión autorizada requiere cinco conexiones')
+    return ciudades, pares
+
+
+def preparar(con, *, solo_extension=False):
     manifest,params,snapshot=insumos()
     km=pd.read_csv(INPUT/'km_tramo_tarificador.csv');eq=pd.read_csv(INPUT/'equivalencia_lugar_tarificador.csv').fillna('')
     peajes=pd.read_csv(INPUT/'peajes_excel.csv').to_dict('records')
+    ciudades_extension, pares_extension = extension_seis_puntos(km, peajes)
     peajes_tramo={}
     for t in km.itertuples():
         if t.estado in ('ok','local (0 km)'):peajes_tramo[int(t.sit_stretch_id)]=buscar_peajes([getattr(t,'c'+str(i)) for i in range(9,14)],peajes)
     prices=precio_dias(con,snapshot)
-    viajes=con.df('''SELECT v.nro_viaje,v.sk_fecha AS fecha_documental_id,v.cliente_id,v.equipo_id,
+    viajes=con.df(('''SELECT v.nro_viaje,v.sk_fecha AS fecha_documental_id,v.cliente_id,v.equipo_id,
       v.sit_stretch_id AS tramo_id,v.producto_id,v.es_tractoreo,v.ingreso::float8 AS ingreso_estimado,
       cy.clasificacion_viaje AS clasificacion,ct.rendimiento_camion::float8 AS rendimiento_camion,
       ct.rendimiento_supuesto AS rendimiento_supuesto
@@ -93,7 +123,8 @@ def preparar(con):
       LEFT JOIN ciclos.fact_viaje_ciclo cy ON cy.nro_viaje=v.nro_viaje AND cy.es_virtual='N'
       LEFT JOIN combustible.v_rendimiento_tarificador_certificado ct ON ct.nro_viaje=v.nro_viaje
       WHERE v.tipo_operador='propio' AND v.ingreso>0
-      AND cy.clasificacion_viaje IN('Envio','Retorno') ORDER BY v.nro_viaje''')
+      AND cy.clasificacion_viaje IN('Envio','Retorno')'''
+      + (f' AND v.sit_stretch_id={TRAMO_EXTENSION}' if solo_extension else '') + ' ORDER BY v.nro_viaje'))
     if viajes.nro_viaje.duplicated().any():raise ValueError('Servicio duplicado en la lectura')
     # La referencia ya aplica la historia estrictamente anterior y la excepción marcada.
     tipos=pd.read_csv(ROOT/'code/costos/tipo_carga_producto_manual.csv')
@@ -104,6 +135,7 @@ def preparar(con):
     records=[]
     for v in viajes.to_dict('records'):
         k=kmap.get(int(v['tramo_id'])) if pd.notna(v['tramo_id']) else None
+        extension=v['tramo_id']==TRAMO_EXTENSION
         pr=pmap[int(v['fecha_documental_id'])]
         for scenario in [1,2]:
             r={n:v[n] for n in ['nro_viaje','fecha_documental_id','cliente_id','equipo_id','tramo_id','es_tractoreo','ingreso_estimado','clasificacion']}
@@ -113,18 +145,22 @@ def preparar(con):
             r['texto_tramo']=k['texto_tramo'] if k else None
             r['n_puntos']=k['n_puntos'] if k else None
             for i in range(9,14):r['c'+str(i)]=k['c'+str(i)] if k and pd.notna(k.get('c'+str(i))) else None
+            if extension:
+                r['estado_km']=ESTADO_EXTENSION
+                for i,ciudad in enumerate(ciudades_extension[:5],start=9):
+                    r[f'c{i}']=ciudad
             frio=r['tipo_carga'] in ['frio','congelado','multi'];cong=r['tipo_carga'] in ['congelado','multi']
             ret=r['clasificacion']=='Retorno'
             r.update(b4='si' if frio else 'no',b5='si' if cong else 'no',b6='si' if ret else 'no',b7='si' if ret else 'no',n5='si' if r['es_tractoreo']=='S' else 'no')
             r['rendimiento']=params['B5'] if scenario==1 else v['rendimiento_camion']
             r['i4']=pr['precio_excel']
-            sup=[]
+            sup=['extension de seis puntos con referencias del tarificador'] if extension else []
             if r['supuesto_rm']:sup.append('comuna RM cotizada como Santiago')
             if bool(pr.get('tct_supuesto_coquimbo')):sup.append('TCT = fila 641073 COQUIMBO')
             if scenario==2 and bool(v.get('rendimiento_supuesto')):sup.append('rendimiento del primer bloque certificado posterior del camión')
             r['supuestos']='; '.join(sup) if sup else None
             reasons=[]
-            if r['estado_km'] not in ['ok','local (0 km)']:reasons.append(r['estado_km'])
+            if r['estado_km'] not in ['ok','local (0 km)',ESTADO_EXTENSION]:reasons.append(r['estado_km'])
             if r['tipo_carga'] not in ['seco','sin termo','frio','congelado','multi']:reasons.append('tipo de carga sin clasificar')
             if r['es_tractoreo'] not in ['S','N']:reasons.append('tractoreo no definido')
             if not pd.notna(r['rendimiento']) or r['rendimiento']<=0:reasons.append('rendimiento del camión no disponible')
@@ -133,10 +169,14 @@ def preparar(con):
             # I17 y el margen calculado se conservan aparte. Los envíos no cotizables quedan sin costo mostrado (NULL).
             r['costo_presentacion']=0. if ret else None
             r['evaluable']=not reasons;r['estado']='ok' if not reasons else '; '.join(reasons)
-            if r['estado_km'] in ['ok','local (0 km)'] and r['tipo_carga'] in ['seco','sin termo','frio','congelado','multi'] and r['es_tractoreo'] in ['S','N']:
+            if r['estado_km'] in ['ok','local (0 km)',ESTADO_EXTENSION] and r['tipo_carga'] in ['seco','sin termo','frio','congelado','multi'] and r['es_tractoreo'] in ['S','N']:
                 entrada={n:r[n] for n in ['c9','c10','c11','c12','c13','b4','b5','b6','b7','n5','i4']}
                 entrada['d27']=r['rendimiento']
-                for i in range(3):entrada['e'+str(10+i)]=k['km_pierna_'+str(i+1)];entrada['k'+str(10+i)]=peajes_tramo[int(v['tramo_id'])][i]
+                for i in range(3):
+                    entrada[f'e{10+i}'],entrada[f'k{10+i}']=(pares_extension[i] if extension else
+                        (k[f'km_pierna_{i+1}'],peajes_tramo[int(v['tramo_id'])][i]))
+                if extension:
+                    entrada['tramos_adicionales']=pares_extension[3:]
                 r.update(calcular(entrada,params))
                 for i in range(3):r['k'+str(i+10)]=entrada['k'+str(i+10)]
                 r['j8_estado']='SIN PEAJE' if isinstance(r['j8'],str) else 'ok'
@@ -147,6 +187,8 @@ def preparar(con):
                 r['razon_ingreso_cotizacion']=r['ingreso_estimado']/r['i22'] if r['i22'] else None
                 # Decisión Cristian 02-11: regla de presentación, no altera I17 ni el margen calculado.
                 r['costo_presentacion']=0. if ret else (r['i17'] if r['evaluable'] else None)
+            if extension and not r['evaluable']:
+                r['i17']=r['i22']=None
             records.append(r)
     q=pd.DataFrame(records)
     return q,prices,km,eq,params,manifest

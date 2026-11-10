@@ -831,8 +831,6 @@ def principal(argv=None, _conn=None):
     viajes, dias_fleteros = leer_viajes(ruta_vta, ruta_tramo, ruta_veh, p)
 
     con = db.conectar(ESQUEMAS, _conn=_conn)
-    ventana_absorcion = (con.df("SELECT * FROM costos.parametro_costo WHERE metodo='absorcion_total' AND parametro IN('ventana_meses','km_por_dia')")
-        if con.existe_tabla('costos','parametro_costo') else pd.DataFrame())
     with con:
         con.execute(ESQUEMA)
     with con:
@@ -855,8 +853,6 @@ def principal(argv=None, _conn=None):
         con.copiar_df("parametro_costo", par[["parametro", "metodo", "ambito", "valor", "unidad", "vigente_desde",
                                               "vigente_hasta", "parametro_padre", "origen", "fuente_detalle",
                                               "monto_base", "cantidad_inductor", "nota"]])
-        if len(ventana_absorcion):
-            con.copiar_df('costos.parametro_costo', ventana_absorcion)
         n_viajes = cargar_viajes(con, viajes)
         capacidad = cargar_capacidad(con, par)
 

@@ -39,7 +39,7 @@ CONSULTA = """WITH v AS MATERIALIZED (
  LEFT JOIN c ON c.nro_viaje=v.nro_viaje AND c.sk_escenario=s.sk_escenario
  LEFT JOIN nv ON nv.ciclo_comercial=v.ciclo_comercial
  LEFT JOIN cv ON cv.nro_viaje=v.nro_viaje AND cv.sk_escenario=s.sk_escenario
- WHERE s.sk_escenario IN(1,2,3,4)),
+ WHERE s.sk_escenario IN(1,2,3)),
  z AS (SELECT *, (ingreso IS NOT NULL AND tipo_operador IN('propio','caterina','fletero')
  AND datos_ok AND filas=esperadas) AS evaluable,
  (tipo_operador IN('caterina','fletero') OR
@@ -48,7 +48,7 @@ CONSULTA = """WITH v AS MATERIALIZED (
  (CASE WHEN subtotal_comercial IS NOT NULL OR costo_virtual_conocido IS NOT NULL
  THEN coalesce(subtotal_comercial,0)+coalesce(costo_virtual_conocido,0) END)::float8 AS conocido_comercial,
  NOT(tipo_operador='propio' AND rol_comercial='envío principal' AND n_virtuales>0 AND sk_escenario IN(1,2)) AS metodo_virtual,
- NOT(tipo_operador='propio' AND rol_comercial='envío principal' AND sk_escenario IN(3,4)
+ NOT(tipo_operador='propio' AND rol_comercial='envío principal' AND sk_escenario =3
  AND n_virtuales<>n_virtuales_destino) AS asignacion_virtual FROM x),
  q AS (SELECT *,coalesce(evaluable AND contexto_comercial AND comercial_ok AND metodo_virtual
  AND asignacion_virtual AND virtuales_ok,false) AS evaluable_comercial FROM z)
@@ -84,7 +84,8 @@ def publicar(con, materializar_controles=False):
     adaptar_resultados(con,servicio=True,ciclo=False)
     consultas = {
         'claves_duplicadas': 'SELECT count(*) FROM (SELECT nro_viaje,escenario_id FROM ds_gestion.v_resultado_servicio GROUP BY 1,2 HAVING count(*)<>1) x',
-        'filas_no_conservadas': 'SELECT abs((SELECT count(*) FROM ds_gestion.v_resultado_servicio)-4*(SELECT count(*) FROM ventas.fact_viaje_venta))',
+        'filas_no_conservadas': '''SELECT abs((SELECT count(*) FROM ds_gestion.v_resultado_servicio)
+          -(SELECT count(*) FROM escenarios.dim_escenario)*(SELECT count(*) FROM ventas.fact_viaje_venta))''',
         'margen_fisico_incompleto': 'SELECT count(*) FROM ds_gestion.v_resultado_servicio WHERE NOT evaluable_fisico AND (costo_fisico IS NOT NULL OR margen_fisico IS NOT NULL)',
         'margen_comercial_incompleto': 'SELECT count(*) FROM ds_gestion.v_resultado_servicio WHERE NOT evaluable_comercial AND (costo_comercial IS NOT NULL OR margen_comercial IS NOT NULL)',
         'comercial_sin_fisico_evaluable': 'SELECT count(*) FROM ds_gestion.v_resultado_servicio WHERE evaluable_comercial AND NOT evaluable_fisico',

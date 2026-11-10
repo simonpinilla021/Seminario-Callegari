@@ -958,6 +958,7 @@ def principal(argv=None, _conn=None):
     con = db.conectar(ESQUEMAS, _conn=_conn)
     with con:
         from taller import equipo_comun
+        con.execute("CREATE SCHEMA IF NOT EXISTS taller")
         equipo_comun.cargar(con, dim_eq)
         con.execute(ESQUEMA)
         cargar_fechas(con, fecha_corte.date())

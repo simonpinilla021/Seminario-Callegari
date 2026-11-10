@@ -16,7 +16,7 @@ def principal():
     else:
         if a.importar_env:
             env=credenciales.leer_env(a.importar_env)
-            destino=dict(host=env.get('DB_HOST','localhost'),port=env.get('DB_PORT','5432'),
+            destino=dict(host=env['DB_HOST'],port=env.get('DB_PORT','5432'),
                 dbname=env.get('DB_NAME','idempiere'),user=env.get('DB_USER','consulta'))
             clave=env.get('DB_PASS','')
         else:

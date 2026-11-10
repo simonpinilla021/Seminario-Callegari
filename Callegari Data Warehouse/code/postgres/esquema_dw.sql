@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict g3u73AE6j5JcXBbSwf4h4VFcjueOOngfX9Oh1OaTk5MXVzqNGDOo2J8jBdeh13p
+\restrict T47P2Zr5mTht7TShVVc8PbMvVvYe6783N3eMNC28zRbMBNon4opiyyvVGyKhRqI
 
 -- Dumped from database version 18.6
 -- Dumped by pg_dump version 18.6
@@ -398,11 +398,11 @@ CREATE TABLE combustible.fact_viaje_combustible (
     litros_estimado double precision,
     litros_asignados double precision,
     metodo_asignacion text,
+    id_calculo bigint,
     costo_bloque double precision,
     costo_estimado double precision,
     costo_combustible double precision,
     precio_litro_aplicado double precision,
-    id_calculo bigint,
     fraccion_certificada double precision,
     fuente_ficha text,
     l100_teorico double precision,
@@ -517,6 +517,7 @@ CREATE TABLE combustible.parametro_rendimiento_tarificador (
 CREATE TABLE combustible.puente_viaje_bloque (
     equipo_id bigint,
     bloque integer,
+    id_calculo bigint,
     id_viaje_fuente text,
     nro_viaje bigint,
     es_virtual text,
@@ -526,8 +527,7 @@ CREATE TABLE combustible.puente_viaje_bloque (
     km_ponderados_bloque double precision,
     litros_asignados double precision,
     costo_asignado double precision,
-    calidad_bloque text,
-    id_calculo bigint
+    calidad_bloque text
 );
 
 
@@ -592,6 +592,7 @@ CREATE TABLE ventas.fact_viaje_venta (
     operador_grupo text,
     tipo_operador text,
     transportista_id bigint,
+    conductor_id bigint,
     conductor_interno text,
     es_retorno text,
     es_tractoreo text,
@@ -606,8 +607,7 @@ CREATE TABLE ventas.fact_viaje_venta (
     pago_tercero double precision,
     pct_pago_tercero double precision,
     comision_conductor_observada double precision,
-    pago_tercero_observado double precision,
-    conductor_id bigint
+    pago_tercero_observado double precision
 );
 
 
@@ -1147,20 +1147,12 @@ CREATE VIEW escenarios.v_costo_viaje_resumen AS
                     WHEN bool_and(((detalle.estado = 'ok'::text) AND (detalle.monto IS NOT NULL))) FILTER (WHERE ((detalle.sk_escenario = 3) AND (NOT detalle.es_virtual))) THEN sum(detalle.monto) FILTER (WHERE (detalle.sk_escenario = 3))
                     ELSE NULL::double precision
                 END AS costo_3_real,
-                CASE
-                    WHEN bool_and(((detalle.estado = 'ok'::text) AND (detalle.monto IS NOT NULL))) FILTER (WHERE ((detalle.sk_escenario = 4) AND (NOT detalle.es_virtual))) THEN sum(detalle.monto) FILTER (WHERE (detalle.sk_escenario = 4))
-                    ELSE NULL::double precision
-                END AS costo_4_real_comb_teorico,
             sum(detalle.monto_comercial) FILTER (WHERE (detalle.sk_escenario = 1)) AS costo_comercial_1,
             sum(detalle.monto_comercial) FILTER (WHERE (detalle.sk_escenario = 2)) AS costo_comercial_2,
             sum(detalle.monto) FILTER (WHERE (detalle.sk_escenario = 3)) AS subtotal_conocido_3,
-            sum(detalle.monto) FILTER (WHERE (detalle.sk_escenario = 4)) AS subtotal_conocido_4,
             sum(detalle.monto_comercial) FILTER (WHERE (detalle.sk_escenario = 3)) AS subtotal_comercial_conocido_3,
-            sum(detalle.monto_comercial) FILTER (WHERE (detalle.sk_escenario = 4)) AS subtotal_comercial_conocido_4,
             bool_and(((detalle.estado = 'ok'::text) AND (detalle.monto IS NOT NULL))) FILTER (WHERE ((detalle.sk_escenario = 3) AND (NOT detalle.es_virtual))) AS completo_3,
-            bool_and(((detalle.estado = 'ok'::text) AND (detalle.monto IS NOT NULL))) FILTER (WHERE ((detalle.sk_escenario = 4) AND (NOT detalle.es_virtual))) AS completo_4,
             bool_and(((detalle.estado_comercial = 'ok'::text) AND (detalle.monto_comercial IS NOT NULL))) FILTER (WHERE (detalle.sk_escenario = 3)) AS completo_comercial_3,
-            bool_and(((detalle.estado_comercial = 'ok'::text) AND (detalle.monto_comercial IS NOT NULL))) FILTER (WHERE (detalle.sk_escenario = 4)) AS completo_comercial_4,
             max(detalle.rol_comercial) AS rol_comercial,
             max(detalle.ciclo_comercial) AS ciclo_comercial,
             bool_and((detalle.estado = 'ok'::text)) FILTER (WHERE (NOT detalle.es_virtual)) AS completo
@@ -1180,11 +1172,9 @@ CREATE VIEW escenarios.v_costo_viaje_resumen AS
     c.costo_1_tarificador,
     c.costo_2_tarif_rend_camion,
     c.costo_3_real,
-    c.costo_4_real_comb_teorico AS costo_4_absorcion_total,
     (vv.ingreso - c.costo_1_tarificador) AS margen_1,
     (vv.ingreso - c.costo_2_tarif_rend_camion) AS margen_2,
     (vv.ingreso - c.costo_3_real) AS margen_3,
-    (vv.ingreso - c.costo_4_real_comb_teorico) AS margen_4,
     c.ciclo_comercial,
     c.rol_comercial,
     c.costo_comercial_1,
@@ -1193,29 +1183,17 @@ CREATE VIEW escenarios.v_costo_viaje_resumen AS
             WHEN c.completo_comercial_3 THEN c.subtotal_comercial_conocido_3
             ELSE NULL::double precision
         END AS costo_comercial_3,
-        CASE
-            WHEN c.completo_comercial_4 THEN c.subtotal_comercial_conocido_4
-            ELSE NULL::double precision
-        END AS costo_comercial_4,
     (vv.ingreso - c.costo_comercial_1) AS margen_comercial_1,
     (vv.ingreso - c.costo_comercial_2) AS margen_comercial_2,
         CASE
             WHEN c.completo_comercial_3 THEN (vv.ingreso - c.subtotal_comercial_conocido_3)
             ELSE NULL::double precision
         END AS margen_comercial_3,
-        CASE
-            WHEN c.completo_comercial_4 THEN (vv.ingreso - c.subtotal_comercial_conocido_4)
-            ELSE NULL::double precision
-        END AS margen_comercial_4,
-    (c.completo AND COALESCE(c.completo_comercial_3, false) AND COALESCE(c.completo_comercial_4, false)) AS costos_completos,
+    (c.completo AND COALESCE(c.completo_comercial_3, false)) AS costos_completos,
     c.subtotal_conocido_3,
-    c.subtotal_conocido_4,
     c.subtotal_comercial_conocido_3,
-    c.subtotal_comercial_conocido_4,
     c.completo_3,
-    c.completo_4,
-    c.completo_comercial_3,
-    c.completo_comercial_4
+    c.completo_comercial_3
    FROM ((((((c
      JOIN ventas.fact_viaje_venta vv ON ((vv.nro_viaje = c.nro_viaje)))
      LEFT JOIN escenarios.fact_cotizacion_viaje q ON ((q.nro_viaje = c.nro_viaje)))
@@ -1373,24 +1351,6 @@ CREATE TABLE costos.dim_cuenta_contable (
     inductor text,
     origen_clasificacion text,
     nota text
-);
-
-
---
--- Name: fact_absorcion_viaje; Type: TABLE; Schema: costos; Owner: -
---
-
-CREATE TABLE costos.fact_absorcion_viaje (
-    id_viaje text NOT NULL,
-    bolsa text NOT NULL,
-    nro_viaje bigint,
-    es_virtual boolean,
-    sk_fecha integer,
-    mes text,
-    dias double precision,
-    cuota double precision,
-    monto double precision,
-    estado text
 );
 
 
@@ -1606,107 +1566,6 @@ COMMENT ON VIEW costos.v_cobertura_referencias_mensual IS 'Montos bajo alcance c
 
 
 --
--- Name: v_puente_absorcion_total; Type: VIEW; Schema: costos; Owner: -
---
-
-CREATE VIEW costos.v_puente_absorcion_total AS
- WITH ingreso AS (
-         SELECT (fact_viaje_venta.sk_fecha / 10000) AS anio,
-            sum(fact_viaje_venta.ingreso) AS ingreso_estimado
-           FROM ventas.fact_viaje_venta
-          GROUP BY (fact_viaje_venta.sk_fecha / 10000)
-        ), costo AS (
-         SELECT (fact_costo_viaje.sk_fecha / 10000) AS anio,
-            sum(fact_costo_viaje.monto) AS costo_real_conocido,
-            sum(fact_costo_viaje.monto) FILTER (WHERE (fact_costo_viaje.sk_componente = 5)) AS reposicion_real,
-            count(*) FILTER (WHERE ((fact_costo_viaje.estado <> 'ok'::text) OR (fact_costo_viaje.monto IS NULL))) AS componentes_reales_pendientes
-           FROM escenarios.fact_costo_viaje
-          WHERE (fact_costo_viaje.sk_escenario = 4)
-          GROUP BY (fact_costo_viaje.sk_fecha / 10000)
-        ), virtual AS (
-         SELECT (fact_costo_virtual.sk_fecha / 10000) AS anio,
-            sum(fact_costo_virtual.monto) AS costo_virtual_conocido,
-            sum(fact_costo_virtual.monto) FILTER (WHERE (fact_costo_virtual.sk_componente = 5)) AS reposicion_virtual,
-            count(*) FILTER (WHERE ((fact_costo_virtual.estado <> 'ok'::text) OR (fact_costo_virtual.monto IS NULL))) AS componentes_virtuales_pendientes
-           FROM escenarios.fact_costo_virtual
-          WHERE (fact_costo_virtual.sk_escenario = 4)
-          GROUP BY (fact_costo_virtual.sk_fecha / 10000)
-        ), ajuste AS (
-         SELECT (c.sk_fecha_inicio / 10000) AS anio,
-            sum(c.costo_ajuste) AS costo_ajuste,
-            count(*) FILTER (WHERE ((c.ajuste_litros <> (0)::double precision) AND (c.costo_ajuste IS NULL))) AS ajustes_sin_precio
-           FROM (combustible.fact_viaje_combustible c
-             LEFT JOIN ventas.fact_viaje_venta v USING (nro_viaje))
-          WHERE ((c.es_virtual = 'S'::text) OR (v.tipo_operador = 'propio'::text))
-          GROUP BY (c.sk_fecha_inicio / 10000)
-        ), contable AS (
-         SELECT f.anio,
-            (- (sum(f.monto) FILTER (WHERE (d.linea_eerr = '001'::text)))::double precision) AS ingreso_contable,
-            (sum(f.monto) FILTER (WHERE (d.linea_eerr = '014'::text)))::double precision AS depreciacion_contable,
-            (- (sum(f.monto) FILTER (WHERE (d.linea_eerr = ANY (ARRAY['001'::text, '002'::text, '003'::text, '004'::text, '005'::text, '006'::text, '007'::text, '008'::text, '009'::text, '014'::text]))))::double precision) AS resultado_contable_referencia,
-            (sum(f.monto) FILTER (WHERE (d.linea_eerr = '000'::text)))::double precision AS cuentas_sin_linea_eerr
-           FROM (costos.fact_contabilidad_mensual f
-             JOIN costos.dim_cuenta_contable d USING (sk_cuenta))
-          GROUP BY f.anio
-        ), x AS (
-         SELECT i.anio,
-            i.ingreso_estimado,
-            c.costo_real_conocido,
-            COALESCE(v.costo_virtual_conocido, (0)::double precision) AS costo_virtual_conocido,
-            ((i.ingreso_estimado - c.costo_real_conocido) - COALESCE(v.costo_virtual_conocido, (0)::double precision)) AS margen_modelado_subtotal,
-            (COALESCE(c.reposicion_real, (0)::double precision) + COALESCE(v.reposicion_virtual, (0)::double precision)) AS reposicion_modelada,
-            t.depreciacion_contable,
-            COALESCE(a.costo_ajuste, (0)::double precision) AS litros_no_asignables_clp,
-            (t.ingreso_contable - i.ingreso_estimado) AS diferencia_ingresos,
-            t.resultado_contable_referencia,
-            t.cuentas_sin_linea_eerr,
-            c.componentes_reales_pendientes,
-            v.componentes_virtuales_pendientes,
-            a.ajustes_sin_precio
-           FROM ((((ingreso i
-             LEFT JOIN costo c USING (anio))
-             LEFT JOIN virtual v USING (anio))
-             LEFT JOIN ajuste a USING (anio))
-             LEFT JOIN contable t USING (anio))
-        ), y AS (
-         SELECT x.anio,
-            x.ingreso_estimado,
-            x.costo_real_conocido,
-            x.costo_virtual_conocido,
-            x.margen_modelado_subtotal,
-            x.reposicion_modelada,
-            x.depreciacion_contable,
-            x.litros_no_asignables_clp,
-            x.diferencia_ingresos,
-            x.resultado_contable_referencia,
-            x.cuentas_sin_linea_eerr,
-            x.componentes_reales_pendientes,
-            x.componentes_virtuales_pendientes,
-            x.ajustes_sin_precio,
-            ((((x.margen_modelado_subtotal + x.reposicion_modelada) - x.depreciacion_contable) + x.litros_no_asignables_clp) + x.diferencia_ingresos) AS resultado_tras_pasos_identificados
-           FROM x
-        )
- SELECT anio,
-    ingreso_estimado,
-    costo_real_conocido,
-    costo_virtual_conocido,
-    margen_modelado_subtotal,
-    reposicion_modelada,
-    depreciacion_contable,
-    litros_no_asignables_clp,
-    diferencia_ingresos,
-    resultado_contable_referencia,
-    cuentas_sin_linea_eerr,
-    componentes_reales_pendientes,
-    componentes_virtuales_pendientes,
-    ajustes_sin_precio,
-    resultado_tras_pasos_identificados,
-    (resultado_contable_referencia - resultado_tras_pasos_identificados) AS residuo_por_explicar,
-    'provisional; lineas EERR 001-009 y 014; residuo no conciliado; revisar poblacion, desfase y cuentas 000'::text AS alcance
-   FROM y;
-
-
---
 -- Name: v_reglas_centro_costo; Type: VIEW; Schema: costos; Owner: -
 --
 
@@ -1772,28 +1631,6 @@ CREATE TABLE dim_comun.dim_tramo_comercial (
 
 
 --
--- Name: v_dim_cliente; Type: VIEW; Schema: dim_comun; Owner: -
---
-
-CREATE VIEW dim_comun.v_dim_cliente AS
- SELECT s.socio_id,
-    s.razon_social,
-    s.es_cliente_fuente,
-    s.es_proveedor_fuente,
-    s.forhire_fuente,
-    s.flota_mixta_fuente,
-    s.activo_fuente,
-    s.actualizado_fuente,
-    s.extraccion_id,
-    s.fuente_sha256,
-    r.usado_en_viajes,
-    r.marca_fuente AS marca_rol_fuente
-   FROM (dim_comun.dim_socio_negocio s
-     JOIN dim_comun.roles_socio r USING (socio_id))
-  WHERE (r.rol = 'cliente'::text);
-
-
---
 -- Name: v_dim_equipo; Type: VIEW; Schema: dim_comun; Owner: -
 --
 
@@ -1853,28 +1690,6 @@ CREATE VIEW dim_comun.v_dim_otros_equipos AS
 
 
 --
--- Name: v_dim_proveedor; Type: VIEW; Schema: dim_comun; Owner: -
---
-
-CREATE VIEW dim_comun.v_dim_proveedor AS
- SELECT s.socio_id,
-    s.razon_social,
-    s.es_cliente_fuente,
-    s.es_proveedor_fuente,
-    s.forhire_fuente,
-    s.flota_mixta_fuente,
-    s.activo_fuente,
-    s.actualizado_fuente,
-    s.extraccion_id,
-    s.fuente_sha256,
-    r.usado_en_viajes,
-    r.marca_fuente AS marca_rol_fuente
-   FROM (dim_comun.dim_socio_negocio s
-     JOIN dim_comun.roles_socio r USING (socio_id))
-  WHERE (r.rol = 'proveedor'::text);
-
-
---
 -- Name: v_dim_rampla; Type: VIEW; Schema: dim_comun; Owner: -
 --
 
@@ -1931,28 +1746,6 @@ CREATE VIEW dim_comun.v_dim_tracto AS
 
 
 --
--- Name: v_dim_transportista; Type: VIEW; Schema: dim_comun; Owner: -
---
-
-CREATE VIEW dim_comun.v_dim_transportista AS
- SELECT s.socio_id,
-    s.razon_social,
-    s.es_cliente_fuente,
-    s.es_proveedor_fuente,
-    s.forhire_fuente,
-    s.flota_mixta_fuente,
-    s.activo_fuente,
-    s.actualizado_fuente,
-    s.extraccion_id,
-    s.fuente_sha256,
-    r.usado_en_viajes,
-    r.marca_fuente AS marca_rol_fuente
-   FROM (dim_comun.dim_socio_negocio s
-     JOIN dim_comun.roles_socio r USING (socio_id))
-  WHERE (r.rol = 'transportista'::text);
-
-
---
 -- Name: v_tramo_version_peaje; Type: VIEW; Schema: dim_comun; Owner: -
 --
 
@@ -1972,24 +1765,6 @@ CREATE VIEW dim_comun.v_tramo_version_peaje AS
         END AS estado_maestro
    FROM (peajes.dim_tramo p
      LEFT JOIN dim_comun.dim_tramo_comercial m ON ((m.tramo_id = p.sit_stretch_id)));
-
-
---
--- Name: v_absorcion_total; Type: VIEW; Schema: ds_gestion; Owner: -
---
-
-CREATE VIEW ds_gestion.v_absorcion_total AS
- SELECT id_viaje AS movimiento_cadena_id,
-    nro_viaje,
-    es_virtual,
-    sk_fecha AS fecha_documental_id,
-    bolsa,
-    mes,
-    dias,
-    cuota,
-    monto,
-    estado
-   FROM costos.fact_absorcion_viaje;
 
 
 --
@@ -2013,9 +1788,9 @@ CREATE VIEW ds_gestion.v_capacidad_periodica AS
          SELECT (fact_costo_virtual.sk_fecha / 100) AS mes_id,
             count(*) AS virtuales,
             count(*) FILTER (WHERE ((fact_costo_virtual.estado IS DISTINCT FROM 'ok'::text) OR (fact_costo_virtual.monto IS NULL))) AS virtuales_pendientes,
-            sum(fact_costo_virtual.cf_flota_virtual) FILTER (WHERE (fact_costo_virtual.estado = 'ok'::text)) AS flota,
+            sum(fact_costo_virtual.cf_flota_virtual) FILTER (WHERE (fact_costo_virtual.estado = ANY (ARRAY['ok'::text, 'parcial: cuota de rampla sin confirmar'::text]))) AS flota,
             sum(fact_costo_virtual.cf_rampla_virtual) FILTER (WHERE (fact_costo_virtual.estado = 'ok'::text)) AS rampla,
-            sum(fact_costo_virtual.cf_estructura_virtual) FILTER (WHERE (fact_costo_virtual.estado = 'ok'::text)) AS estructura
+            sum(fact_costo_virtual.cf_estructura_virtual) FILTER (WHERE (fact_costo_virtual.estado = ANY (ARRAY['ok'::text, 'parcial: cuota de rampla sin confirmar'::text]))) AS estructura
            FROM escenarios.fact_costo_virtual
           WHERE ((fact_costo_virtual.sk_escenario = 3) AND (fact_costo_virtual.sk_componente = 4))
           GROUP BY (fact_costo_virtual.sk_fecha / 100)
@@ -2193,7 +1968,7 @@ CREATE VIEW ds_gestion.v_conciliacion_operacional_mensual AS
             fact_costo_viaje.estado,
             false AS virtual
            FROM escenarios.fact_costo_viaje
-          WHERE (fact_costo_viaje.sk_escenario = ANY (ARRAY[3, 4]))
+          WHERE (fact_costo_viaje.sk_escenario = 3)
         UNION ALL
          SELECT (fact_costo_virtual.sk_fecha / 100),
             fact_costo_virtual.sk_escenario,
@@ -2202,7 +1977,7 @@ CREATE VIEW ds_gestion.v_conciliacion_operacional_mensual AS
             fact_costo_virtual.estado,
             true
            FROM escenarios.fact_costo_virtual
-          WHERE (fact_costo_virtual.sk_escenario = ANY (ARRAY[3, 4]))
+          WHERE (fact_costo_virtual.sk_escenario = 3)
         ), costos AS (
          SELECT fuente.mes_id,
             fuente.sk_escenario,
@@ -2259,7 +2034,7 @@ CREATE VIEW ds_gestion.v_conciliacion_operacional_mensual AS
             (c.mes_id IS NOT NULL) AS hay_contabilidad,
             (v.ingreso_estimado_conocido - k.costo_modelado_conocido) AS margen_modelado_subtotal
            FROM ((((meses m
-             CROSS JOIN ( VALUES (3), (4)) e(sk_escenario))
+             CROSS JOIN ( VALUES (3)) e(sk_escenario))
              LEFT JOIN ventas v USING (mes_id))
              LEFT JOIN costos k USING (mes_id, sk_escenario))
              LEFT JOIN ds_gestion.v_referencia_contable_mensual c USING (mes_id))
@@ -2355,7 +2130,7 @@ CREATE VIEW ds_gestion.v_conciliacion_operacional_mensual AS
             ELSE 'Sin todas las fuentes del periodo; no conciliable'::text
         END AS estado_conciliacion,
     (mes_id = max(mes_id) OVER ()) AS ultimo_mes_observado,
-    'Toda la empresa por fecha de movimiento; sin filtro de ciclos; E3/4; conciliacion de agregados, no documental ni causal; no altera reposicion ni margenes fuente; ultimo mes puede estar incompleto'::text AS alcance
+    'Toda la empresa por fecha de movimiento; sin filtro de ciclos; E3; conciliacion de agregados, no documental ni causal; no altera reposicion ni margenes fuente; ultimo mes puede estar incompleto'::text AS alcance
    FROM pasos;
 
 
@@ -2390,7 +2165,7 @@ CREATE VIEW ds_gestion.v_fijos_escenario_mensual AS
             sum((f.monto)::numeric) FILTER (WHERE (NOT f.virtual)) AS fijo_real_conocido,
             sum((f.monto)::numeric) FILTER (WHERE f.virtual) AS fijo_virtual_conocido
            FROM f
-          WHERE (f.sk_escenario = ANY (ARRAY[1, 2, 3, 4]))
+          WHERE (f.sk_escenario = ANY (ARRAY[1, 2, 3]))
           GROUP BY f.mes_id, f.sk_escenario
         )
  SELECT m.mes_id,
@@ -2403,7 +2178,7 @@ CREATE VIEW ds_gestion.v_fijos_escenario_mensual AS
     m.fijo_virtual_conocido,
     c.fijo_comparable AS fijo_contable_comparable,
     (c.registros_contables IS NOT NULL) AS hay_contabilidad,
-    'Subtotales conocidos; 1/2 cotizaciones con otra cobertura y retornos sin costo; 3/4 reales y virtuales; totales entre escenarios no implican poblacion equivalente'::text AS alcance
+    'Subtotales conocidos; 1/2 cotizaciones con otra cobertura y retornos sin costo; 3 reales y virtuales; totales entre escenarios no implican poblacion equivalente'::text AS alcance
    FROM (m
      LEFT JOIN ds_gestion.v_referencia_contable_mensual c USING (mes_id));
 
@@ -2970,7 +2745,7 @@ CREATE VIEW ds_gestion.v_resultado_servicio AS
                      LEFT JOIN c ON (((c.nro_viaje = v.nro_viaje) AND (c.sk_escenario = s.sk_escenario))))
                      LEFT JOIN nv ON ((nv.ciclo_comercial = v.ciclo_comercial)))
                      LEFT JOIN cv ON (((cv.nro_viaje = v.nro_viaje) AND (cv.sk_escenario = s.sk_escenario))))
-                  WHERE (s.sk_escenario = ANY (ARRAY[1, 2, 3, 4]))
+                  WHERE (s.sk_escenario = ANY (ARRAY[1, 2, 3]))
                 ), z AS (
                  SELECT x.nro_viaje,
                     x.fecha_documental_id,
@@ -2997,7 +2772,7 @@ CREATE VIEW ds_gestion.v_resultado_servicio AS
                             ELSE NULL::double precision
                         END AS conocido_comercial,
                     (NOT ((x.tipo_operador = 'propio'::text) AND (x.rol_comercial = 'envío principal'::text) AND (x.n_virtuales > 0) AND (x.sk_escenario = ANY (ARRAY[1, 2])))) AS metodo_virtual,
-                    (NOT ((x.tipo_operador = 'propio'::text) AND (x.rol_comercial = 'envío principal'::text) AND (x.sk_escenario = ANY (ARRAY[3, 4])) AND (x.n_virtuales <> x.n_virtuales_destino))) AS asignacion_virtual
+                    (NOT ((x.tipo_operador = 'propio'::text) AND (x.rol_comercial = 'envío principal'::text) AND (x.sk_escenario = 3) AND (x.n_virtuales <> x.n_virtuales_destino))) AS asignacion_virtual
                    FROM x
                 ), q AS (
                  SELECT z.nro_viaje,
@@ -3418,7 +3193,7 @@ CREATE VIEW ds_gestion.v_resultado_ciclo AS
                      LEFT JOIN ventas.dim_cliente cl ON ((cl.cliente_id = p.cliente_id)))
                      LEFT JOIN ciclos.dim_tramo_base tb ON ((tb.sit_stretch_id = p.sit_stretch_id)))
                   WHERE (v.tipo_operador = 'propio'::text)
-                ), mov AS MATERIALIZED (
+                ), mov_base AS MATERIALIZED (
                  SELECT cy.id_viaje,
                     cy.nro_viaje,
                     cy.equipo_id,
@@ -3452,16 +3227,53 @@ CREATE VIEW ds_gestion.v_resultado_ciclo AS
                    FROM ((ciclos.fact_viaje_ciclo cy
                      JOIN alcance a USING (ciclo_comercial))
                      LEFT JOIN ventas.fact_viaje_venta v ON ((v.nro_viaje = cy.nro_viaje)))
+                ), mov AS MATERIALIZED (
+                 SELECT m.id_viaje,
+                    m.nro_viaje,
+                    m.equipo_id,
+                    m.orden_procesado,
+                    m.sk_fecha,
+                    m.sit_stretch_id,
+                    m.km,
+                    m.ciudad_origen_limpia,
+                    m.ciudad_destino_limpia,
+                    m.base_origen,
+                    m.base_destino,
+                    m.cliente_id,
+                    m.producto_id,
+                    m.ingreso,
+                    m.ingreso_por_km,
+                    m.tipo_movimiento,
+                    m.clasificacion_viaje,
+                    m.regla_clasificacion,
+                    m.tipo_carga_final,
+                    m.calidad_trayectoria,
+                    m.es_virtual,
+                    m.tipo_virtual,
+                    m.ciclo_comercial,
+                    m.orden_ciclo_comercial,
+                    m.rol_comercial,
+                    m.tipo_operador,
+                    m.ingreso_estimado,
+                    m.destino_previo,
+                    m.base_previa,
+                    m.posicion,
+                    COALESCE(((m.posicion = 1) AND (m.es_virtual = 'N'::text) AND (m.calidad_trayectoria = 'IG'::text) AND (previo.es_virtual = 'S'::text) AND (previo.ciclo_comercial <> m.ciclo_comercial) AND (previo.ciudad_destino_limpia = m.ciudad_origen_limpia)), false) AS ig_heredada
+                   FROM (mov_base m
+                     LEFT JOIN ciclos.fact_viaje_ciclo previo ON (((m.posicion = 1) AND (m.calidad_trayectoria = 'IG'::text) AND (previo.equipo_id = m.equipo_id) AND (previo.orden_procesado = (m.orden_procesado - 1)))))
                 ), estructura AS MATERIALIZED (
                  SELECT m.ciclo_comercial,
                     count(*) FILTER (WHERE (m.es_virtual = 'N'::text)) AS reales,
                     count(*) FILTER (WHERE (m.es_virtual = 'S'::text)) AS virtuales,
                     bool_and(COALESCE((m.tipo_operador = 'propio'::text), false)) FILTER (WHERE (m.es_virtual = 'N'::text)) AS propios,
+                    bool_and(COALESCE((m.tipo_operador = ANY (ARRAY['propio'::text, 'fletero'::text, 'caterina'::text])), false)) FILTER (WHERE (m.es_virtual = 'N'::text)) AS operadores_admitidos,
+                    bool_or((m.tipo_operador = ANY (ARRAY['fletero'::text, 'caterina'::text]))) FILTER (WHERE (m.es_virtual = 'N'::text)) AS contiene_terceros,
                     bool_and((m.ingreso_estimado IS NOT NULL)) FILTER (WHERE (m.es_virtual = 'N'::text)) AS ingreso_completo,
                     sum(m.ingreso_estimado) FILTER (WHERE (m.es_virtual = 'N'::text)) AS ingreso,
-                    bool_and(((m.ciudad_origen_limpia IS NOT NULL) AND (m.ciudad_destino_limpia IS NOT NULL) AND ((m.posicion = 1) OR (m.ciudad_origen_limpia = m.destino_previo)) AND (m.km IS NOT NULL) AND (m.km >= (0)::double precision) AND (m.km < 'Infinity'::double precision) AND (m.calidad_trayectoria IS DISTINCT FROM 'IG'::text) AND (m.tipo_virtual IS DISTINCT FROM 'Virtual_Sin_Tramo'::text) AND (NOT ((m.km = (0)::double precision) AND (m.ciudad_origen_limpia IS DISTINCT FROM m.ciudad_destino_limpia))))) AS trayectoria_valida,
-                    bool_and(((m.ciudad_origen_limpia IS NOT NULL) AND (m.ciudad_destino_limpia IS NOT NULL) AND ((m.posicion = 1) OR (m.ciudad_origen_limpia = m.destino_previo) OR ((m.calidad_trayectoria = 'NB'::text) AND (m.base_origen = m.base_previa) AND (m.base_origen IS NOT NULL) AND (m.base_origen <> ALL (ARRAY[''::text, 'NO APLICA'::text])))) AND (m.km IS NOT NULL) AND (m.km >= (0)::double precision) AND (m.km < 'Infinity'::double precision) AND (m.calidad_trayectoria IS DISTINCT FROM 'IG'::text) AND (m.tipo_virtual IS DISTINCT FROM 'Virtual_Sin_Tramo'::text) AND (NOT ((m.km = (0)::double precision) AND (m.ciudad_origen_limpia IS DISTINCT FROM m.ciudad_destino_limpia))))) AS trayectoria_flexible,
-                    bool_or((m.calidad_trayectoria = 'IG'::text)) AS tiene_ig,
+                    bool_and(((m.ciudad_origen_limpia IS NOT NULL) AND (m.ciudad_destino_limpia IS NOT NULL) AND ((m.posicion = 1) OR (m.ciudad_origen_limpia = m.destino_previo)) AND (m.km IS NOT NULL) AND (m.km >= (0)::double precision) AND (m.km < 'Infinity'::double precision) AND ((m.calidad_trayectoria IS DISTINCT FROM 'IG'::text) OR m.ig_heredada) AND (m.tipo_virtual IS DISTINCT FROM 'Virtual_Sin_Tramo'::text) AND (NOT ((m.km = (0)::double precision) AND (m.ciudad_origen_limpia IS DISTINCT FROM m.ciudad_destino_limpia))))) AS trayectoria_valida,
+                    bool_and(((m.ciudad_origen_limpia IS NOT NULL) AND (m.ciudad_destino_limpia IS NOT NULL) AND ((m.posicion = 1) OR (m.ciudad_origen_limpia = m.destino_previo) OR ((m.calidad_trayectoria = 'NB'::text) AND (m.base_origen = m.base_previa) AND (m.base_origen IS NOT NULL) AND (m.base_origen <> ALL (ARRAY[''::text, 'NO APLICA'::text])))) AND (m.km IS NOT NULL) AND (m.km >= (0)::double precision) AND (m.km < 'Infinity'::double precision) AND ((m.calidad_trayectoria IS DISTINCT FROM 'IG'::text) OR m.ig_heredada) AND (m.tipo_virtual IS DISTINCT FROM 'Virtual_Sin_Tramo'::text) AND (NOT ((m.km = (0)::double precision) AND (m.ciudad_origen_limpia IS DISTINCT FROM m.ciudad_destino_limpia))))) AS trayectoria_flexible,
+                    bool_or(((m.calidad_trayectoria = 'IG'::text) AND (NOT m.ig_heredada))) AS tiene_ig,
+                    bool_or(m.ig_heredada) AS ig_heredada,
                     bool_or(((m.km = (0)::double precision) AND (m.ciudad_origen_limpia IS DISTINCT FROM m.ciudad_destino_limpia))) AS km_cero,
                     bool_or((m.tipo_virtual = 'Virtual_Sin_Tramo'::text)) AS virtual_sin_tramo,
                     count(*) FILTER (WHERE ((m.posicion > 1) AND (m.ciudad_origen_limpia IS DISTINCT FROM m.destino_previo))) AS saltos,
@@ -3493,6 +3305,9 @@ CREATE VIEW ds_gestion.v_resultado_ciclo AS
                     e.reales,
                     e.virtuales,
                     e.propios,
+                    e.operadores_admitidos,
+                    e.contiene_terceros,
+                    e.ig_heredada,
                     e.ingreso_completo,
                     e.ingreso,
                     e.recorrido_completo,
@@ -3530,7 +3345,7 @@ CREATE VIEW ds_gestion.v_resultado_ciclo AS
                     m.ciclo_comercial AS ciclo_seleccionado
                    FROM (escenarios.fact_costo_viaje f
                      JOIN mov m ON (((m.nro_viaje = f.nro_viaje) AND (m.es_virtual = 'N'::text))))
-                  WHERE (f.sk_escenario = ANY (ARRAY[1, 2, 3, 4]))
+                  WHERE (f.sk_escenario = ANY (ARRAY[1, 2, 3]))
                 ), virtual_det AS MATERIALIZED (
                  SELECT f.id_viaje,
                     f.ciclo_comercial,
@@ -3551,7 +3366,7 @@ CREATE VIEW ds_gestion.v_resultado_ciclo AS
                     f.cf_estructura_virtual
                    FROM (escenarios.fact_costo_virtual f
                      JOIN alcance a USING (ciclo_comercial))
-                  WHERE (f.sk_escenario = ANY (ARRAY[3, 4]))
+                  WHERE (f.sk_escenario = 3)
                 ), virtual_estado AS MATERIALIZED (
                  SELECT v.id_viaje,
                     v.ciclo_comercial,
@@ -3574,7 +3389,7 @@ CREATE VIEW ds_gestion.v_resultado_ciclo AS
                     f.monto,
                     f.estado
                    FROM escenarios.fact_costo_virtual f
-                  WHERE ((f.sk_escenario = ANY (ARRAY[3, 4])) AND (EXISTS ( SELECT 1
+                  WHERE ((f.sk_escenario = 3) AND (EXISTS ( SELECT 1
                            FROM mov m
                           WHERE ((m.es_virtual = 'N'::text) AND (m.nro_viaje = f.nro_viaje_destino)))))
                 ), costos_real AS MATERIALIZED (
@@ -3639,6 +3454,9 @@ CREATE VIEW ds_gestion.v_resultado_ciclo AS
                     ctx.reales,
                     ctx.virtuales,
                     ctx.propios,
+                    ctx.operadores_admitidos,
+                    ctx.contiene_terceros,
+                    ctx.ig_heredada,
                     ctx.ingreso_completo,
                     ctx.ingreso,
                     ctx.recorrido_completo,
@@ -3654,14 +3472,14 @@ CREATE VIEW ds_gestion.v_resultado_ciclo AS
                     ctx.estructura_valida,
                     ctx.tipo_segmento,
                     s.sk_escenario,
-                    COALESCE((ctx.estructura_valida AND ctx.propios AND ctx.ingreso_completo AND (ctx.reales > 0) AND ((s.sk_escenario <> ALL (ARRAY[1, 2])) OR (ctx.virtuales = 0)) AND (v.reales_con_costo = ctx.reales) AND v.costos_completos AND ((ctx.virtuales = 0) OR ((ve.virtuales_con_costo = ctx.virtuales) AND ve.virtuales_completos))), false) AS completo,
-                    COALESCE((ctx.estructura_flexible AND ctx.propios AND ctx.ingreso_completo AND (ctx.reales > 0) AND ((s.sk_escenario <> ALL (ARRAY[1, 2])) OR (ctx.virtuales = 0)) AND (v.reales_con_costo = ctx.reales) AND v.costos_completos AND ((ctx.virtuales = 0) OR ((ve.virtuales_con_costo = ctx.virtuales) AND ve.virtuales_completos))), false) AS completo_flexible,
+                    COALESCE((ctx.estructura_valida AND (ctx.propios OR ((s.sk_escenario = 3) AND ctx.operadores_admitidos)) AND ctx.ingreso_completo AND (ctx.reales > 0) AND ((s.sk_escenario <> ALL (ARRAY[1, 2])) OR (ctx.virtuales = 0)) AND (v.reales_con_costo = ctx.reales) AND v.costos_completos AND ((ctx.virtuales = 0) OR ((ve.virtuales_con_costo = ctx.virtuales) AND ve.virtuales_completos))), false) AS completo,
+                    COALESCE((ctx.estructura_flexible AND (ctx.propios OR ((s.sk_escenario = 3) AND ctx.operadores_admitidos)) AND ctx.ingreso_completo AND (ctx.reales > 0) AND ((s.sk_escenario <> ALL (ARRAY[1, 2])) OR (ctx.virtuales = 0)) AND (v.reales_con_costo = ctx.reales) AND v.costos_completos AND ((ctx.virtuales = 0) OR ((ve.virtuales_con_costo = ctx.virtuales) AND ve.virtuales_completos))), false) AS completo_flexible,
                     v.costo
                    FROM (((contexto ctx
                      CROSS JOIN escenarios.dim_escenario s)
                      LEFT JOIN viajes_ciclo v ON (((v.ciclo_comercial = ctx.ciclo_comercial) AND (v.sk_escenario = s.sk_escenario))))
                      LEFT JOIN virtual_ciclo ve ON (((ve.ciclo_comercial = ctx.ciclo_comercial) AND (ve.sk_escenario = s.sk_escenario))))
-                  WHERE (s.sk_escenario = ANY (ARRAY[1, 2, 3, 4]))
+                  WHERE (s.sk_escenario = ANY (ARRAY[1, 2, 3]))
                 ), fisico_real AS MATERIALIZED (
                  SELECT m.ciclo_comercial,
                     r.escenario_id,
@@ -3694,6 +3512,9 @@ CREATE VIEW ds_gestion.v_resultado_ciclo AS
                     c.reales,
                     c.virtuales,
                     c.propios,
+                    c.operadores_admitidos,
+                    c.contiene_terceros,
+                    c.ig_heredada,
                     c.ingreso_completo,
                     c.ingreso,
                     c.recorrido_completo,
@@ -3716,8 +3537,8 @@ CREATE VIEW ds_gestion.v_resultado_ciclo AS
                     v.costos_completos,
                     vc.virtuales_con_costo,
                     vc.virtuales_completos,
-                    COALESCE((c.propios AND c.ingreso_completo AND (c.reales > 0) AND ((c.sk_escenario <> ALL (ARRAY[1, 2])) OR (c.virtuales = 0)) AND (v.reales_con_costo = c.reales) AND v.costos_completos AND ((c.virtuales = 0) OR ((vc.virtuales_con_costo = c.virtuales) AND vc.virtuales_completos))), false) AS financiero_comercial_completo,
-                    COALESCE((c.propios AND c.ingreso_completo AND (c.reales > 0) AND ((c.sk_escenario <> ALL (ARRAY[1, 2])) OR (c.virtuales = 0)) AND (fr.reales = c.reales) AND fr.completo AND ((c.virtuales = 0) OR ((fv.virtuales = c.virtuales) AND fv.completo))), false) AS financiero_fisico_completo,
+                    COALESCE(((c.propios OR ((c.sk_escenario = 3) AND c.operadores_admitidos)) AND c.ingreso_completo AND (c.reales > 0) AND ((c.sk_escenario <> ALL (ARRAY[1, 2])) OR (c.virtuales = 0)) AND (v.reales_con_costo = c.reales) AND v.costos_completos AND ((c.virtuales = 0) OR ((vc.virtuales_con_costo = c.virtuales) AND vc.virtuales_completos))), false) AS financiero_comercial_completo,
+                    COALESCE(((c.propios OR ((c.sk_escenario = 3) AND c.operadores_admitidos)) AND c.ingreso_completo AND (c.reales > 0) AND ((c.sk_escenario <> ALL (ARRAY[1, 2])) OR (c.virtuales = 0)) AND (fr.reales = c.reales) AND fr.completo AND ((c.virtuales = 0) OR ((fv.virtuales = c.virtuales) AND fv.completo))), false) AS financiero_fisico_completo,
                         CASE
                             WHEN ((fr.conocido IS NOT NULL) OR (fv.conocido IS NOT NULL)) THEN (COALESCE(fr.conocido, (0)::double precision) + COALESCE(fv.conocido, (0)::double precision))
                             ELSE NULL::double precision
@@ -3759,10 +3580,10 @@ CREATE VIEW ds_gestion.v_resultado_ciclo AS
             financiero.virtuales,
             financiero.propios,
             financiero.ingreso_completo,
-            financiero.estructura_valida AS estructura_conservadora,
-            financiero.estructura_flexible,
+            (financiero.estructura_valida AND ((financiero.sk_escenario = 3) OR (NOT financiero.ig_heredada))) AS estructura_conservadora,
+            (financiero.estructura_flexible AND ((financiero.sk_escenario = 3) OR (NOT financiero.ig_heredada))) AS estructura_flexible,
             financiero.cierre_valido,
-            financiero.tiene_ig,
+            (financiero.tiene_ig OR ((financiero.sk_escenario <> 3) AND financiero.ig_heredada)) AS tiene_ig,
             financiero.km_cero,
             financiero.virtual_sin_tramo,
             financiero.saltos,
@@ -3770,10 +3591,15 @@ CREATE VIEW ds_gestion.v_resultado_ciclo AS
             COALESCE(((financiero.virtuales = 0) OR ((financiero.virtuales_con_costo = financiero.virtuales) AND financiero.virtuales_completos)), false) AS costos_virtuales_completos,
             ((financiero.sk_escenario <> ALL (ARRAY[1, 2])) OR (financiero.virtuales = 0)) AS metodo_virtual_disponible,
                 CASE
-                    WHEN financiero.estructura_valida THEN 'Sin bloqueo estructural'::text
-                    WHEN financiero.estructura_flexible THEN 'Solo conexión por base NB'::text
-                    WHEN financiero.tiene_ig THEN 'Inconsistencia geográfica IG'::text
-                    WHEN (NOT financiero.cierre_valido) THEN 'Apertura o cierre no admitidos'::text
+                    WHEN (financiero.estructura_valida AND ((financiero.sk_escenario = 3) OR (NOT financiero.ig_heredada))) THEN 'Sin bloqueo estructural'::text
+                    WHEN (financiero.estructura_flexible AND ((financiero.sk_escenario = 3) OR (NOT financiero.ig_heredada))) THEN 'Solo conexión por base NB'::text
+                    WHEN (financiero.tiene_ig OR ((financiero.sk_escenario <> 3) AND financiero.ig_heredada)) THEN 'Inconsistencia geográfica IG'::text
+                    WHEN ((financiero.sk_escenario = 3) AND (NOT COALESCE((financiero.motivo_apertura = ANY (ARRAY['sale de Santiago'::text, 'corte en Coquimbo'::text, 'local en Santiago'::text])), false))) THEN 'Apertura no admitida'::text
+                    WHEN (NOT financiero.cierre_valido) THEN
+                    CASE
+                        WHEN (financiero.sk_escenario = 3) THEN 'Cierre no admitido'::text
+                        ELSE 'Apertura o cierre no admitidos'::text
+                    END
                     ELSE 'Otros problemas de distancia o continuidad'::text
                 END AS submotivo_estructura,
             concat_ws('; '::text,
@@ -3798,7 +3624,13 @@ CREATE VIEW ds_gestion.v_resultado_ciclo AS
                     ELSE NULL::text
                 END) AS condiciones_estructura,
             financiero.recorrido_piernas AS recorrido_movimientos,
-            COALESCE(financiero.conexiones, 'Sin salto entre ciudades registrado; establecimientos no identificados'::text) AS conexiones
+            COALESCE(financiero.conexiones, 'Sin salto entre ciudades registrado; establecimientos no identificados'::text) AS conexiones,
+                CASE
+                    WHEN financiero.propios THEN 'Solo TC'::text
+                    WHEN (financiero.operadores_admitidos AND financiero.contiene_terceros) THEN 'Mixto'::text
+                    ELSE 'Operador sin clasificar'::text
+                END AS tipo_operacion_ciclo,
+            ((financiero.sk_escenario = 3) AND financiero.ig_heredada) AS ig_heredada_admitida
            FROM financiero
         )
  SELECT anterior.ciclo_id,
@@ -3830,7 +3662,9 @@ CREATE VIEW ds_gestion.v_resultado_ciclo AS
     anterior.submotivo_estructura,
     anterior.condiciones_estructura,
     anterior.recorrido_movimientos,
-    anterior.conexiones
+    anterior.conexiones,
+    anterior.tipo_operacion_ciclo,
+    anterior.ig_heredada_admitida
    FROM anterior
   WHERE (anterior.escenario_id <> ALL (ARRAY[1, 2]))
 UNION ALL
@@ -3863,7 +3697,9 @@ UNION ALL
     'No aplica: cotización independiente por servicio'::text AS submotivo_estructura,
     'No se costean vacíos ni virtuales; se suman los servicios cotizables'::text AS condiciones_estructura,
     a.recorrido_movimientos,
-    a.conexiones
+    a.conexiones,
+    a.tipo_operacion_ciclo,
+    a.ig_heredada_admitida
    FROM (anterior a
      LEFT JOIN ds_gestion.v_tarificador_ciclo t ON (((t.ciclo_id = a.ciclo_id) AND (t.escenario_id = a.escenario_id))))
   WHERE (a.escenario_id = ANY (ARRAY[1, 2]));
@@ -3895,7 +3731,7 @@ CREATE VIEW ds_gestion.v_ciclo_politica AS
                 WHEN (p.politica_id = 'conservador'::text) THEN r.estructura_conservadora
                 ELSE r.estructura_flexible
             END, false)) THEN 'Estructura o trayectoria no evaluable'::text
-            WHEN (NOT COALESCE(r.propios, false)) THEN 'Alcance de operadores no equivalente'::text
+            WHEN (NOT COALESCE((r.propios OR ((r.escenario_id = 3) AND (r.tipo_operacion_ciclo = 'Mixto'::text))), false)) THEN 'Alcance de operadores no equivalente'::text
             WHEN (NOT COALESCE(r.ingreso_completo, false)) THEN 'Ingreso estimado incompleto'::text
             WHEN (NOT r.metodo_virtual_disponible) THEN 'Virtual sin método equivalente en 1/2'::text
             WHEN ((r.virtuales > 0) AND (NOT r.costos_virtuales_completos)) THEN 'Costos virtuales incompletos'::text
@@ -4066,7 +3902,7 @@ CREATE VIEW ds_gestion.v_evaluacion_ciclo AS
                 WHEN (p.politica_id = 'conservador'::text) THEN r.estructura_conservadora
                 ELSE r.estructura_flexible
             END, false)) THEN 'Estructura o trayectoria no evaluable'::text
-            WHEN (NOT COALESCE(r.propios, false)) THEN 'Alcance de operadores no equivalente'::text
+            WHEN (NOT COALESCE((r.propios OR ((r.escenario_id = 3) AND (r.tipo_operacion_ciclo = 'Mixto'::text))), false)) THEN 'Alcance de operadores no equivalente'::text
             WHEN (NOT COALESCE(r.ingreso_completo, false)) THEN 'Ingreso estimado incompleto'::text
             WHEN (NOT r.metodo_virtual_disponible) THEN 'Virtual sin método equivalente en 1/2'::text
             WHEN ((r.virtuales > 0) AND (NOT r.costos_virtuales_completos)) THEN 'Costos virtuales incompletos'::text
@@ -6132,6 +5968,7 @@ CREATE VIEW ventas.v_viaje_descriptivo AS
     v.operador_grupo,
     v.tipo_operador,
     v.transportista_id,
+    v.conductor_id,
     v.conductor_interno,
     v.es_retorno,
     v.es_tractoreo,
@@ -6147,7 +5984,6 @@ CREATE VIEW ventas.v_viaje_descriptivo AS
     v.pct_pago_tercero,
     v.comision_conductor_observada,
     v.pago_tercero_observado,
-    v.conductor_id,
     c.nombre_completo AS conductor_nombre,
         CASE
             WHEN (v.conductor_id IS NULL) THEN 'sin_id'::text
@@ -6334,14 +6170,6 @@ ALTER TABLE ONLY costos.dim_cuenta_contable
 
 ALTER TABLE ONLY costos.dim_cuenta_contable
     ADD CONSTRAINT dim_cuenta_contable_pkey PRIMARY KEY (sk_cuenta);
-
-
---
--- Name: fact_absorcion_viaje fact_absorcion_viaje_pkey; Type: CONSTRAINT; Schema: costos; Owner: -
---
-
-ALTER TABLE ONLY costos.fact_absorcion_viaje
-    ADD CONSTRAINT fact_absorcion_viaje_pkey PRIMARY KEY (id_viaje, bolsa);
 
 
 --
@@ -7287,5 +7115,5 @@ ALTER TABLE ONLY tarificador.fact_parametro_valor
 -- PostgreSQL database dump complete
 --
 
-\unrestrict g3u73AE6j5JcXBbSwf4h4VFcjueOOngfX9Oh1OaTk5MXVzqNGDOo2J8jBdeh13p
+\unrestrict T47P2Zr5mTht7TShVVc8PbMvVvYe6783N3eMNC28zRbMBNon4opiyyvVGyKhRqI
 

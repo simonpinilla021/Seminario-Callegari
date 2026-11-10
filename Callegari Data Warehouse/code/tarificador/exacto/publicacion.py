@@ -47,7 +47,7 @@ SELECT *,CASE WHEN evaluable THEN subtotal_conocido END::float8 AS costo_tarific
 FROM evaluado;
 '''
 
-def reemplazar_fact(con,q,escenarios=(1,2)):
+def reemplazar_fact(con,q,escenarios=(1,2), *, solo_viajes=False):
     """Solo escribe filas 1/2; nunca ejecuta la redistribución de los otros escenarios."""
     params=pd.read_json(INPUT/'parametros_excel.json',typ='series').to_dict()
     roles=con.df("SELECT nro_viaje,rol_comercial,ciclo_comercial FROM ciclos.fact_viaje_ciclo WHERE es_virtual='N'")
@@ -68,8 +68,11 @@ def reemplazar_fact(con,q,escenarios=(1,2)):
     if not set(escenarios)<=set((1,2)):raise ValueError('Solo tarificador 1/2')
     q=q[q.escenario_id.isin(escenarios)]
     records=[r for r in records if r[1] in escenarios]
-    con.execute('DELETE FROM escenarios.fact_costo_viaje WHERE sk_escenario=ANY(%s)',(list(escenarios),))
+    filtro=' AND nro_viaje=ANY(%s)' if solo_viajes else ''
+    args=(list(escenarios),list(map(int,q.nro_viaje.unique()))) if solo_viajes else (list(escenarios),)
+    con.execute('DELETE FROM escenarios.fact_costo_viaje WHERE sk_escenario=ANY(%s)'+filtro,args)
     con.copiar('escenarios.fact_costo_viaje',['nro_viaje','sk_escenario','sk_componente','sk_fecha','cantidad','tasa','monto','monto_comercial','rol_comercial','ciclo_comercial','estado','estado_comercial'],records)
+    if solo_viajes:return
     fleteros.publicar_fact(con,escenarios)
     con.execute("UPDATE escenarios.dim_escenario SET nombre=CASE sk_escenario WHEN 1 THEN 'tarificador_exacto' ELSE 'tarificador_exacto_rend_camion' END,descripcion=CASE sk_escenario WHEN 1 THEN 'Cotización exacta Excel por servicio propio; sin reparto por ciclo' ELSE 'Cotización exacta Excel con rendimiento del camión; sin reparto por ciclo' END WHERE sk_escenario=ANY(%s)",(list(escenarios),))
     con.execute('ANALYZE escenarios.fact_costo_viaje')
@@ -77,6 +80,10 @@ def reemplazar_fact(con,q,escenarios=(1,2)):
 def construir(con):
     from combustible.rendimiento_tarificador_certificado import publicar as publicar_rendimiento
     publicar_rendimiento(con)
+    # Durante la reconstrucción, las tablas recién cargadas aún no son visibles
+    # para autovacuum. La consulta de rendimiento necesita estadísticas actuales.
+    con.execute('''ANALYZE ventas.fact_viaje_venta, ciclos.fact_viaje_ciclo,
+      combustible.fact_bloque_certificacion, combustible.parametro_rendimiento_tarificador''')
     data=preparar(con);report=cargar(con,data);reemplazar_fact(con,data[0])
     con.execute('CREATE SCHEMA IF NOT EXISTS ds_gestion');con.execute(SQL_VISTAS)
     report['controles']=controles(con)

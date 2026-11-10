@@ -61,9 +61,9 @@ WITH r AS MATERIALIZED (
  v AS MATERIALIZED (
  SELECT sk_fecha/100 AS mes_id,count(*) AS virtuales,
  count(*) FILTER(WHERE estado IS DISTINCT FROM 'ok' OR monto IS NULL) AS virtuales_pendientes,
- sum(cf_flota_virtual) FILTER(WHERE estado='ok') AS flota,
+ sum(cf_flota_virtual) FILTER(WHERE estado IN('ok','parcial: cuota de rampla sin confirmar')) AS flota,
  sum(cf_rampla_virtual) FILTER(WHERE estado='ok') AS rampla,
- sum(cf_estructura_virtual) FILTER(WHERE estado='ok') AS estructura
+ sum(cf_estructura_virtual) FILTER(WHERE estado IN('ok','parcial: cuota de rampla sin confirmar')) AS estructura
  FROM escenarios.fact_costo_virtual WHERE sk_escenario=3 AND sk_componente=4 GROUP BY 1),
  cortes AS (SELECT mes_id/100 AS anio,to_date(max(ultima_fecha)::text,'YYYYMMDD') AS hasta FROM r GROUP BY 1),
  meses AS (SELECT c.anio,c.hasta,g::date AS desde,

@@ -12,7 +12,6 @@ r"""
   Escenario 3 · real                    combustible certificado P7 (original y ajuste separados); termo con
                                         termo_factor_real × precio de la base; peaje referencial (área peajes); costo fijo,
                                         reposición y neumáticos del método propuesto (área costos)
-  Escenario 4 · absorcion_total         igual que el 3 salvo fijo: masa mensual / días-viaje medios de meses previos
   Fleteros en 1/2: comisión observada únicamente; no son cotizaciones Excel.
   Caterina sigue fuera de 1/2. En 3 y 4: pago_tercero más estructura,
   rampla, reposición y neumáticos que determine el método propuesto.
@@ -74,7 +73,6 @@ ESCENARIOS = [
     (1, "tarificador", "Reglas y parámetros del tarificador; precio del combustible y costo fijo desde la BBDD"),
     (2, "tarificador_rend_camion", "Escenario 1 con el rendimiento propio del camión"),
     (3, "real", "Combustible certificado; costo fijo por capacidad práctica; residual de capacidad separado"),
-    (4, "absorcion_total", "Combustible certificado igual a 3; fijo por promedio de días-viaje de los 3 meses previos"),
 ]
 COMPONENTES = [
     (1, "combustible", "L", "variable"), (2, "termo", "L", "variable"), (3, "peaje", "viaje", "variable"),
@@ -155,42 +153,32 @@ c AS (
          SUM(monto) FILTER (WHERE sk_escenario = 2) AS costo_2_tarif_rend_camion,
          CASE WHEN BOOL_AND(estado = 'ok' AND monto IS NOT NULL) FILTER (WHERE sk_escenario = 3 AND NOT es_virtual)
               THEN SUM(monto) FILTER (WHERE sk_escenario = 3) END AS costo_3_real,
-         CASE WHEN BOOL_AND(estado = 'ok' AND monto IS NOT NULL) FILTER (WHERE sk_escenario = 4 AND NOT es_virtual)
-              THEN SUM(monto) FILTER (WHERE sk_escenario = 4) END AS costo_4_absorcion_total,
          SUM(monto_comercial) FILTER (WHERE sk_escenario = 1) AS costo_comercial_1,
          SUM(monto_comercial) FILTER (WHERE sk_escenario = 2) AS costo_comercial_2,
          SUM(monto) FILTER (WHERE sk_escenario = 3) AS subtotal_conocido_3,
-         SUM(monto) FILTER (WHERE sk_escenario = 4) AS subtotal_conocido_4,
          SUM(monto_comercial) FILTER (WHERE sk_escenario = 3) AS subtotal_comercial_conocido_3,
-         SUM(monto_comercial) FILTER (WHERE sk_escenario = 4) AS subtotal_comercial_conocido_4,
          BOOL_AND(estado = 'ok' AND monto IS NOT NULL)
            FILTER (WHERE sk_escenario = 3 AND NOT es_virtual) AS completo_3,
-         BOOL_AND(estado = 'ok' AND monto IS NOT NULL)
-           FILTER (WHERE sk_escenario = 4 AND NOT es_virtual) AS completo_4,
          BOOL_AND(estado_comercial = 'ok' AND monto_comercial IS NOT NULL)
            FILTER (WHERE sk_escenario = 3) AS completo_comercial_3,
-         BOOL_AND(estado_comercial = 'ok' AND monto_comercial IS NOT NULL)
-           FILTER (WHERE sk_escenario = 4) AS completo_comercial_4,
          MAX(rol_comercial) AS rol_comercial, MAX(ciclo_comercial) AS ciclo_comercial,
          BOOL_AND(estado = 'ok') FILTER (WHERE NOT es_virtual) AS completo
   FROM detalle GROUP BY nro_viaje)
 SELECT vv.nro_viaje, f.fecha, vv.equipo_id, vv.tipo_operador, cy.clasificacion_viaje, vv.cliente_id,
        cl.razon_social AS cliente, tb.tramo AS texto_tramo, vv.ingreso, q.cotizacion AS cotizacion_tarificador,
-       c.costo_1_tarificador, c.costo_2_tarif_rend_camion, c.costo_3_real, c.costo_4_absorcion_total,
+       c.costo_1_tarificador, c.costo_2_tarif_rend_camion, c.costo_3_real,
        vv.ingreso - c.costo_1_tarificador AS margen_1, vv.ingreso - c.costo_2_tarif_rend_camion AS margen_2,
-       vv.ingreso - c.costo_3_real AS margen_3, vv.ingreso - c.costo_4_absorcion_total AS margen_4,
+       vv.ingreso - c.costo_3_real AS margen_3,
        c.ciclo_comercial, c.rol_comercial,
        c.costo_comercial_1, c.costo_comercial_2,
        CASE WHEN c.completo_comercial_3 THEN c.subtotal_comercial_conocido_3 END AS costo_comercial_3,
-       CASE WHEN c.completo_comercial_4 THEN c.subtotal_comercial_conocido_4 END AS costo_comercial_4,
        vv.ingreso - c.costo_comercial_1 AS margen_comercial_1, vv.ingreso - c.costo_comercial_2 AS margen_comercial_2,
        CASE WHEN c.completo_comercial_3 THEN vv.ingreso - c.subtotal_comercial_conocido_3 END AS margen_comercial_3,
-       CASE WHEN c.completo_comercial_4 THEN vv.ingreso - c.subtotal_comercial_conocido_4 END AS margen_comercial_4,
        c.completo AND COALESCE(c.completo_comercial_3, FALSE)
-         AND COALESCE(c.completo_comercial_4, FALSE) AS costos_completos,
-       c.subtotal_conocido_3, c.subtotal_conocido_4,
-       c.subtotal_comercial_conocido_3, c.subtotal_comercial_conocido_4,
-       c.completo_3, c.completo_4, c.completo_comercial_3, c.completo_comercial_4
+         AS costos_completos,
+       c.subtotal_conocido_3,
+       c.subtotal_comercial_conocido_3,
+       c.completo_3, c.completo_comercial_3
 FROM c
 JOIN ventas.fact_viaje_venta vv ON vv.nro_viaje = c.nro_viaje
 LEFT JOIN escenarios.fact_cotizacion_viaje q ON q.nro_viaje = c.nro_viaje
@@ -367,7 +355,7 @@ def principal(argv=None, _conn=None):
     litros_rend = v["km"] / v["rend_camion"]
     # 1/2 se construyen exclusivamente en tarificador.exacto, con km entregados,
     # fórmulas/versiones del Excel y sin redistribución comercial.
-    for esc in (3, 4):
+    for esc in (3,):
         comp(esc, "combustible", v["litros_real"], v["comb_real"] / v["litros_real"].where(v["litros_real"] > 0),
              v["comb_real"])
         comp(esc, "termo", horas_termo * lh * f_termo_real, v["precio_base"])
@@ -378,7 +366,7 @@ def principal(argv=None, _conn=None):
         comp(esc, "neumaticos", v["km_p"], v["neu_p"] / v["km_p"].where(v["km_p"] > 0), v["neu_p"],
              mask=operador_conocido)
         comp(esc, "comision_conductor", pd.Series(1.0, index=v.index), v["comision_conductor"])
-    for esc in (3, 4):
+    for esc in (3,):
         pago = v["pago_tercero"] if esc in (1, 2) else v["pago_tercero_observado"]
         mascara = ~propio & v["tipo_operador"].notna() if esc in (1, 2) else operador_conocido & ~propio
         comp(esc, "pago_tercero", pd.Series(1.0, index=v.index), pago, mask=mascara)
@@ -396,8 +384,6 @@ def principal(argv=None, _conn=None):
     # como si fueran desplazamientos de flota propia. La comisión directa también.
     terceros = v.loc[v["tipo_operador"].isin(["fletero", "caterina"]), "nro_viaje"]
     virtuales = costos_virtuales(leer_virtuales(con), v)
-    from costos.absorcion_total import aplicar as aplicar_absorcion
-    fc, virtuales = aplicar_absorcion(con, fc, virtuales)
     fc = vista_comercial(fc, roles, PESO_CARGADO, terceros)
     validar_conservacion(fc)
 
@@ -428,8 +414,8 @@ def principal(argv=None, _conn=None):
         con.execute(VISTA)
         con.execute(VISTAS_CALIDAD)
         con.execute(VISTAS_COSTEO)
-        from costos.puente_absorcion import publicar as publicar_puente
-        publicar_puente(con)
+        from combustible.vista_certificada import publicar as publicar_certificado
+        publicar_certificado(con)
         # Ventas/costos pueden haber creado la vista común mientras aún no
         # existía el resumen de escenarios; enlazarla a la referencia recién creada.
         vista_viaje.crear_margen(con)
@@ -531,7 +517,7 @@ def costos_virtuales(vt, viajes):
     Escenarios 3/4: mismos litros certificados y valorización; solo difiere el costo fijo.
     Termo = 0 por ser vacío. Otros componentes solo se modelan con vecinos reales
     propios concordantes y parámetros vigentes; días por km, no duración observada.
-    Si cambia rampla/operador o falta tramo, el dato se conserva pendiente.
+    E3 conserva partidas respaldadas si solo falta confirmar la rampla.
     """
     vt = vt.copy()
     if vt["id_viaje"].duplicated().any():
@@ -539,13 +525,16 @@ def costos_virtuales(vt, viajes):
     for c in ("km", "litros_asignados", "costo_combustible", "rendimiento_camion", "precio_ponderado_real"):
         vt[c] = pd.to_numeric(vt[c], errors="coerce")
     estado_tramo = estado_tramo_virtual(vt)
-    adicionales = componentes_adicionales(vt)
+    adicionales_por_escenario = {
+        3: componentes_adicionales(vt, permitir_parcial=True),
+    }
     tramo_pendiente = estado_tramo.ne('disponible')
     propios = set(viajes.loc[viajes["tipo_operador"] == "propio", "nro_viaje"].astype(str))
     destino = pd.to_numeric(vt["viaje_principal"].where(vt["viaje_principal"].astype(str).isin(propios)),
                             errors="coerce").astype("Int64")
     filas = []
-    for esc in (3, 4):
+    for esc in (3,):
+        adicionales = adicionales_por_escenario[esc]
         litros = vt["litros_asignados"]
         importe = vt["costo_combustible"]
         for nombre in ("combustible", "termo", "peaje", "costo_fijo", "reposicion", "neumaticos"):
@@ -597,7 +586,7 @@ def resumir(fc, q, v):
     ok = p.groupby("nro_viaje")["estado"].apply(lambda s: (s == "ok").all())
     comp = p[p["nro_viaje"].isin(ok[ok].index)].copy()
     comp["anio"] = (comp["sk_fecha"] // 10000).astype("Int64")
-    lin = [f"   viajes propios con escenarios operacionales 3/4 completos: {comp['nro_viaje'].nunique():,} "
+    lin = [f"   viajes propios con escenario operacional 3 completo: {comp['nro_viaje'].nunique():,} "
            f"(de {p['nro_viaje'].nunique():,} propios)"]
     if len(comp):
         t = comp.pivot_table(index="anio", columns="sk_escenario", values="monto", aggfunc="sum") / 1e6
